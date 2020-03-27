@@ -1,0 +1,53 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#location {
+  padding: 2rem;
+}
+#times {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+#location h1 {
+  font-size: 3em;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+#location h1.nowis {
+  color: lightgrey;
+}
+
+#times h2 {
+  font-weight: bold;
+}
+
+.times {
+  text-align: center;
+}
+@media (max-width: 480px) {
+  #location {
+    padding: 0rem;
+  }
+  #times {
+    padding-top: 1rem;
+    text-align: center;
+  }
+  #times h2 {
+    margin: 0;
+  }
+}
