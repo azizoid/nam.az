@@ -5,7 +5,7 @@ function Prayer({ prayer, classes }) {
     <div className={classes}>
       <h6>{prayer.title}</h6>
       <h2>{prayer.time}</h2>
-      <small>13 sat ago</small>
+      <small>{prayer.ago}</small>
     </div>
   );
 }

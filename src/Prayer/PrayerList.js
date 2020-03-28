@@ -1,17 +1,19 @@
 import React from "react";
 import Prayer from "./Prayer";
 
-function PrayerList(props) {
+function PrayerList({ prayers, currentPrayer }) {
   return (
     <div>
       <div className="row" id="times">
-        {props.prayers.map((prayer, index) => {
+        {prayers.map((prayer, index) => {
           const classes = ["alert", "col-sm-12", "col-md-2"];
 
-          if (index === props.currentPrayer) {
-            classes.push("alert-success");
-          } else if (index === 1) {
+          if (index === 1) {
             classes.push("text-muted");
+          } else {
+            if (index === currentPrayer) {
+              classes.push("alert-success");
+            }
           }
 
           return (

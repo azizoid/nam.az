@@ -1,12 +1,15 @@
 import React from "react";
+import Clock from "./Clock";
 
-function Location(props) {
+function Location({ location, date }) {
   return (
     <div>
       <div className="text-center d-none d-md-block" id="location">
-        <h1 className="nowis"> livetime </h1>
-        <h1>{props.location}</h1>
-        <small>new Date()</small>
+        <h1 className="nowis">
+          <Clock />
+        </h1>
+        <h1>{location}</h1>
+        <small>{date}</small>
       </div>
     </div>
   );
