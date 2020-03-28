@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import Context from "./context";
+import NavBar from "./Prayer/NavBar";
 import Location from "./Prayer/Location";
 import PrayerList from "./Prayer/PrayerList";
+
+import { formatRelative, subDays } from "date-fns";
+import { es, ru } from "date-fns/locale";
 
 class App extends Component {
   static contextType = Context;
 
   componentDidMount() {
-    this.updatePrayers(2);
+    this.updatePrayers(0);
   }
 
   changeCity = v => {
@@ -17,29 +21,18 @@ class App extends Component {
   updatePrayers = city => {
     if (!(city in this.context.cities)) city = 0;
     this.context.city = city;
+    this.context.location = this.context.cities[city];
 
     fetch("https://nam.az/api/" + city)
       .then(response => response.json())
       .then(data => {
-        const tmpPrayers = [...this.context.prayers];
-        console.log(tmpPrayers);
+        const tmpPrayers = { ...this.context.prayers };
 
         for (let i = 0; i < 6; i++) {
           tmpPrayers[i]["time"] = data.prayers[i];
         }
 
-        // this.setState(tmpPrayers => {
-        //   return {
-        //     prayers: tmpPrayers,
-        //     location: "asdasd"
-        //   };
-        // });
         this.setState({});
-
-        // this.setState({});
-        console.log(this.context);
-        //console.log(this.context.city);
-        //console.log(this.context);
       });
 
     console.log(this.context.cities[city]);
@@ -58,35 +51,10 @@ class App extends Component {
         }}
       >
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container">
-              <a className="navbar-brand" href="/">
-                Nam.az
-              </a>
-
-              <div>
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <select
-                      className="form-control btn-outline-success"
-                      onChange={this.changeCity}
-                    >
-                      {this.context.cities.map((city, index) => {
-                        return (
-                          <option value={index} key={index}>
-                            {city}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          <NavBar changeCity={this.changeCity} cities={this.context.cities} />
 
           <div className="container">
-            <Location location={this.context.cities[this.context.city]} />
+            <Location location={this.context.location} />
 
             <PrayerList
               prayers={this.context.prayers}

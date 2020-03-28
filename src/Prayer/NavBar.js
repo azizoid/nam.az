@@ -1,11 +1,6 @@
 import React from "react";
 
 function NavBar(props) {
-
-  changeCity(e): {
-    props.updatePr(e.target.value)
-  }
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -18,7 +13,7 @@ function NavBar(props) {
             <li className="nav-item active">
               <select
                 className="form-control btn-outline-success"
-                onChange={props.updatePr}
+                onChange={props.changeCity.bind(this)}
               >
                 {props.cities.map((city, index) => {
                   return (
