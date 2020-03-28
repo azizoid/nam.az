@@ -4,14 +4,7 @@ function NavBar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <a class="navbar-brand" href="/">
-          <img
-            src="https://nam.az/favicon.png"
-            width="30"
-            height="30"
-            class="d-inline-block align-top"
-            alt="Azərbaycan şəhərləri üzrə namaz vaxtı"
-          />
+        <a className="navbar-brand" href="/">
           Nam.az
         </a>
 

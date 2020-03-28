@@ -44,6 +44,7 @@ class App extends Component {
         }
 
         this.setState({});
+        console.log(this.context);
       });
   };
 
