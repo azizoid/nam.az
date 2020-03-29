@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Context from "./context";
-import NavBar from "./Prayer/NavBar";
+import NavBar from "./Layout/NavBar";
 import Location from "./Prayer/Location";
 import PrayerList from "./Prayer/PrayerList";
 
@@ -49,44 +49,34 @@ class App extends Component {
 
   render() {
     return (
-      <Context.Provider
-        value={{
-          prayers: this.context.prayers,
-          cities: this.context.cities,
-          location: this.context.location,
-          currentPrayer: this.context.currentPrayer,
-          updatePrayers: this.updatePrayers
-        }}
-      >
-        <div>
-          <NavBar changeCity={this.changeCity} cities={this.context.cities} />
+      <div>
+        <NavBar changeCity={this.changeCity} cities={this.context.cities} />
 
-          <div className="container">
-            <Location
-              location={this.context.location}
-              date={format(new Date(), "EEEE, d MMMM yyyy", { locale: az })}
-            />
+        <div className="container">
+          <Location
+            location={this.context.location}
+            date={format(new Date(), "EEEE, d MMMM yyyy", { locale: az })}
+          />
 
-            <PrayerList
-              prayers={this.context.prayers}
-              currentPrayer={this.context.currentPrayer}
-            />
-          </div>
-          <footer className="footer">
-            <nav>
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item active">&copy; 2020</li>
-                <li className="breadcrumb-item">
-                  <a href="https://www.nam.az">Nam.az</a>
-                </li>
-                <li className="breadcrumb-item">
-                  <a href="https://www.quran.az">Quran.az</a>
-                </li>
-              </ol>
-            </nav>
-          </footer>
+          <PrayerList
+            prayers={this.context.prayers}
+            currentPrayer={this.context.currentPrayer}
+          />
         </div>
-      </Context.Provider>
+        <footer className="footer">
+          <nav>
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item active">&copy; 2020</li>
+              <li className="breadcrumb-item">
+                <a href="https://www.nam.az">Nam.az</a>
+              </li>
+              <li className="breadcrumb-item">
+                <a href="https://www.quran.az">Quran.az</a>
+              </li>
+            </ol>
+          </nav>
+        </footer>
+      </div>
     );
   }
 }
