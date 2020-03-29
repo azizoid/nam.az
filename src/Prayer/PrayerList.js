@@ -17,7 +17,11 @@ function PrayerList({ prayers, currentPrayer }) {
           }
 
           return (
-            <Prayer classes={classes.join(" ")} prayer={prayer} key={index} />
+            <Prayer
+              classes={classes.join(" ")}
+              prayer={prayer}
+              key={prayer.id}
+            />
           );
         })}
       </div>
