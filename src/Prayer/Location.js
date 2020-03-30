@@ -1,7 +1,7 @@
 import React from "react";
 import Clock from "./Clock";
 
-function Location({ location, date }) {
+const Location = ({ location, date }) => {
   return (
     <div>
       <div className="text-center d-none d-md-block" id="location">
@@ -13,6 +13,6 @@ function Location({ location, date }) {
       </div>
     </div>
   );
-}
+};
 
 export default Location;

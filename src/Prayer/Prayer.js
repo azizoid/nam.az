@@ -1,13 +1,17 @@
 import React from "react";
 
-function Prayer({ prayer, classes }) {
+const Prayer = ({ prayer, classes, current }) => {
   return (
     <div className={classes}>
       <h6>{prayer.title}</h6>
       <h2>{prayer.time}</h2>
-      <small>{prayer.ago}</small>
+      {!current ? (
+        <small>{prayer.ago}</small>
+      ) : (
+        <span className="badge badge-warning">Zaman varkən Namazını qıl</span>
+      )}
     </div>
   );
-}
+};
 
 export default Prayer;
