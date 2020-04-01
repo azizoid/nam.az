@@ -88,11 +88,11 @@ class App extends Component {
   };
 
   readAyah = () => {
-    fetch("https://quran.az/api/show/Namaz?random=1")
+    fetch("https://quran.az/api/random/Namaz")
       .then(response => response.json())
       .then(data => {
         const out = {};
-        out.ayah = data.out[0];
+        out.ayah = data.out;
         out.loader = false;
         this.setState(out);
       });
