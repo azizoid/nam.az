@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 
-class Clock extends React.Component {
+class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: new Date().toLocaleTimeString()
+      time: new Date().toLocaleTimeString(),
     };
   }
   componentDidMount() {
@@ -15,7 +15,7 @@ class Clock extends React.Component {
   }
   tick() {
     this.setState({
-      time: new Date().toLocaleTimeString()
+      time: new Date().toLocaleTimeString(),
     });
   }
   render() {

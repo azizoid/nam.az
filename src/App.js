@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import NavBar from "./Layout/NavBar";
 import Location from "./Prayer/Location";
 import PrayerList from "./Prayer/PrayerList";
@@ -14,11 +14,11 @@ class App extends Component {
     this.state = {
       prayers: [
         { id: 1, title: "Fəcr namazı", time: "--:--" },
-        { id: 2, title: "Günəş", time: "--:--" },
+        { id: 2, title: "Günəş", time: "-:-" },
         { id: 3, title: "Zöhr namazı", time: "--:--" },
         { id: 4, title: "Əsr namazı", time: "--:--" },
         { id: 5, title: "Məğrib namazı", time: "--:--" },
-        { id: 6, title: "İşa namazı", time: "--:--" }
+        { id: 6, title: "İşa namazı", time: "--:--" },
       ],
       currentPrayer: 5,
       city: 1,
@@ -39,15 +39,15 @@ class App extends Component {
         "Yevlax",
         "Naxçıvan",
         "Göycay",
-        "Zaqatala"
+        "Zaqatala",
       ],
       loader: true,
       ayah: {
         s: 40,
         a: 60,
         c:
-          "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'."
-      }
+          "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
+      },
     };
   }
 
@@ -57,17 +57,17 @@ class App extends Component {
     this.readAyah();
   }
 
-  changeCity = v => {
+  changeCity = (v) => {
     this.updatePrayers(v.target.value);
   };
 
-  updatePrayers = city => {
+  updatePrayers = (city) => {
     if (!(city in this.state.cities)) city = 0;
     this.setState({ city: city, location: this.state.cities[city] });
 
     fetch("https://nam.az/api/" + city)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const out = {};
         out.prayers = [...this.state.prayers];
         out.nowis = this.state.nowis;
@@ -88,11 +88,11 @@ class App extends Component {
   };
 
   readAyah = () => {
-    fetch("https://quran.az/api/random/Namaz")
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://quran.az/api/random/1/Namaz")
+      .then((response) => response.json())
+      .then((data) => {
         const out = {};
-        out.ayah = data.out;
+        out.ayah = data.out[0];
         out.loader = false;
         this.setState(out);
       });

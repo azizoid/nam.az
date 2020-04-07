@@ -34,10 +34,6 @@ body {
 #location {
   padding: 2rem;
 }
-#times {
-  padding-top: 2rem;
-  text-align: center;
-}
 
 #location h1 {
   font-size: 3em;
@@ -49,13 +45,19 @@ body {
   color: lightgrey;
 }
 
+#times {
+  padding-top: 2rem;
+  text-align: center;
+}
+
 #times h2 {
   font-weight: bold;
 }
 
-.times {
-  text-align: center;
+#times h6 {
+  padding: 0;
 }
+
 @media (max-width: 480px) {
   #location {
     padding: 0rem;

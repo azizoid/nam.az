@@ -6,15 +6,17 @@ const PrayerList = ({ prayers, currentPrayer }) => {
     <div>
       <div className="row" id="times">
         {prayers.map((prayer, index) => {
-          const classes = ["col-sm-12", "col-md-4", "col-lg-2", "alert"];
+          const classes = ["col-sm-12", "col-md-4", "alert"];
           let isCur = false;
 
           if (index === 1) {
-            classes.push("text-muted");
+            classes.push("text-muted", "col-lg-1");
           } else {
             if (index === currentPrayer) {
               isCur = true;
-              classes.push("alert-success");
+              classes.push("alert-success", "col-lg-3");
+            } else {
+              classes.push("col-lg-2");
             }
           }
 
@@ -23,6 +25,7 @@ const PrayerList = ({ prayers, currentPrayer }) => {
               classes={classes.join(" ")}
               prayer={prayer}
               current={isCur}
+              index={index}
               key={prayer.id}
             />
           );
