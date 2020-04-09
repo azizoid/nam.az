@@ -1,11 +1,17 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import NavBar from "./Layout/NavBar";
 import Location from "./Prayer/Location";
+import Progress from "./Prayer/Progress";
 import PrayerList from "./Prayer/PrayerList";
 import Loader from "./Prayer/Loader";
 import Ayah from "./Prayer/Ayah";
 
-import { format, formatDistanceStrict, parse } from "date-fns";
+import {
+  format,
+  formatDistanceStrict,
+  parse,
+  differenceInSeconds,
+} from "date-fns";
 import { az } from "date-fns/locale";
 
 class App extends Component {
@@ -20,7 +26,7 @@ class App extends Component {
         { id: 5, title: "Məğrib namazı", time: "--:--" },
         { id: 6, title: "İşa namazı", time: "--:--" },
       ],
-      currentPrayer: 5,
+      currentPrayer: -1,
       city: 1,
       location: "Bakı",
       cities: [
@@ -68,7 +74,7 @@ class App extends Component {
     fetch("https://nam.az/api/" + city)
       .then((response) => response.json())
       .then((data) => {
-        const out = {};
+        const out = { currentPrayer: 5 };
         out.prayers = [...this.state.prayers];
         out.nowis = this.state.nowis;
 
@@ -83,6 +89,22 @@ class App extends Component {
             out.currentPrayer = i;
           }
         }
+
+        const per = (curr) => {
+          const untillNow = differenceInSeconds(
+            parse(out.nowis, "HH:mm", new Date()),
+            parse(data.prayers[curr], "HH:mm", new Date())
+          );
+
+          const next = curr === 5 ? 0 : curr + 1;
+          const untillNext = differenceInSeconds(
+            parse(data.prayers[next], "HH:mm", new Date()),
+            parse(data.prayers[curr], "HH:mm", new Date())
+          );
+          return Math.abs(Math.floor((untillNow * 100) / untillNext));
+        };
+        out.progress = per(out.currentPrayer);
+
         this.setState(out);
       });
   };
@@ -109,9 +131,12 @@ class App extends Component {
             date={format(new Date(), "EEEE, d MMMM yyyy", { locale: az })}
           />
 
+          <Progress bar={this.state.progress} />
+
           <PrayerList
             prayers={this.state.prayers}
             currentPrayer={this.state.currentPrayer}
+            progress={this.state.progress}
           />
 
           {this.state.loader === true ? (

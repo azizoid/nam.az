@@ -4,7 +4,7 @@ const Prayer = ({ prayer, classes, current, index }) => {
   return (
     <div className={classes}>
       <h6>{prayer.title}</h6>
-      <h2>{prayer.time}</h2>
+      <h3>{prayer.time}</h3>
       {!current ? (
         index !== 1 && <small>{prayer.ago}</small>
       ) : (
