@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavBar = ({ changeCity, cities }) => {
+const NavBar = ({ changeCity, cities, city }) => {
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -20,7 +20,8 @@ const NavBar = ({ changeCity, cities }) => {
             <li className="nav-item active">
               <select
                 className="form-control btn-outline-success"
-                onChange={changeCity.bind(this)}
+                onChange={(e) => changeCity(e.target.value)}
+                value={city}
               >
                 {cities.map((city, index) => {
                   return (

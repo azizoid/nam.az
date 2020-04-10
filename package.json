@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^10.0.1",
     "bootstrap": "^4.4.1",
     "date-fns": "^2.11.1",
+    "eslint-plugin-react-hooks": "^0.0.0-d7382b6c4",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
