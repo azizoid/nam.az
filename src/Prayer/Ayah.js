@@ -1,8 +1,10 @@
 import React from "react";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const Ayah = ({ ayah }) => {
   return (
     <blockquote className="ayah">
+      <FaQuoteLeft style={{ color: "#66cc66" }} />
       <cite>
         {ayah.s} : {ayah.a}
       </cite>
