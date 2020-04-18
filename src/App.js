@@ -74,6 +74,7 @@ const App = () => {
         "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
     },
   });
+<<<<<<< Updated upstream
   const [city, setCity] = useState(localStorage.getItem("city") || 1);
   const [doy, setDoy] = useState(pref.today);
 
@@ -111,6 +112,28 @@ const App = () => {
     });
     setCity(parseInt(v));
   };
+=======
+  const [city, setCity] = useState(localStorage.getItem("city") || 0);
+  const [doy, setDoy] = useState(pref.today);
+>>>>>>> Stashed changes
+
+  const changeDoy = (v) => {
+    setPref((prev) => {
+      return { ...prev, tarix: prev.tarix };
+    });
+    setDoy(parseInt(v));
+  };
+
+  const changeCity = (v) => {
+    if (!(v in cities)) v = 0;
+
+    localStorage.setItem("city", v);
+
+    setPref((prev) => {
+      return { ...prev, location: cities[v] };
+    });
+    setCity(parseInt(v));
+  };
 
   const changeDoy = (v) => {
     setPref((prev) => {
@@ -133,7 +156,11 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+<<<<<<< Updated upstream
     let url = "https://nam.az/api/" + city + "/" + doy;
+=======
+    let url = "http://localhost:4000/api/" + city + "/" + doy;
+>>>>>>> Stashed changes
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -153,6 +180,7 @@ const App = () => {
           }
           return prayer;
         });
+<<<<<<< Updated upstream
 
         let progress = 0;
         if (pref.today !== data.dd) {
@@ -160,11 +188,20 @@ const App = () => {
           currentPrayer = -1;
         } else {
           progress = per(currentPrayer, data.prayers, pref.nowis);
+=======
+        if (pref.today !== data.doy) {
+          console.log("Not today. " + pref.today + "-" + data.doy);
+          currentPrayer = -1;
+>>>>>>> Stashed changes
         }
 
         setPrayers([...tmpPrayers]);
 
+<<<<<<< Updated upstream
         // const progress = per(currentPrayer, data.prayers, pref.nowis);
+=======
+        const progress = per(currentPrayer, data.prayers, pref.nowis);
+>>>>>>> Stashed changes
 
         setPref((prev) => {
           return {
@@ -173,10 +210,14 @@ const App = () => {
             currentPrayer: currentPrayer,
             location: cities[city],
             tarix: data.tarix,
+<<<<<<< Updated upstream
             hijri: data.hijri,
+=======
+>>>>>>> Stashed changes
             prayerLoader: 0,
           };
         });
+        console.log("City: " + city + ". Doy: " + doy);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city, doy]);
@@ -189,7 +230,10 @@ const App = () => {
         <Location
           location={pref.location}
           tarix={pref.tarix}
+<<<<<<< Updated upstream
           hijri={pref.hijri}
+=======
+>>>>>>> Stashed changes
           doy={doy}
           changeDoy={changeDoy}
         />

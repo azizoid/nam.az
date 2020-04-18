@@ -5,7 +5,11 @@ const PrayerList = ({ prayers, currentPrayer }) => {
   return (
     <div className="row" id="times">
       {prayers.map((prayer, index) => {
+<<<<<<< Updated upstream
         const classes = ["col-sm-12", "col-md-4", "alert"];
+=======
+        const classes = ["col-sm-12", "col-md-4", "alert", "col-lg-2"];
+>>>>>>> Stashed changes
         let isCur = false;
 
         if (index === 1) {
