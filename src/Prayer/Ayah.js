@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FaQuoteLeft } from "react-icons/fa";
 
 const Ayah = ({ ayah }) => {
@@ -20,6 +21,10 @@ const Ayah = ({ ayah }) => {
       </a>
     </blockquote>
   );
+};
+
+Ayah.propTypes = {
+  ayah: PropTypes.object.isRequired,
 };
 
 export default Ayah;

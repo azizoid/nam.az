@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FaSun } from "react-icons/fa";
 
 const Prayer = ({ prayer, classes, current, index }) => {
@@ -17,6 +18,13 @@ const Prayer = ({ prayer, classes, current, index }) => {
       )}
     </div>
   );
+};
+
+Prayer.propTypes = {
+  prayer: PropTypes.object.isRequired,
+  classes: PropTypes.string,
+  current: PropTypes.bool,
+  index: PropTypes.number,
 };
 
 export default Prayer;

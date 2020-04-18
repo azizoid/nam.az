@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const NavBar = ({ changeCity, cities, city }) => {
   return (
@@ -20,7 +21,7 @@ const NavBar = ({ changeCity, cities, city }) => {
             <li className="nav-item active">
               <select
                 className="form-control btn-outline-success"
-                onChange={(e) => changeCity(e.target.value)}
+                onChange={(e) => changeCity(parseInt(e.target.value))}
                 value={city}
               >
                 {cities.map((city, index) => {
@@ -38,4 +39,11 @@ const NavBar = ({ changeCity, cities, city }) => {
     </nav>
   );
 };
+
+NavBar.propTypes = {
+  changeCity: PropTypes.func,
+  cities: PropTypes.array,
+  city: PropTypes.number,
+};
+
 export default NavBar;

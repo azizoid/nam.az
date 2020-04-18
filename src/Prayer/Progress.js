@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Progress = ({ bar }) => {
   const classes = ["progress-bar"];
@@ -19,6 +20,10 @@ const Progress = ({ bar }) => {
       ></div>
     </div>
   );
+};
+
+Progress.propTypes = {
+  bar: PropTypes.number,
 };
 
 export default Progress;

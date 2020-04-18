@@ -74,9 +74,8 @@ const App = () => {
         "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
     },
   });
-<<<<<<< Updated upstream
-  const [city, setCity] = useState(localStorage.getItem("city") || 1);
-  const [doy, setDoy] = useState(pref.today);
+  const [city, setCity] = useState(parseInt(localStorage.getItem("city")) || 1);
+  const [dd, setDd] = useState(parseInt(pref.today));
 
   const per = (curr, prayers, nowis) => {
     const tmpDate = new Date();
@@ -105,29 +104,7 @@ const App = () => {
   const changeCity = (v) => {
     if (!(v in cities)) v = 0;
 
-    localStorage.setItem("city", v);
-
-    setPref((prev) => {
-      return { ...prev, location: cities[v] };
-    });
-    setCity(parseInt(v));
-  };
-=======
-  const [city, setCity] = useState(localStorage.getItem("city") || 0);
-  const [doy, setDoy] = useState(pref.today);
->>>>>>> Stashed changes
-
-  const changeDoy = (v) => {
-    setPref((prev) => {
-      return { ...prev, tarix: prev.tarix };
-    });
-    setDoy(parseInt(v));
-  };
-
-  const changeCity = (v) => {
-    if (!(v in cities)) v = 0;
-
-    localStorage.setItem("city", v);
+    localStorage.setItem("city", parseInt(v));
 
     setPref((prev) => {
       return { ...prev, location: cities[v] };
@@ -135,11 +112,11 @@ const App = () => {
     setCity(parseInt(v));
   };
 
-  const changeDoy = (v) => {
+  const changeDd = (v) => {
     setPref((prev) => {
       return { ...prev, tarix: prev.tarix };
     });
-    setDoy(parseInt(v));
+    setDd(parseInt(v));
   };
 
   useEffect(() => {
@@ -149,23 +126,18 @@ const App = () => {
         setAyah({ content: data.out[0], loader: false });
       });
 
-    let tmpCity = localStorage.getItem("city");
+    let tmpCity = parseInt(localStorage.getItem("city"));
     if (tmpCity) {
       setCity(tmpCity);
     }
   }, []);
 
   useEffect(() => {
-<<<<<<< Updated upstream
-    let url = "https://nam.az/api/" + city + "/" + doy;
-=======
-    let url = "http://localhost:4000/api/" + city + "/" + doy;
->>>>>>> Stashed changes
+    let url = "https://nam.az/api/" + city + "/" + dd;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         let currentPrayer = 5;
-        // const tmpPrayers = [...prayers];
         const newDate = new Date();
 
         const tmpPrayers = prayers.map((prayer, i) => {
@@ -180,28 +152,15 @@ const App = () => {
           }
           return prayer;
         });
-<<<<<<< Updated upstream
 
         let progress = 0;
         if (pref.today !== data.dd) {
-          console.log("Not today. " + pref.today + "-" + data.dd);
           currentPrayer = -1;
         } else {
           progress = per(currentPrayer, data.prayers, pref.nowis);
-=======
-        if (pref.today !== data.doy) {
-          console.log("Not today. " + pref.today + "-" + data.doy);
-          currentPrayer = -1;
->>>>>>> Stashed changes
         }
 
         setPrayers([...tmpPrayers]);
-
-<<<<<<< Updated upstream
-        // const progress = per(currentPrayer, data.prayers, pref.nowis);
-=======
-        const progress = per(currentPrayer, data.prayers, pref.nowis);
->>>>>>> Stashed changes
 
         setPref((prev) => {
           return {
@@ -210,17 +169,14 @@ const App = () => {
             currentPrayer: currentPrayer,
             location: cities[city],
             tarix: data.tarix,
-<<<<<<< Updated upstream
             hijri: data.hijri,
-=======
->>>>>>> Stashed changes
             prayerLoader: 0,
           };
         });
-        console.log("City: " + city + ". Doy: " + doy);
+        // console.log("City: " + city + ". Doy: " + dd);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [city, doy]);
+  }, [city, dd]);
 
   return (
     <div>
@@ -230,16 +186,13 @@ const App = () => {
         <Location
           location={pref.location}
           tarix={pref.tarix}
-<<<<<<< Updated upstream
           hijri={pref.hijri}
-=======
->>>>>>> Stashed changes
-          doy={doy}
-          changeDoy={changeDoy}
+          dd={dd}
+          changeDd={changeDd}
         />
         <Progress bar={pref.progress} />
 
-        {pref.today === doy ? (
+        {pref.today === dd ? (
           <PrayerList prayers={prayers} currentPrayer={pref.currentPrayer} />
         ) : (
           <PrayerListStill prayers={prayers} />

@@ -1,8 +1,6 @@
 import React from "react";
-<<<<<<< Updated upstream
+import PropTypes from "prop-types";
 import { FaSun } from "react-icons/fa";
-=======
->>>>>>> Stashed changes
 
 const PrayerListStill = ({ prayers }) => {
   return (
@@ -24,18 +22,18 @@ const PrayerListStill = ({ prayers }) => {
           <div className={classes.join(" ")} key={index}>
             <h6>{prayer.title}</h6>
             <h3>{prayer.time}</h3>
-<<<<<<< Updated upstream
             <small>
               {prayer.rakat !== 0 ? prayer.rakat + " rükət" : <FaSun />}
             </small>
-=======
-            <small>{prayer.rakat !== 0 && prayer.rakat + " rükət"}</small>
->>>>>>> Stashed changes
           </div>
         );
       })}
     </div>
   );
+};
+
+PrayerListStill.propTypes = {
+  prayers: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default PrayerListStill;
