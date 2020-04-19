@@ -19,7 +19,7 @@ import { az } from "date-fns/locale";
 
 const App = () => {
   const cities = [
-    ,
+    "Haradasınız?",
     "Bakı",
     "Sumqayıt",
     "Gəncə",
@@ -74,50 +74,10 @@ const App = () => {
         "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
     },
   });
-  const [city, setCity] = useState(parseInt(localStorage.getItem("city")) || 1);
+  const [city, setCity] = useState(
+    JSON.parse(localStorage.getItem("city")) || 1
+  );
   const [dd, setDd] = useState(parseInt(pref.today));
-
-  const per = (curr, prayers, nowis) => {
-    const tmpDate = new Date();
-    const untillNow = differenceInSeconds(
-      parse(nowis, "HH:mm", tmpDate),
-      parse(prayers[curr], "HH:mm", tmpDate)
-    );
-
-    // const next = curr === 5 ? 0 : curr + 1;
-    let untillNext;
-    if (curr === 5) {
-      untillNext = differenceInSeconds(
-        parse("23:59", "HH:mm", tmpDate),
-        parse(prayers[curr], "HH:mm", tmpDate)
-      );
-    } else {
-      untillNext = differenceInSeconds(
-        parse(prayers[curr++], "HH:mm", tmpDate),
-        parse(prayers[curr], "HH:mm", tmpDate)
-      );
-    }
-
-    return Math.abs(Math.floor((untillNow * 100) / untillNext));
-  };
-
-  const changeCity = (v) => {
-    if (!(v in cities)) v = 0;
-
-    localStorage.setItem("city", parseInt(v));
-
-    setPref((prev) => {
-      return { ...prev, location: cities[v] };
-    });
-    setCity(parseInt(v));
-  };
-
-  const changeDd = (v) => {
-    setPref((prev) => {
-      return { ...prev, tarix: prev.tarix };
-    });
-    setDd(parseInt(v));
-  };
 
   useEffect(() => {
     fetch("https://quran.az/api/random/1/Namaz")
@@ -126,7 +86,7 @@ const App = () => {
         setAyah({ content: data.out[0], loader: false });
       });
 
-    let tmpCity = parseInt(localStorage.getItem("city"));
+    let tmpCity = JSON.parse(localStorage.getItem("city")) || 1;
     if (tmpCity) {
       setCity(tmpCity);
     }
@@ -177,6 +137,50 @@ const App = () => {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city, dd]);
+
+  const per = (curr, prayers, nowis) => {
+    const tmpDate = new Date();
+    const untillNow = differenceInSeconds(
+      parse(nowis, "HH:mm", tmpDate),
+      parse(prayers[curr], "HH:mm", tmpDate)
+    );
+
+    // const next = curr === 5 ? 0 : curr + 1;
+    let untillNext;
+    if (curr === 5) {
+      untillNext = differenceInSeconds(
+        parse("23:59", "HH:mm", tmpDate),
+        parse(prayers[curr], "HH:mm", tmpDate)
+      );
+    } else {
+      untillNext = differenceInSeconds(
+        parse(prayers[curr++], "HH:mm", tmpDate),
+        parse(prayers[curr], "HH:mm", tmpDate)
+      );
+    }
+
+    return Math.abs(Math.floor((untillNow * 100) / untillNext));
+  };
+
+  const changeCity = (v) => {
+    if (!(v in cities)) v = 0;
+
+    if (v !== 0) {
+      localStorage.setItem("city", JSON.stringify(v));
+
+      setPref((prev) => {
+        return { ...prev, location: cities[v] };
+      });
+      setCity(parseInt(v));
+    }
+  };
+
+  const changeDd = (v) => {
+    setPref((prev) => {
+      return { ...prev, tarix: prev.tarix };
+    });
+    setDd(parseInt(v));
+  };
 
   return (
     <div>
