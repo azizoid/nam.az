@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FaSun } from "react-icons/fa";
 
-const PrayerListStill = ({ prayers }) => {
+const PrayerListStill = ({ prayers, currentPrayer }) => {
   return (
     <div className="row" id="times">
       {prayers.map((prayer, index) => {
@@ -21,7 +21,7 @@ const PrayerListStill = ({ prayers }) => {
         return (
           <div className={classes.join(" ")} key={index}>
             <h6>{prayer.title}</h6>
-            <h3>{prayer.time}</h3>
+            <h4>{prayer.time}</h4>
             <small>
               {prayer.rakat !== 0 ? prayer.rakat + " rükət" : <FaSun />}
             </small>

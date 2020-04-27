@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import NavBar from "./Prayer/NavBar";
+import Ramadan from "./Prayer/Ramadan";
+
 import Location from "./Prayer/Location";
 import Progress from "./Prayer/Progress";
 import PrayerList from "./Prayer/PrayerList";
 import PrayerListStill from "./Prayer/PrayerListStill";
-import Loader from "./Prayer/Loader";
-import Ayah from "./Prayer/Ayah";
+// import Ayah from "./Prayer/Ayah";
+import Dua from "./Prayer/Dua";
 
 import {
   format,
@@ -64,28 +66,15 @@ const App = () => {
     tarix: format(new Date(), "EEEE, d MMMM yyyy", { locale: az }),
     today: getDayOfYear(new Date()),
     prayerLoader: 1,
+    ramadan: 0,
   });
-  const [ayah, setAyah] = useState({
-    loader: true,
-    content: {
-      s: 40,
-      a: 60,
-      c:
-        "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
-    },
-  });
+
   const [city, setCity] = useState(
     JSON.parse(localStorage.getItem("city")) || 1
   );
   const [dd, setDd] = useState(parseInt(pref.today));
 
   useEffect(() => {
-    fetch("https://quran.az/api/random/1/Namaz")
-      .then((response) => response.json())
-      .then((data) => {
-        setAyah({ content: data.out[0], loader: false });
-      });
-
     let tmpCity = JSON.parse(localStorage.getItem("city")) || 1;
     if (tmpCity) {
       setCity(tmpCity);
@@ -131,6 +120,7 @@ const App = () => {
             tarix: data.tarix,
             hijri: data.hijri,
             prayerLoader: 0,
+            ramadan: data.dd - 114,
           };
         });
         // console.log("City: " + city + ". Doy: " + dd);
@@ -186,6 +176,7 @@ const App = () => {
     <div>
       <NavBar changeCity={changeCity} cities={cities} city={city} />
 
+      <Ramadan day={pref.ramadan} />
       <div className="container">
         <Location
           location={pref.location}
@@ -201,7 +192,13 @@ const App = () => {
         ) : (
           <PrayerListStill prayers={prayers} />
         )}
-        {ayah.loader === true ? <Loader /> : <Ayah ayah={ayah.content} />}
+
+        {/* {true || pref.currentPrayer === 3 ? (
+          <Dua time={pref.currentPrayer} />
+        ) : (
+          <Ayah />
+        )} */}
+        <Dua time={pref.currentPrayer} />
       </div>
 
       <footer className="footer">
@@ -214,6 +211,11 @@ const App = () => {
             <li className="breadcrumb-item">
               <a href="https://www.quran.az">Quran.az</a>
             </li>
+            {/* <li className="breadcrumb-item align-right">
+              <small>
+                Namaz Vaxtları: <u>islamicfinder.com</u>
+              </small>
+            </li> */}
           </ol>
         </nav>
       </footer>
