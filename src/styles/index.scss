@@ -57,10 +57,6 @@ body {
 #times h6 {
   padding: 0;
 }
-#times .alert {
-  margin-bottom: 0;
-  padding-top: 0;
-}
 
 @media (max-width: 480px) {
   #location {
@@ -75,6 +71,10 @@ body {
   }
   #times h2 {
     margin: 0;
+  }
+  #times .alert {
+    margin-bottom: 0;
+    padding-top: 0;
   }
 }
 
