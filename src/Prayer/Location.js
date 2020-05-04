@@ -14,7 +14,7 @@ const Location = ({ location, tarix, hijri, dd, changeDd }) => {
         <FaChevronLeft />
       </button>
       <div className="text-center col-md-5" id="location">
-        <h1 className="nowis">
+        <h1 className="nowis d-none d-md-block">
           <Clock />
         </h1>
         <h1>{location}</h1>

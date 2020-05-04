@@ -7,24 +7,20 @@ const PrayerListStill = ({ prayers, currentPrayer }) => {
     <div className="row" id="times">
       {prayers.map((prayer, index) => {
         const classes = ["col-sm-12", "col-md-4", "alert", "alert-light"];
-        // switch (index) {
-        //   case 0:
-        //     classes.push("col-lg-3");
-        //     break;
-        //   case 1:
-        //     classes.push("col-lg-1 text-muted");
-        //     break;
-        //   default:
-        //     classes.push("col-lg-2");
-        // }
         classes.push("col-lg-2", "text-muted");
         return (
           <div className={classes.join(" ")} key={index}>
-            <h6>{prayer.title}</h6>
-            <h4>{prayer.time}</h4>
-            <small>
-              {prayer.rakat !== 0 ? prayer.rakat + " rükət" : <FaSun />}
-            </small>
+            <div className="row">
+              <h6 className="col-7 col-md-12 align-self-center ">{prayer.title}</h6>
+              <div className="col-5 col-md-12">
+                <h4>{prayer.time}</h4>
+                  {index !== 1 ? (
+                    <small>{prayer.ago}</small>
+                  ) : (
+                    <FaSun style={{ color: "#f6993f" }} />
+                  )}
+              </div>
+            </div>
           </div>
         );
       })}
