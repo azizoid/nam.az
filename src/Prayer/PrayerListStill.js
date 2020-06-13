@@ -11,14 +11,12 @@ const PrayerListStill = ({ prayers, currentPrayer }) => {
         return (
           <div className={classes.join(" ")} key={index}>
             <div className="row">
-              <h6 className="col-7 col-md-12 align-self-center ">{prayer.title}</h6>
+              <h6 className="col-7 col-md-12 align-self-center ">
+                {prayer.title}
+              </h6>
               <div className="col-5 col-md-12">
                 <h4>{prayer.time}</h4>
-                  {index !== 1 ? (
-                    <small>{prayer.ago}</small>
-                  ) : (
-                    <FaSun style={{ color: "#f6993f" }} />
-                  )}
+                {index !== 1 ? <small>{prayer.ago}</small> : <FaSun />}
               </div>
             </div>
           </div>

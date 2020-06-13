@@ -7,8 +7,9 @@ const Ramadan = ({ day }) => {
   const classes = ["progress-bar"];
   const wd = (day * 100) / 30;
 
-  if (day > 18) classes.push("bg-success");
-  else classes.push("bg-warning");
+  classes.push("bg-success");
+  // if (day > 18) classes.push("bg-success");
+  // else classes.push("bg-warning");
 
   return (
     <>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import NavBar from "./Prayer/NavBar";
-import Ramadan from "./Prayer/Ramadan";
+// import Ramadan from "./Prayer/Ramadan";
 
 import Location from "./Prayer/Location";
 import Progress from "./Prayer/Progress";
 import PrayerList from "./Prayer/PrayerList";
 import PrayerListStill from "./Prayer/PrayerListStill";
-// import Ayah from "./Prayer/Ayah";
-import Dua from "./Prayer/Dua";
+import Ayah from "./Prayer/Ayah";
+// import Dua from "./Prayer/Dua";
 
 import {
   format,
@@ -46,9 +46,9 @@ const App = () => {
     "Yevlax",
     "Zaqatala",
     "Xankəndi",
-    // "Marneuli",
+    "Marneuli",
+    "Bolnisi",
     // "Ərdəbil",
-    // "Bolnisi",
   ];
 
   const [prayers, setPrayers] = useState([
@@ -176,7 +176,6 @@ const App = () => {
     <div>
       <NavBar changeCity={changeCity} cities={cities} city={city} />
 
-      <Ramadan day={pref.ramadan} />
       <div className="container">
         <Location
           location={pref.location}
@@ -198,7 +197,8 @@ const App = () => {
         ) : (
           <Ayah />
         )} */}
-        <Dua time={pref.currentPrayer} />
+        {/* <Dua time={pref.currentPrayer} /> */}
+        <Ayah />
       </div>
 
       <footer className="footer">
