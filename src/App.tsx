@@ -59,7 +59,7 @@ const App = ():JSX.Element => {
       
       await fetch(`https://nam.az/api/${city}/${dd}`)
         .then((response) => response.json())
-        .then((data) => {
+        .then((data:any) => {
           let currentPrayer = 5;
 
           setPrayers((prev) =>
