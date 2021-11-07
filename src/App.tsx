@@ -1,22 +1,14 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
 
-import NavBar from "./components/navbar.component";
+import { NavBar } from "./components/navbar.component";
 //import Ramadan from "./components/ramadan.component";
 
-// import Location from "./components/location.component";
-import Progress from "./components/progress.component";
-import PrayerList from "./components/prayerlist.component";
-import PrayerListStill from "./components/prayerliststill.component";
+import { Progress} from "./components/progress.component";
+import { PrayerList } from "./components/prayerlist.component";
+import { PrayerListStill } from "./components/prayerliststill.component";
 
-import Footer from "./components/footer.component";
-import Loader from "./components/loader.component";
-
-/* Date Fns Imports */
-// import format from "date-fns/format";
-// import formatDistanceStrict from "date-fns/formatDistanceStrict";
-// import parse from "date-fns/parse";
-// import differenceInSeconds from "date-fns/differenceInSeconds";
-// import getDayOfYear from "date-fns/getDayOfYear";
+import { Footer } from "./components/footer.component";
+import { Loader } from "./components/loader.component";
 
 import {
   format,
@@ -33,7 +25,7 @@ import { TPrayer } from "./assist/types";
 const Location = lazy(() => import("./components/Location/Location"));
 const Ayah = lazy(() => import("./components/ayah.component"));
 
-const App = () => {
+const App = ():JSX.Element => {
   const newDate = useRef(new Date());
   const today = getDayOfYear(newDate.current) + 1;
 
@@ -64,8 +56,8 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let url = `https://nam.az/api/${city}/${dd}`;
-      await fetch(url)
+      
+      await fetch(`https://nam.az/api/${city}/${dd}`)
         .then((response) => response.json())
         .then((data) => {
           let currentPrayer = 5;
@@ -147,7 +139,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <NavBar changeCity={changeCity} city={city} />
 
       <div className='container locationBlock'>
@@ -174,7 +166,7 @@ const App = () => {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 };
 

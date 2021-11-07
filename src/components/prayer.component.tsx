@@ -1,7 +1,7 @@
 import { TPrayerContainer } from "../assist/types";
 import { MdBrightness7 } from "react-icons/md";
 
-const Prayer = ({ prayer, classes, current, index }: TPrayerContainer) => (
+export const Prayer = ({ prayer, classes, current, index }: TPrayerContainer):JSX.Element => (
   <div className={classes}>
     <div className="row">
       <h6 className="col-7 col-md-12 align-self-center">{prayer.title}</h6>
@@ -27,5 +27,3 @@ const Prayer = ({ prayer, classes, current, index }: TPrayerContainer) => (
     </div>
   </div>
 );
-
-export default Prayer;

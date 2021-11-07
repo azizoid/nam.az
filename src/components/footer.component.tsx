@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => (
+export const Footer = ():JSX.Element => (
   <div className="footer">
     <nav>
       <ol className="breadcrumb justify-content-center">
@@ -27,5 +27,3 @@ const Footer = () => (
     </nav>
   </div>
 );
-
-export default Footer;

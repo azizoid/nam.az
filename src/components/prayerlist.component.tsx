@@ -1,7 +1,7 @@
 import { TPrayerList } from "../assist/types";
-import Prayer from "./prayer.component";
+import { Prayer } from "./prayer.component";
 
-const PrayerList = ({ prayers, currentPrayer }: TPrayerList) => (
+export const PrayerList = ({ prayers, currentPrayer }: TPrayerList):JSX.Element => (
   <div className="row" id="times">
     {prayers.map((prayer, index) => {
       const classes = ["col-12", "col-md-4", "alert"];
@@ -30,5 +30,3 @@ const PrayerList = ({ prayers, currentPrayer }: TPrayerList) => (
     })}
   </div>
 );
-
-export default PrayerList;

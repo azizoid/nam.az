@@ -1,6 +1,6 @@
 import { TProgress } from "../assist/types";
 
-const Progress = ({ bar }: TProgress) => {
+export const Progress = ({ bar }: TProgress):JSX.Element => {
   const classes = ["progress-bar"];
   if (bar > 75) {
     classes.push("bg-danger");
@@ -16,9 +16,7 @@ const Progress = ({ bar }: TProgress) => {
         aria-valuenow={bar}
         aria-valuemin={0}
         aria-valuemax={100}
-      ></div>
+      />
     </div>
   );
 };
-
-export default Progress;

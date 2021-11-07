@@ -3,13 +3,13 @@ import {
   MdNavigateBefore,
   MdNavigateNext,
 } from "react-icons/md";
-import {classnames} from '../../utils/classnames/classnames'
+import classnames from 'classnames'
 
 import Clock from "../clock.component";
 
 import styles from "./Location.module.css"
 
-const Location = ({ location, tarix, hijri, dd, changeDd }: TLocation) => (
+const Location = ({ location, tarix, dd, changeDd }: TLocation):JSX.Element => (
   <div className="d-flex align-items-center justify-content-center">
     <button
       className={classnames("btn", "btn-link", styles.locationNavBtn)}
@@ -23,8 +23,8 @@ const Location = ({ location, tarix, hijri, dd, changeDd }: TLocation) => (
       </h1>
       <h1>{location}</h1>
       <small>{tarix}</small>
-      <br />
-      {/*<small>{hijri}</small>*/}
+      {/* <br />
+      <small>{hijri}</small> */}
     </div>
     <button
       className={classnames("btn", "btn-link", styles.locationNavBtn)}

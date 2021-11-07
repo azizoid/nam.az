@@ -3,7 +3,7 @@ import { TNavBar } from "../assist/types";
 
 import cities from "../assist/cities";
 
-const NavBar = ({ changeCity, city }: TNavBar) => (
+export const NavBar = ({ changeCity, city }: TNavBar):JSX.Element => (
   <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div className="container">
       <a className="navbar-brand" href="/">
@@ -17,7 +17,7 @@ const NavBar = ({ changeCity, city }: TNavBar) => (
         Nam.az
       </a>
 
-      <div>
+      <>
         <ul className="navbar-nav">
           <li className="nav-item active">
             <select
@@ -37,9 +37,7 @@ const NavBar = ({ changeCity, city }: TNavBar) => (
             <small>Bakı, Gəncə, <u>Şuşa</u> və digər</small>
           </li>
         </ul>
-      </div>
+      </>
     </div>
   </nav>
 );
-
-export default NavBar;

@@ -4,7 +4,7 @@ import { MdFormatQuote } from "react-icons/md";
 
 import "../styles/ayah.styles.css"
 
-const Ayah = () => {
+const Ayah = ():JSX.Element => {
   const [ayah, setAyah] = useState({
     content: {
       s: 40,
@@ -45,4 +45,4 @@ const Ayah = () => {
   );
 };
 
-export default Ayah;
+export default Ayah
