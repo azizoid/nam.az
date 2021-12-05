@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
 
-import { NavBar } from "./components/navbar.component";
+import { NavBar } from "./components/Navbar/Navbar";
 //import Ramadan from "./components/ramadan.component";
 
-import { Progress} from "./components/progress.component";
-import { PrayerList } from "./components/prayerlist.component";
-import { PrayerListStill } from "./components/prayerliststill.component";
+import { Progress} from "./components/Progress/Progress";
+import { PrayerList } from "./components/PrayerList/PrayerList";
+import { PrayerListStill } from "./components/PrayerList/PrayerListStill";
 
-import { Footer } from "./components/footer.component";
-import { Loader } from "./components/loader.component";
+import { Footer } from "./components/Footer/Footer";
+import { Loader } from "./components/Loader/Loader";
 
 import {
   format,
@@ -20,10 +20,14 @@ import {
 import az from "date-fns/locale/az";
 
 import cities from "./assist/cities";
-import { TPrayer } from "./assist/types";
+
+import { PrayerProps } from './components/PrayerList/Prayer'
+
+import styles from './App.module.scss'
+import classNames from "classnames";
 
 const Location = lazy(() => import("./components/Location/Location"));
-const Ayah = lazy(() => import("./components/ayah.component"));
+const Ayah = lazy(() => import("./components/Ayah/Ayah"));
 
 const App = ():JSX.Element => {
   const newDate = useRef(new Date());
@@ -63,21 +67,26 @@ const App = ():JSX.Element => {
           let currentPrayer = 5;
 
           setPrayers((prev) =>
-            prev.map((prayer: TPrayer, i) => {
+            prev.map((prayer: PrayerProps, i) => {
+
               prayer["time"] = data.prayers[i];
+
               prayer["ago"] = formatDistanceStrict(
                 newDate.current,
                 parse(data.prayers[i], "HH:mm", newDate.current),
                 { locale: az, addSuffix: true }
               );
+
               if (data.prayers[i] < pref.nowis) {
                 currentPrayer = i;
               }
+
               return prayer;
             })
           );
 
           let progress = 0;
+
           if (pref.today !== data.dd) {
             currentPrayer = -1;
           } else {
@@ -107,12 +116,14 @@ const App = ():JSX.Element => {
     prayersFromApi: string[],
     nowis: string
   ): number => {
+
     const untillNow = differenceInSeconds(
       parse(nowis, "HH:mm", newDate.current),
       parse(prayersFromApi[currentPrayer], "HH:mm", newDate.current)
     );
 
     let untillNext;
+    
     if (currentPrayer === 5) {
       untillNext = differenceInSeconds(
         parse("23:59", "HH:mm", newDate.current),
@@ -142,30 +153,34 @@ const App = ():JSX.Element => {
     <>
       <NavBar changeCity={changeCity} city={city} />
 
-      <div className='container locationBlock'>
-        <Suspense fallback={<Loader />}>
-          <Location
-            location={pref.location}
-            tarix={pref.tarix}
-            hijri={pref.hijri}
-            dd={dd}
-            changeDd={(v: number) => setDd(v)}
-          />
-          <Progress bar={pref.progress} />
-        </Suspense>
+      <div className={classNames( "d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between", styles.mainBlock,)}>
+          <Suspense fallback={<Loader />}>
+            <Location
+              location={pref.location}
+              tarix={pref.tarix}
+              hijri={pref.hijri}
+              dd={dd}
+              changeDd={(v: number) => setDd(v)}
+            />
+            
+            <Progress bar={pref.progress} />
+          </Suspense>
 
-        {pref.today === dd ? (
-          <PrayerList prayers={prayers} currentPrayer={pref.currentPrayer} />
-        ) : (
-          <PrayerListStill prayers={prayers} />
-        )}
+          {pref.today === dd ? (
+            <PrayerList prayers={prayers} currentPrayer={pref.currentPrayer} />
+          ) : (
+            <PrayerListStill prayers={prayers} />
+          )}
 
-        <Suspense fallback={<Loader />}>
-          <Ayah />
-        </Suspense>
+          <Suspense fallback={<Loader />}>
+            <Ayah />
+          </Suspense>
+
+          <Footer />    
       </div>
-
-      <Footer />
+      
+      
+      
     </>
   );
 };

@@ -1,33 +1,45 @@
-import { TLocation } from "../../assist/types";
 import {
   MdNavigateBefore,
   MdNavigateNext,
 } from "react-icons/md";
-import classnames from 'classnames'
 
-import Clock from "../clock.component";
+import classNames from 'classnames'
 
-import styles from "./Location.module.css"
+import { Clock } from "./Clock/Clock";
 
-const Location = ({ location, tarix, dd, changeDd }: TLocation):JSX.Element => (
-  <div className="d-flex align-items-center justify-content-center">
+import styles from "./Location.module.scss"
+
+export type LocationProps = {
+  location: string;
+  tarix: string;
+  hijri: string;
+  dd: number;
+  changeDd: (dd: number) => (void);
+};
+
+const Location = ({ location, tarix, dd, changeDd }: LocationProps):JSX.Element => (
+  <div className={classNames("d-flex", "align-items-center", "justify-content-center")}>
     <button
-      className={classnames("btn", "btn-link", styles.locationNavBtn)}
+      className={classNames("btn", "btn-link", styles.locationNavBtn)}
       onClick={() => changeDd(dd - 1)}
     >
       <MdNavigateBefore />
     </button>
-    <div className="text-center col-md-5" id="location">
-      <h1 className="nowis d-none d-md-block">
+
+    <div className={classNames("text-center", "col-md-5", styles.location)} >
+      <h2 className={classNames("d-none", "d-md-block", styles.nowis)}>
         <Clock />
-      </h1>
-      <h1>{location}</h1>
+      </h2>
+
+      <h2>{location}</h2>
+
       <small>{tarix}</small>
       {/* <br />
       <small>{hijri}</small> */}
     </div>
+    
     <button
-      className={classnames("btn", "btn-link", styles.locationNavBtn)}
+      className={classNames("btn", "btn-link", styles.locationNavBtn)}
       onClick={() => changeDd(dd + 1)}
     >
       <MdNavigateNext />

@@ -1,0 +1,30 @@
+.times {
+    text-align: center;
+  
+    h3 {
+      font-weight: bold;
+    }
+    
+    h6 {
+      padding: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .times {
+      text-align: center;
+  
+      .text-sm-right {
+        text-align: right !important;
+      }
+  
+      h2 {
+        margin: 0;
+      }
+  
+      .alert {
+        margin-bottom: 0;
+        padding-top: 0;
+      }
+    }
+  }

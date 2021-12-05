@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 
-import Ayah from "../components/ayah.component";
+import Ayah from "./Ayah";
 
 it("expect to render ayah component", () => {
   const wrapper = shallow(<Ayah />);

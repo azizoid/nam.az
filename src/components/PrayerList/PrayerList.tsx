@@ -1,8 +1,15 @@
-import { TPrayerList } from "../assist/types";
-import { Prayer } from "./prayer.component";
+import classNames from "classnames";
+import { Prayer, PrayerProps } from "./Prayer";
 
-export const PrayerList = ({ prayers, currentPrayer }: TPrayerList):JSX.Element => (
-  <div className="row" id="times">
+import styles from './PrayerList.module.scss'
+
+export type PrayerListProps = {
+  prayers: PrayerProps[];
+  currentPrayer?: number;
+};
+
+export const PrayerList = ({ prayers, currentPrayer }: PrayerListProps):JSX.Element => (
+  <div className={classNames("row", styles.times)}>
     {prayers.map((prayer, index) => {
       const classes = ["col-12", "col-md-4", "alert"];
       let isCur = false;

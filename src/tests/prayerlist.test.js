@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 
 import React from "react";
-import PrayerList from "../components/prayerlist.component";
+import PrayerList from "../components/PrayerList/PrayerList";
 
 it("expect to render ayah component", () => {
   const mock = [

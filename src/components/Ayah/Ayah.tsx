@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { MdFormatQuote } from "react-icons/md";
 
-import "../styles/ayah.styles.css"
+import styles from "./Ayah.module.scss"
 
 const Ayah = ():JSX.Element => {
   const [ayah, setAyah] = useState({
@@ -26,7 +26,7 @@ const Ayah = ():JSX.Element => {
   }, []);
 
   return (
-    <blockquote className="ayah">
+    <blockquote className={styles.ayah}>
       <MdFormatQuote style={{ color: "#66cc66" }} />
       <cite>
         {ayah.content.s} : {ayah.content.a}
@@ -36,7 +36,7 @@ const Ayah = ():JSX.Element => {
         href={`https://quran.az/${ayah.content.s}#${ayah.content.a}?rel=namaz`}
         target="_blank"
         rel="noopener noreferrer"
-        className="link"
+        className={styles.link}
       >
         <br />
         <small>Surəni Tam Oxu</small>
