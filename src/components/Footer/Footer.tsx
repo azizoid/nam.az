@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const Footer = ():JSX.Element => (
+export const Footer = (): JSX.Element => (
   <nav className="navbar ">
     <div className="container-fluid">
       <ul className="nav align-content-center">
@@ -8,10 +8,19 @@ export const Footer = ():JSX.Element => (
           &copy; {new Date().getFullYear()}
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="https://www.nam.az">Nam.az</a>
+          <a className="nav-link" href="https://www.nam.az">
+            Nam.az
+          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="https://www.quran.az" rel=" noopener noreferrer" target="_blank">Quran.az</a>
+          <a
+            className="nav-link"
+            href="https://www.quran.az"
+            rel=" noopener noreferrer"
+            target="_blank"
+          >
+            Quran.az
+          </a>
         </li>
       </ul>
     </div>

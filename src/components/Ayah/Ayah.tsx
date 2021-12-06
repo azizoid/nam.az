@@ -1,33 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { MdFormatQuote } from "react-icons/md";
+import { MdFormatQuote } from 'react-icons/md';
 
-import styles from "./Ayah.module.scss"
+import styles from './Ayah.module.scss';
 
-const Ayah = ():JSX.Element => {
+const Ayah = (): JSX.Element => {
   const [ayah, setAyah] = useState({
     content: {
       s: 40,
       a: 60,
-      c:
-        "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
+      c: "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
     },
   });
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchAyah = () => {
-      fetch("https://quran.az/api/random/")
-        .then((response) => response.json())
-        .then((data) => {
+      fetch('https://quran.az/api/random/')
+        .then(response => response.json())
+        .then(data => {
           setAyah({ content: data.out });
         });
-    }
+    };
     fetchAyah();
   }, []);
 
   return (
     <blockquote className={styles.ayah}>
-      <MdFormatQuote style={{ color: "#66cc66" }} />
+      <MdFormatQuote style={{ color: '#66cc66' }} />
       <cite>
         {ayah.content.s} : {ayah.content.a}
       </cite>
@@ -45,4 +44,4 @@ const Ayah = ():JSX.Element => {
   );
 };
 
-export default Ayah
+export default Ayah;
