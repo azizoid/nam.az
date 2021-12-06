@@ -14,7 +14,7 @@ export const Progress = ({ bar }: ProgressProps): JSX.Element => (
         bar > 75 ? 'bg-danger' : 'bg-info'
       )}
       role="progressbar"
-      style={{ width: bar + '%' }}
+      style={{ width: bar < 100 ? bar : 100 + '%' }}
       aria-valuenow={bar}
       aria-valuemin={0}
       aria-valuemax={100}
