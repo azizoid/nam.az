@@ -29,6 +29,16 @@ import classNames from 'classnames';
 const Location = lazy(() => import('./components/Location/Location'));
 const Ayah = lazy(() => import('./components/Ayah/Ayah'));
 
+type FetchDataProps = {
+  city: number;
+  dd: number;
+};
+
+const fetchData = async ({ city, dd }: FetchDataProps) => {
+  const response = await fetch(`https://nam.az/api/${city}/${dd}`);
+  return response.json();
+};
+
 const App = (): JSX.Element => {
   const newDate = useRef(new Date());
   const today = getDayOfYear(newDate.current) + 1;
@@ -59,54 +69,45 @@ const App = (): JSX.Element => {
   const [dd, setDd] = useState(today);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetch(`https://nam.az/api/${city}/${dd}`)
-        .then(response => response.json())
-        .then((data: any) => {
-          let currentPrayer = 5;
+    fetchData({ city, dd }).then((data: any) => {
+      let currentPrayer = 5;
 
-          setPrayers(prev =>
-            prev.map((prayer: PrayerProps, i) => {
-              prayer['time'] = data.prayers[i];
+      setPrayers(prev =>
+        prev.map((prayer: PrayerProps, i) => {
+          prayer['time'] = data.prayers[i];
 
-              prayer['ago'] = formatDistanceStrict(
-                newDate.current,
-                parse(data.prayers[i], 'HH:mm', newDate.current),
-                { locale: az, addSuffix: true }
-              );
-
-              if (data.prayers[i] < pref.nowis) {
-                currentPrayer = i;
-              }
-
-              return prayer;
-            })
+          prayer['ago'] = formatDistanceStrict(
+            newDate.current,
+            parse(data.prayers[i], 'HH:mm', newDate.current),
+            { locale: az, addSuffix: true }
           );
 
-          let progress = 0;
-
-          if (pref.today !== data.dd) {
-            currentPrayer = -1;
-          } else {
-            progress = percentageCounter(
-              currentPrayer,
-              data.prayers,
-              pref.nowis
-            );
+          if (data.prayers[i] < pref.nowis) {
+            currentPrayer = i;
           }
 
-          setPref(prev => ({
-            ...prev,
-            progress: progress,
-            currentPrayer: currentPrayer,
-            location: cities[city],
-            tarix: data.tarix,
-            hijri: data.hijri,
-            ramadan: data.dd - 103,
-          }));
-        });
-    };
-    fetchData();
+          return prayer;
+        })
+      );
+
+      let progress = 0;
+
+      if (pref.today !== data.dd) {
+        currentPrayer = -1;
+      } else {
+        progress = percentageCounter(currentPrayer, data.prayers, pref.nowis);
+      }
+
+      setPref(prev => ({
+        ...prev,
+        progress: progress,
+        currentPrayer: currentPrayer,
+        location: cities[city],
+        tarix: data.tarix,
+        hijri: data.hijri,
+        ramadan: data.dd - 103,
+      }));
+    });
   }, [city, dd, pref.nowis, pref.today]);
 
   const percentageCounter = (

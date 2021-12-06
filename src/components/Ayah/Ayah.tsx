@@ -4,6 +4,11 @@ import { MdFormatQuote } from 'react-icons/md';
 
 import styles from './Ayah.module.scss';
 
+const fetchAyah = async () => {
+  const response = await fetch('https://quran.az/api/random/');
+  return response.json();
+};
+
 const Ayah = (): JSX.Element => {
   const [ayah, setAyah] = useState({
     content: {
@@ -14,14 +19,7 @@ const Ayah = (): JSX.Element => {
   });
 
   useEffect(() => {
-    const fetchAyah = () => {
-      fetch('https://quran.az/api/random/')
-        .then(response => response.json())
-        .then(data => {
-          setAyah({ content: data.out });
-        });
-    };
-    fetchAyah();
+    fetchAyah().then(data => setAyah({ content: data.out }));
   }, []);
 
   return (
