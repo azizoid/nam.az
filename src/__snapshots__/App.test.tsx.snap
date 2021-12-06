@@ -194,7 +194,7 @@ Object {
             aria-valuenow="0"
             class="progress bg-info"
             role="progressbar"
-            style="width: 0%;"
+            style="width: 0px;"
           />
         </div>
         <div
@@ -599,7 +599,7 @@ Object {
           aria-valuenow="0"
           class="progress bg-info"
           role="progressbar"
-          style="width: 0%;"
+          style="width: 0px;"
         />
       </div>
       <div
