@@ -1,4 +1,4 @@
-import { MdBrightness7 } from "react-icons/md";
+import { MdBrightness7 } from 'react-icons/md';
 
 export type PrayerProps = {
   id: number;
@@ -6,7 +6,7 @@ export type PrayerProps = {
   time: string;
   rakat: number;
   ago: string;
-}
+};
 
 export type PrayerContainerProps = {
   prayer: PrayerProps;
@@ -15,7 +15,12 @@ export type PrayerContainerProps = {
   index: number;
 };
 
-export const Prayer = ({ prayer, classes, current, index }: PrayerContainerProps):JSX.Element => (
+export const Prayer = ({
+  prayer,
+  classes,
+  current,
+  index,
+}: PrayerContainerProps): JSX.Element => (
   <div className={classes}>
     <div className="row">
       <h6 className="col-7 col-md-12 align-self-center">{prayer.title}</h6>
@@ -27,12 +32,13 @@ export const Prayer = ({ prayer, classes, current, index }: PrayerContainerProps
           index !== 1 ? (
             <small>{prayer.ago}</small>
           ) : (
-            <MdBrightness7 style={{ color: "#f6993f" }} />
+            <MdBrightness7 style={{ color: '#f6993f' }} />
           )
         ) : (
           <div className="col-12 text-center">
             <span className="badge bg-warning text-dark">
-              Zaman varkən <br />
+              Zaman varkən
+              <br />
               Namazını qıl
             </span>
           </div>
