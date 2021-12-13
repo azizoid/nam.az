@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useLocalStorage } from './hooks/index';
 
 import { Header } from './components/Header/Header';
 //import Ramadan from "./components/ramadan.component";
@@ -34,6 +35,18 @@ type FetchDataProps = {
   dd: number;
 };
 
+type ResponseDataProps = {
+  city: number;
+  d: number;
+  dd: number;
+  hijri: string;
+  m: number;
+  prayers: string[];
+  tarix: string;
+  y: number;
+  _id: string;
+};
+
 const fetchData = async ({ city, dd }: FetchDataProps) => {
   const response = await fetch(`https://nam.az/api/${city}/${dd}`);
   return response.json();
@@ -42,6 +55,7 @@ const fetchData = async ({ city, dd }: FetchDataProps) => {
 const App = (): JSX.Element => {
   const newDate = useRef(new Date());
   const today = getDayOfYear(newDate.current) + 1;
+  const [city, setCity] = useLocalStorage('city', 1);
 
   const [prayers, setPrayers] = useState([
     { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
@@ -63,13 +77,10 @@ const App = (): JSX.Element => {
     ramadan: 0,
   });
 
-  const [city, setCity] = useState(
-    JSON.parse(localStorage.getItem('city') as string) || '1'
-  );
   const [dd, setDd] = useState(today);
 
   useEffect(() => {
-    fetchData({ city, dd }).then((data: any) => {
+    fetchData({ city, dd }).then((data: ResponseDataProps) => {
       let currentPrayer = 5;
 
       setPrayers(prev =>
@@ -138,10 +149,7 @@ const App = (): JSX.Element => {
   };
 
   const changeCity = (v: number): void => {
-    if (!(v in cities)) return;
-
-    if (v !== 0) {
-      localStorage.setItem('city', JSON.stringify(v));
+    if (v in cities) {
       setPref(prev => ({ ...prev, location: cities[v] }));
       setCity(v);
     }
@@ -153,7 +161,7 @@ const App = (): JSX.Element => {
 
       <div
         className={classNames(
-          'd-flex flex-column align-items-between justify-content-sm-start justify-content-md-between',
+          'd-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container',
           styles.mainBlock
         )}
       >
