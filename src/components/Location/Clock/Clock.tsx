@@ -25,9 +25,3 @@ export const Clock = () => {
 
   return <p className={styles.clock}>{date}</p>;
 };
-
-// export type TClock = object;
-
-// export type TClockState = {
-//   time: string;
-// };
