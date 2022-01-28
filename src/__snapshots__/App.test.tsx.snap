@@ -182,7 +182,7 @@ Object {
         </div>
       </nav>
       <div
-        class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between mainBlock"
+        class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container mainBlock"
       >
         <div
           class="progress"
@@ -379,7 +379,7 @@ Object {
                 class="nav-item navbar-text active"
               >
                 © 
-                2021
+                2022
               </li>
               <li
                 class="nav-item"
@@ -587,7 +587,7 @@ Object {
       </div>
     </nav>
     <div
-      class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between mainBlock"
+      class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container mainBlock"
     >
       <div
         class="progress"
@@ -784,7 +784,7 @@ Object {
               class="nav-item navbar-text active"
             >
               © 
-              2021
+              2022
             </li>
             <li
               class="nav-item"
