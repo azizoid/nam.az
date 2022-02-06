@@ -5,8 +5,9 @@ import { MdFormatQuote } from 'react-icons/md';
 import styles from './Ayah.module.scss';
 
 const fetchAyah = async () => {
-  const response = await fetch('https://quran.az/api/random/');
-  return response.json();
+  const response = await fetch('https://quran.az/api/random');
+  const json = await response.json();
+  return json;
 };
 
 export type AyahApiProps = {
