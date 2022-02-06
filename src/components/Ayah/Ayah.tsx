@@ -20,7 +20,7 @@ export type AyahApiProps = {
 };
 
 const Ayah = (): JSX.Element => {
-  const [ayah, setAyah] = useState<AyahApiProps>({
+  const [randomAyah, setRandomAyah] = useState<AyahApiProps>({
     id: 'defaultID',
     soorah: 40,
     ayah: 60,
@@ -31,18 +31,18 @@ const Ayah = (): JSX.Element => {
   });
 
   useEffect(() => {
-    fetchAyah().then(({ out }) => setAyah(out));
+    fetchAyah().then(({ out }) => setRandomAyah(out));
   }, []);
 
   return (
     <blockquote className={styles.ayah}>
       <MdFormatQuote style={{ color: '#66cc66' }} />
       <cite>
-        {ayah.soorah} : {ayah.ayah}
+        {randomAyah.soorah} : {randomAyah.ayah}
       </cite>
-      {ayah.content}
+      {randomAyah.content}
       <a
-        href={`https://quran.az/${ayah.soorah}#${ayah.ayah}?rel=namaz`}
+        href={`https://quran.az/${randomAyah.soorah}?t=${randomAyah.translator}&rel=nam.az`}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.link}
