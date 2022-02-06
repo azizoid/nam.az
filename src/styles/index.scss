@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+  .prayer {
+    @apply col-span-12 md:col-span-4 flex md:flex-col justify-around items-center mx-2;
+  }
+
   .btn {
-    @apply py-2 px-3 text-6xl font-thin;
+    @apply py-2 px-0 md:px-3 text-6xl font-thin;
   }
 
   .btn-green {
@@ -12,7 +16,7 @@
   }
 
   .alert {
-    @apply px-4 py-3 space-y-4 rounded-lg;
+    @apply px-4 py-3 space-y-0 md:space-y-4 md:my-3 rounded-lg hover:bg-gray-50;
   }
 
   .alert-success {
@@ -32,34 +36,10 @@
   }
 
   .badge {
-    @apply mr-1 px-2 py-1 text-sm  rounded-full;
-  }
-
-  .badge-blue {
-    @apply bg-blue-400 text-white;
+    @apply mr-1 px-2 py-1 text-sm  rounded-lg;
   }
 
   .badge-yellow {
     @apply bg-yellow-300 text-black;
-  }
-
-  .form-row {
-    @apply grid grid-cols-12 items-center space-x-4;
-  }
-
-  .form-control {
-    @apply border-gray-400 bg-gray-50 text-sm rounded-md text-gray-700 focus:border-gray-200 focus:transition-none;
-  }
-
-  .card {
-    @apply border border-solid border-gray-300 rounded-t shadow-lg;
-  }
-
-  .card-title {
-    @apply bg-gray-100 border-b text-sm py-3;
-  }
-
-  .card-content {
-    @apply space-y-1  text-sm py-3;
   }
 }

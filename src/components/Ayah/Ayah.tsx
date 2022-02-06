@@ -32,7 +32,7 @@ const Ayah = (): JSX.Element => {
   }, []);
 
   return (
-    <blockquote className="flex flex-col space-y-2 w-2/3 mx-auto p-4 mb-4 italic border-l-2 text-neutral-600 border-green-400 quote">
+    <blockquote className="md:block flex flex-col space-y-2 w-4/5 md:w-2/3 mx-auto p-4 my-4 italic border-l-2 text-neutral-600 border-green-400 quote">
       <h4 className="flex justify-start">
         <MdFormatQuote className="text-green-400 mr-4" aria-hidden="true" />
         {randomAyah.soorah} : {randomAyah.ayah}

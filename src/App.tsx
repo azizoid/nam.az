@@ -52,7 +52,7 @@ const App = (): JSX.Element => {
 
   const [prayers, setPrayers] = useState([
     { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
-    { id: 2, time: '-:-', rakat: 0, ago: '', title: 'Günəş' },
+    { id: 2, time: '-:-', rakat: 0, ago: '', title: 'Gün çıxır' },
     { id: 3, time: '-:-', rakat: 4, ago: '', title: 'Zöhr namazı' },
     { id: 4, time: '-:-', rakat: 4, ago: '', title: 'Əsr namazı' },
     { id: 5, time: '-:-', rakat: 3, ago: '', title: 'Məğrib namazı' },
@@ -126,8 +126,8 @@ const App = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col h-screen content-around align-middle">
-      <div className="bg-gray-100 py-2">
+    <div className="h-screen flex flex-col justify-between">
+      <div className="bg-gray-100 py-2 px-2">
         <Header changeCity={changeCity} city={city} />
       </div>
 

@@ -1,6 +1,6 @@
 export const Footer = (): JSX.Element => (
   <nav className="py-4 bg-gray-700 text-slate-300">
-    <ol className="container mx-auto w-lg flex">
+    <ol className="w-lg flex px-0 mx-4 md:mx-auto container">
       <li className="active mr-6" aria-current="page">
         &copy; {new Date().getFullYear()}
       </li>

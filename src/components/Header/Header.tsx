@@ -16,37 +16,28 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => (
         width="30"
         height="30"
         alt="nam.az"
-        className="mr-3"
+        className="mr-2"
       />
       Nam.az
     </a>
 
-    <ul className="flex flex-col items-center">
-      <li>
-        <select
-          className="
-          border-green-400 
-          bg-green-50 
-          text-sm 
-          rounded-md 
+    <div className="flex flex-col">
+      <select
+        className="border-green-400 bg-green-50 text-sm rounded-md"
+        aria-label="Haradasınız?"
+        onChange={e => changeCity(Number(e.target.value))}
+        value={city}
+      >
+        {cities.map((city, index) => (
+          <option value={index} key={index}>
+            {city}
+          </option>
+        ))}
+      </select>
 
-          "
-          aria-label="Haradasınız?"
-          onChange={e => changeCity(Number(e.target.value))}
-          value={city}
-        >
-          {cities.map((city, index) => (
-            <option value={index} key={index}>
-              {city}
-            </option>
-          ))}
-        </select>
-      </li>
-      <li>
-        <small>
-          Bakı, Gəncə, <u>Şuşa</u> və digər
-        </small>
-      </li>
-    </ul>
+      <small>
+        Bakı, Gəncə, <u>Şuşa</u> və digər
+      </small>
+    </div>
   </nav>
 );
