@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense, useMemo } from 'react';
 import { useLocalStorage } from './hooks/index';
 
 import { Header } from './components/Header/Header';
@@ -11,21 +11,14 @@ import { PrayerListStill } from './components/PrayerList/PrayerListStill';
 import { Footer } from './components/Footer/Footer';
 import { Loader } from './components/Loader/Loader';
 
-import {
-  format,
-  formatDistanceStrict,
-  parse,
-  differenceInSeconds,
-  getDayOfYear,
-} from 'date-fns';
+import { percentageCounter } from './utility/percentageCounter/percentageCounter';
+
+import { format, formatDistanceStrict, parse, getDayOfYear } from 'date-fns';
 import az from 'date-fns/locale/az';
 
 import cities from './assist/cities';
 
 import { PrayerProps } from './components/PrayerList/Prayer';
-
-import styles from './App.module.scss';
-import classNames from 'classnames';
 
 const Location = lazy(() => import('./components/Location/Location'));
 const Ayah = lazy(() => import('./components/Ayah/Ayah'));
@@ -53,8 +46,8 @@ const fetchData = async ({ city, dd }: FetchDataProps) => {
 };
 
 const App = (): JSX.Element => {
-  const newDate = useRef(new Date());
-  const today = getDayOfYear(newDate.current) + 1;
+  const newDate = useMemo(() => new Date(), []);
+  const today = getDayOfYear(newDate) + 1;
   const [city, setCity] = useLocalStorage('city', 1);
 
   const [prayers, setPrayers] = useState([
@@ -69,8 +62,8 @@ const App = (): JSX.Element => {
   const [pref, setPref] = useState({
     location: 'Bakı',
     currentPrayer: -1,
-    nowis: format(newDate.current, 'HH:mm'),
-    tarix: format(newDate.current, 'EEEE, d MMMM yyyy', { locale: az }),
+    nowis: format(newDate, 'HH:mm'),
+    tarix: format(newDate, 'EEEE, d MMMM yyyy', { locale: az }),
     hijri: '',
     today: today,
     progress: 0,
@@ -88,8 +81,8 @@ const App = (): JSX.Element => {
           prayer['time'] = data.prayers[i];
 
           prayer['ago'] = formatDistanceStrict(
-            newDate.current,
-            parse(data.prayers[i], 'HH:mm', newDate.current),
+            newDate,
+            parse(data.prayers[i], 'HH:mm', newDate),
             { locale: az, addSuffix: true }
           );
 
@@ -106,7 +99,12 @@ const App = (): JSX.Element => {
       if (pref.today !== data.dd) {
         currentPrayer = -1;
       } else {
-        progress = percentageCounter(currentPrayer, data.prayers, pref.nowis);
+        progress = percentageCounter({
+          currentPrayer,
+          apiPrayers: data.prayers,
+          nowis: pref.nowis,
+          newDate,
+        });
       }
 
       setPref(prev => ({
@@ -116,37 +114,9 @@ const App = (): JSX.Element => {
         location: cities[city],
         tarix: data.tarix,
         hijri: data.hijri,
-        ramadan: data.dd - 103,
       }));
     });
-  }, [city, dd, pref.nowis, pref.today]);
-
-  const percentageCounter = (
-    currentPrayer: number,
-    prayersFromApi: string[],
-    nowis: string
-  ): number => {
-    const untillNow = differenceInSeconds(
-      parse(nowis, 'HH:mm', newDate.current),
-      parse(prayersFromApi[currentPrayer], 'HH:mm', newDate.current)
-    );
-
-    let untillNext;
-
-    if (currentPrayer === 5) {
-      untillNext = differenceInSeconds(
-        parse('23:59', 'HH:mm', newDate.current),
-        parse(prayersFromApi[currentPrayer], 'HH:mm', newDate.current)
-      );
-    } else {
-      untillNext = differenceInSeconds(
-        parse(prayersFromApi[currentPrayer++], 'HH:mm', newDate.current),
-        parse(prayersFromApi[currentPrayer], 'HH:mm', newDate.current)
-      );
-    }
-
-    return Math.abs(Math.floor((untillNow * 100) / untillNext));
-  };
+  }, [city, dd, newDate, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
     if (v in cities) {
@@ -156,15 +126,12 @@ const App = (): JSX.Element => {
   };
 
   return (
-    <>
-      <Header changeCity={changeCity} city={city} />
+    <div className="flex flex-col h-screen content-around align-middle">
+      <div className="bg-gray-100 py-2">
+        <Header changeCity={changeCity} city={city} />
+      </div>
 
-      <div
-        className={classNames(
-          'd-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container',
-          styles.mainBlock
-        )}
-      >
+      <div className="flex-grow container mx-auto mt-10 pb-2">
         <Suspense fallback={<Loader />}>
           <Location
             location={pref.location}
@@ -186,10 +153,10 @@ const App = (): JSX.Element => {
         <Suspense fallback={<Loader />}>
           <Ayah />
         </Suspense>
-
-        <Footer />
       </div>
-    </>
+
+      <Footer />
+    </div>
   );
 };
 
