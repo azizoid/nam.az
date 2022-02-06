@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
-
 import { MdFormatQuote } from 'react-icons/md';
-
-import styles from './Ayah.module.scss';
 
 const fetchAyah = async () => {
   const response = await fetch('https://quran.az/api/random');
@@ -35,21 +32,21 @@ const Ayah = (): JSX.Element => {
   }, []);
 
   return (
-    <blockquote className={styles.ayah}>
-      <MdFormatQuote style={{ color: '#66cc66' }} />
-      <cite>
+    <blockquote className="flex flex-col space-y-2 w-2/3 mx-auto p-4 mb-4 italic border-l-2 text-neutral-600 border-green-400 quote">
+      <h4 className="flex justify-start">
+        <MdFormatQuote className="text-green-400 mr-4" aria-hidden="true" />
         {randomAyah.soorah} : {randomAyah.ayah}
+      </h4>
+      <p className="mb-2">{randomAyah.content}</p>
+      <cite>
+        <a
+          href={`https://quran.az/${randomAyah.soorah}?t=${randomAyah.translator}&rel=nam.az`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <small>Surəni Tam Oxu</small>
+        </a>
       </cite>
-      {randomAyah.content}
-      <a
-        href={`https://quran.az/${randomAyah.soorah}?t=${randomAyah.translator}&rel=nam.az`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.link}
-      >
-        <br />
-        <small>Surəni Tam Oxu</small>
-      </a>
     </blockquote>
   );
 };

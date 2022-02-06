@@ -1,10 +1,6 @@
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 
-import classNames from 'classnames';
-
 import { Clock } from './Clock/Clock';
-
-import styles from './Location.module.scss';
 
 export type LocationProps = {
   location: string;
@@ -20,36 +16,22 @@ const Location = ({
   dd,
   changeDd,
 }: LocationProps): JSX.Element => (
-  <div
-    className={classNames(
-      'd-flex',
-      'align-items-center',
-      'justify-content-center'
-    )}
-  >
-    <button
-      className={classNames('btn', 'btn-link', styles.locationNavBtn)}
-      onClick={() => changeDd(dd - 1)}
-    >
+  <div className="flex justify-around align-middle">
+    <button className="btn text-blue-300" onClick={() => changeDd(dd - 1)}>
       <MdNavigateBefore />
     </button>
 
-    <div className={classNames('text-center', 'col-md-5', styles.location)}>
-      <h2 className={classNames('d-none', 'd-md-block', styles.nowis)}>
+    <div className="flex flex-col space-y-2 text-center text-3xl font-semibold">
+      <h2 className="text-slate-300">
         <Clock />
       </h2>
 
       <h2>{location}</h2>
 
-      <small>{tarix}</small>
-      {/* <br />
-      <small>{hijri}</small> */}
+      <small className="text-sm font-normal">{tarix}</small>
     </div>
 
-    <button
-      className={classNames('btn', 'btn-link', styles.locationNavBtn)}
-      onClick={() => changeDd(dd + 1)}
-    >
+    <button className="btn text-blue-300" onClick={() => changeDd(dd + 1)}>
       <MdNavigateNext />
     </button>
   </div>

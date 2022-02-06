@@ -1,7 +1,4 @@
-import classNames from 'classnames';
 import { Prayer, PrayerProps } from './Prayer';
-
-import styles from './PrayerList.module.scss';
 
 export type PrayerListProps = {
   prayers: PrayerProps[];
@@ -11,32 +8,34 @@ export type PrayerListProps = {
 export const PrayerList = ({
   prayers,
   currentPrayer,
-}: PrayerListProps): JSX.Element => (
-  <div className={classNames('row', styles.times)}>
-    {prayers.map((prayer, index) => {
-      const classes = ['col-12', 'col-md-4', 'alert'];
-      let isCur = false;
+}: PrayerListProps): JSX.Element => {
+  return (
+    <div className="grid grid-cols-12 text-center">
+      {prayers.map((prayer, index) => {
+        let isCur = false;
+        const finalClass = [];
 
-      if (index === 1) {
-        if (index !== currentPrayer) {
-          classes.push('text-muted');
+        if (index === 1) {
+          if (index !== currentPrayer) {
+            finalClass.push('text-slate-400');
+          }
+        } else {
+          if (index === currentPrayer) {
+            isCur = true;
+            finalClass.push('alert-success');
+          }
         }
-      } else {
-        if (index === currentPrayer) {
-          isCur = true;
-          classes.push('alert-success');
-        }
-      }
 
-      return (
-        <Prayer
-          classes={classes.join(' ')}
-          prayer={prayer}
-          current={isCur}
-          index={index}
-          key={index}
-        />
-      );
-    })}
-  </div>
-);
+        return (
+          <Prayer
+            classes={finalClass.join(' ')}
+            prayer={prayer}
+            current={isCur}
+            index={index}
+            key={index}
+          />
+        );
+      })}
+    </div>
+  );
+};
