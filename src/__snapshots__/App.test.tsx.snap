@@ -5,34 +5,34 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <nav
-        class="navbar sticky-top navbar-expand-lg navbar-light bg-light"
+      <div
+        class="h-screen flex flex-col justify-between"
       >
         <div
-          class="container"
+          class="bg-gray-100 py-2 px-2"
         >
-          <a
-            class="navbar-brand"
-            href="/"
+          <nav
+            class="flex justify-between container mx-auto"
           >
-            <img
-              alt="nam.az"
-              class="d-inline-block align-top"
-              height="30"
-              src="/favicon.png"
-              width="30"
-            />
-            Nam.az
-          </a>
-          <ul
-            class="navbar-nav"
-          >
-            <li
-              class="nav-item active"
+            <a
+              class="py-2 flex items-center content-start text-gray-500 hover:opacity-75"
+              href="/"
+            >
+              <img
+                alt="nam.az"
+                class="mr-2"
+                height="30"
+                src="/favicon.png"
+                width="30"
+              />
+              Nam.az
+            </a>
+            <div
+              class="flex flex-col"
             >
               <select
                 aria-label="Haradasınız?"
-                class="form-select btn-outline-success"
+                class="border-green-400 bg-green-50 text-sm rounded-md"
               >
                 <option
                   value="0"
@@ -177,267 +177,259 @@ Object {
                 </u>
                  və digər
               </small>
-            </li>
-          </ul>
+            </div>
+          </nav>
         </div>
-      </nav>
-      <div
-        class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container mainBlock"
-      >
         <div
-          class="progress"
-          style="display: none;"
+          class="flex-grow container mx-auto mt-10 pb-2"
         >
           <div
-            aria-valuemax="100"
-            aria-valuemin="0"
-            aria-valuenow="0"
-            class="progress bg-info"
+            class="my-3 w-full bg-gray-200 h-1"
             role="progressbar"
-            style="width: 0px;"
-          />
-        </div>
-        <div
-          class="text-center"
-        >
-          <div
-            class="ldsFacebook"
-          >
-            <div />
-            <div />
-            <div />
-          </div>
-        </div>
-        <div
-          class="row times"
-        >
-          <div
-            class="col-12 col-md-4 alert"
+            style="display: none;"
           >
             <div
-              class="row"
+              class="h-1 bg-green-500"
+              style="width: 0%;"
+            />
+          </div>
+          <div
+            class="text-center"
+          >
+            <div
+              class="ldsFacebook"
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
+              <div />
+              <div />
+              <div />
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-12 text-center"
+          >
+            <div
+              class="prayer alert "
+            >
+              <h6>
                 Sübh namazı
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <small />
+                <div
+                  class="flex justify-center"
+                >
+                  <small />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-12 col-md-4 alert text-muted"
-          >
             <div
-              class="row"
+              class="prayer alert text-slate-400"
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
-                Günəş
+              <h6>
+                Gün çıxır
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <svg
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  style="color: rgb(246, 153, 63);"
-                  viewBox="0 0 24 24"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  class="flex justify-center"
                 >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
-                  />
-                </svg>
+                  <svg
+                    class="text-yellow-400"
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-12 col-md-4 alert"
-          >
             <div
-              class="row"
+              class="prayer alert "
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
+              <h6>
                 Zöhr namazı
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <small />
+                <div
+                  class="flex justify-center"
+                >
+                  <small />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-12 col-md-4 alert"
-          >
             <div
-              class="row"
+              class="prayer alert "
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
+              <h6>
                 Əsr namazı
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <small />
+                <div
+                  class="flex justify-center"
+                >
+                  <small />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-12 col-md-4 alert"
-          >
             <div
-              class="row"
+              class="prayer alert "
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
+              <h6>
                 Məğrib namazı
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <small />
+                <div
+                  class="flex justify-center"
+                >
+                  <small />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="col-12 col-md-4 alert"
-          >
             <div
-              class="row"
+              class="prayer alert "
             >
-              <h6
-                class="col-7 col-md-12 align-self-center"
-              >
+              <h6>
                 İşa namazı
               </h6>
               <div
-                class="col-5 col-md-12"
+                class="flex flex-col"
               >
-                <h4>
+                <h4
+                  class="text-2xl"
+                >
                   -:-
                 </h4>
-                <small />
+                <div
+                  class="flex justify-center"
+                >
+                  <small />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="text-center"
-        >
           <div
-            class="ldsFacebook"
+            class="text-center"
           >
-            <div />
-            <div />
-            <div />
+            <div
+              class="ldsFacebook"
+            >
+              <div />
+              <div />
+              <div />
+            </div>
           </div>
         </div>
         <nav
-          class="navbar "
+          class="py-4 bg-gray-700 text-slate-300"
         >
-          <div
-            class="container-fluid"
+          <ol
+            class="w-lg flex px-0 mx-4 md:mx-auto container"
           >
-            <ul
-              class="nav align-content-center"
+            <li
+              aria-current="page"
+              class="active mr-6"
             >
-              <li
-                class="nav-item navbar-text active"
+              © 
+              2022
+            </li>
+            <li
+              class="mr-6"
+            >
+              <a
+                href="https://www.nam.az"
               >
-                © 
-                2022
-              </li>
-              <li
-                class="nav-item"
+                Nam.az
+              </a>
+            </li>
+            <li
+              class="mr-6"
+            >
+              <a
+                href="https://www.quran.az"
+                rel=" noopener noreferrer"
+                target="_blank"
               >
-                <a
-                  class="nav-link"
-                  href="https://www.nam.az"
-                >
-                  Nam.az
-                </a>
-              </li>
-              <li
-                class="nav-item"
-              >
-                <a
-                  class="nav-link"
-                  href="https://www.quran.az"
-                  rel=" noopener noreferrer"
-                  target="_blank"
-                >
-                  Quran.az
-                </a>
-              </li>
-            </ul>
-          </div>
+                Quran.az
+              </a>
+            </li>
+          </ol>
         </nav>
       </div>
     </div>
   </body>,
   "container": <div>
-    <nav
-      class="navbar sticky-top navbar-expand-lg navbar-light bg-light"
+    <div
+      class="h-screen flex flex-col justify-between"
     >
       <div
-        class="container"
+        class="bg-gray-100 py-2 px-2"
       >
-        <a
-          class="navbar-brand"
-          href="/"
+        <nav
+          class="flex justify-between container mx-auto"
         >
-          <img
-            alt="nam.az"
-            class="d-inline-block align-top"
-            height="30"
-            src="/favicon.png"
-            width="30"
-          />
-          Nam.az
-        </a>
-        <ul
-          class="navbar-nav"
-        >
-          <li
-            class="nav-item active"
+          <a
+            class="py-2 flex items-center content-start text-gray-500 hover:opacity-75"
+            href="/"
+          >
+            <img
+              alt="nam.az"
+              class="mr-2"
+              height="30"
+              src="/favicon.png"
+              width="30"
+            />
+            Nam.az
+          </a>
+          <div
+            class="flex flex-col"
           >
             <select
               aria-label="Haradasınız?"
-              class="form-select btn-outline-success"
+              class="border-green-400 bg-green-50 text-sm rounded-md"
             >
               <option
                 value="0"
@@ -582,234 +574,226 @@ Object {
               </u>
                və digər
             </small>
-          </li>
-        </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
-    <div
-      class="d-flex flex-column align-items-between justify-content-sm-start justify-content-md-between container mainBlock"
-    >
       <div
-        class="progress"
-        style="display: none;"
+        class="flex-grow container mx-auto mt-10 pb-2"
       >
         <div
-          aria-valuemax="100"
-          aria-valuemin="0"
-          aria-valuenow="0"
-          class="progress bg-info"
+          class="my-3 w-full bg-gray-200 h-1"
           role="progressbar"
-          style="width: 0px;"
-        />
-      </div>
-      <div
-        class="text-center"
-      >
-        <div
-          class="ldsFacebook"
-        >
-          <div />
-          <div />
-          <div />
-        </div>
-      </div>
-      <div
-        class="row times"
-      >
-        <div
-          class="col-12 col-md-4 alert"
+          style="display: none;"
         >
           <div
-            class="row"
+            class="h-1 bg-green-500"
+            style="width: 0%;"
+          />
+        </div>
+        <div
+          class="text-center"
+        >
+          <div
+            class="ldsFacebook"
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-12 text-center"
+        >
+          <div
+            class="prayer alert "
+          >
+            <h6>
               Sübh namazı
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <small />
+              <div
+                class="flex justify-center"
+              >
+                <small />
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-12 col-md-4 alert text-muted"
-        >
           <div
-            class="row"
+            class="prayer alert text-slate-400"
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
-              Günəş
+            <h6>
+              Gün çıxır
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <svg
-                fill="currentColor"
-                height="1em"
-                stroke="currentColor"
-                stroke-width="0"
-                style="color: rgb(246, 153, 63);"
-                viewBox="0 0 24 24"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="flex justify-center"
               >
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                />
-                <path
-                  d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
-                />
-              </svg>
+                <svg
+                  class="text-yellow-400"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-12 col-md-4 alert"
-        >
           <div
-            class="row"
+            class="prayer alert "
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
+            <h6>
               Zöhr namazı
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <small />
+              <div
+                class="flex justify-center"
+              >
+                <small />
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-12 col-md-4 alert"
-        >
           <div
-            class="row"
+            class="prayer alert "
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
+            <h6>
               Əsr namazı
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <small />
+              <div
+                class="flex justify-center"
+              >
+                <small />
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-12 col-md-4 alert"
-        >
           <div
-            class="row"
+            class="prayer alert "
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
+            <h6>
               Məğrib namazı
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <small />
+              <div
+                class="flex justify-center"
+              >
+                <small />
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-12 col-md-4 alert"
-        >
           <div
-            class="row"
+            class="prayer alert "
           >
-            <h6
-              class="col-7 col-md-12 align-self-center"
-            >
+            <h6>
               İşa namazı
             </h6>
             <div
-              class="col-5 col-md-12"
+              class="flex flex-col"
             >
-              <h4>
+              <h4
+                class="text-2xl"
+              >
                 -:-
               </h4>
-              <small />
+              <div
+                class="flex justify-center"
+              >
+                <small />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="text-center"
-      >
         <div
-          class="ldsFacebook"
+          class="text-center"
         >
-          <div />
-          <div />
-          <div />
+          <div
+            class="ldsFacebook"
+          >
+            <div />
+            <div />
+            <div />
+          </div>
         </div>
       </div>
       <nav
-        class="navbar "
+        class="py-4 bg-gray-700 text-slate-300"
       >
-        <div
-          class="container-fluid"
+        <ol
+          class="w-lg flex px-0 mx-4 md:mx-auto container"
         >
-          <ul
-            class="nav align-content-center"
+          <li
+            aria-current="page"
+            class="active mr-6"
           >
-            <li
-              class="nav-item navbar-text active"
+            © 
+            2022
+          </li>
+          <li
+            class="mr-6"
+          >
+            <a
+              href="https://www.nam.az"
             >
-              © 
-              2022
-            </li>
-            <li
-              class="nav-item"
+              Nam.az
+            </a>
+          </li>
+          <li
+            class="mr-6"
+          >
+            <a
+              href="https://www.quran.az"
+              rel=" noopener noreferrer"
+              target="_blank"
             >
-              <a
-                class="nav-link"
-                href="https://www.nam.az"
-              >
-                Nam.az
-              </a>
-            </li>
-            <li
-              class="nav-item"
-            >
-              <a
-                class="nav-link"
-                href="https://www.quran.az"
-                rel=" noopener noreferrer"
-                target="_blank"
-              >
-                Quran.az
-              </a>
-            </li>
-          </ul>
-        </div>
+              Quran.az
+            </a>
+          </li>
+        </ol>
       </nav>
     </div>
   </div>,
