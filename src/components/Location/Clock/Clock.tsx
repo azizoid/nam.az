@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import styles from './Clock.module.scss';
+import styles from './Clock.module.css';
 
 const date2date = () =>
   new Date().toLocaleTimeString('az', {
