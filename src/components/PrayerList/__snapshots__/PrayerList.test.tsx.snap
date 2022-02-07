@@ -3,25 +3,25 @@
 exports[`renders PrayerList component 1`] = `
 <div>
   <div
-    class="row times"
+    class="grid grid-cols-12 text-center"
   >
     <div
-      class="col-12 col-md-4 alert"
+      class="prayer alert "
     >
+      <h6>
+        Fəcr namazı
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          Fəcr namazı
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
           <small>
             1 minute ago
           </small>
@@ -29,28 +29,28 @@ exports[`renders PrayerList component 1`] = `
       </div>
     </div>
     <div
-      class="col-12 col-md-4 alert text-muted"
+      class="prayer alert text-slate-400"
     >
+      <h6>
+        Günəş
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          Günəş
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
           <svg
+            class="text-yellow-400"
             fill="currentColor"
             height="1em"
             stroke="currentColor"
             stroke-width="0"
-            style="color: rgb(246, 153, 63);"
             viewBox="0 0 24 24"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -67,53 +67,49 @@ exports[`renders PrayerList component 1`] = `
       </div>
     </div>
     <div
-      class="col-12 col-md-4 alert alert-success"
+      class="prayer alert alert-success"
     >
+      <h6>
+        Zöhr namazı
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          Zöhr namazı
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
-          <div
-            class="col-12 text-center"
+          <span
+            class="badge badge-yellow"
           >
-            <span
-              class="badge bg-warning text-dark"
-            >
-              Zaman varkən
-              <br />
-              Namazını qıl
-            </span>
-          </div>
+            Zaman varkən,
+            <br />
+            Namazını qıl!
+          </span>
         </div>
       </div>
     </div>
     <div
-      class="col-12 col-md-4 alert"
+      class="prayer alert "
     >
+      <h6>
+        Əsr namazı
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          Əsr namazı
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
           <small>
             4 minutes ago
           </small>
@@ -121,22 +117,22 @@ exports[`renders PrayerList component 1`] = `
       </div>
     </div>
     <div
-      class="col-12 col-md-4 alert"
+      class="prayer alert "
     >
+      <h6>
+        Məğrib namazı
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          Məğrib namazı
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
           <small>
             5 minutes ago
           </small>
@@ -144,22 +140,22 @@ exports[`renders PrayerList component 1`] = `
       </div>
     </div>
     <div
-      class="col-12 col-md-4 alert"
+      class="prayer alert "
     >
+      <h6>
+        İşa namazı
+      </h6>
       <div
-        class="row"
+        class="flex flex-col"
       >
-        <h6
-          class="col-7 col-md-12 align-self-center"
+        <h4
+          class="text-2xl"
         >
-          İşa namazı
-        </h6>
+          -:-
+        </h4>
         <div
-          class="col-5 col-md-12"
+          class="flex justify-center"
         >
-          <h4>
-            -:-
-          </h4>
           <small>
             6 minutes ago
           </small>

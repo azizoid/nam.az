@@ -3,43 +3,50 @@
 exports[`renders App 1`] = `
 <div>
   <blockquote
-    class="ayah"
+    class="md:block flex flex-col space-y-2 w-4/5 md:w-2/3 mx-auto p-4 my-4 italic border-l-2 text-neutral-600 border-green-400 quote"
   >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      stroke-width="0"
-      style="color: rgb(102, 204, 102);"
-      viewBox="0 0 24 24"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
+    <h4
+      class="flex justify-start"
     >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"
-      />
-    </svg>
-    <cite>
+      <svg
+        aria-hidden="true"
+        class="text-green-400 mr-4"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"
+        />
+      </svg>
       40
        : 
       60
-    </cite>
-    Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.
-    <a
-      class="link"
-      href="https://quran.az/40?t=4&rel=nam.az"
-      rel="noopener noreferrer"
-      target="_blank"
+    </h4>
+    <p
+      class="mb-2"
     >
-      <br />
-      <small>
-        Surəni Tam Oxu
-      </small>
-    </a>
+      Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.
+    </p>
+    <cite>
+      <a
+        href="https://quran.az/40?t=4&rel=nam.az"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <small>
+          Surəni Tam Oxu
+        </small>
+      </a>
+    </cite>
   </blockquote>
 </div>
 `;
