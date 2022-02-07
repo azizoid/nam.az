@@ -145,7 +145,11 @@ const App = (): JSX.Element => {
         </Suspense>
 
         {pref.today === dd ? (
-          <PrayerList prayers={prayers} currentPrayer={pref.currentPrayer} />
+          <PrayerList
+            prayers={prayers}
+            currentPrayer={pref.currentPrayer}
+            progress={pref.progress}
+          />
         ) : (
           <PrayerListStill prayers={prayers} />
         )}
