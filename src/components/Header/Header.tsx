@@ -28,9 +28,9 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => (
         onChange={e => changeCity(Number(e.target.value))}
         value={city}
       >
-        {cities.map((city, index) => (
+        {cities.map((cityTitle, index) => (
           <option value={index} key={index}>
-            {city}
+            {cityTitle}
           </option>
         ))}
       </select>

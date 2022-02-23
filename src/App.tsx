@@ -78,9 +78,9 @@ const App = (): JSX.Element => {
 
       setPrayers(prev =>
         prev.map((prayer: PrayerProps, i) => {
-          prayer['time'] = data.prayers[i];
+          prayer.time = data.prayers[i];
 
-          prayer['ago'] = formatDistanceStrict(
+          prayer.ago = formatDistanceStrict(
             newDate,
             parse(data.prayers[i], 'HH:mm', newDate),
             { locale: az, addSuffix: true }
