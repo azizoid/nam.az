@@ -21,7 +21,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2020,
+    ecmaVersion: 2018,
     sourceType: 'module',
     project: './tsconfig.json',
   },
@@ -36,5 +36,4 @@ module.exports = {
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,
   },
-  ignorePatterns: ['.eslintrc.js'],
 };
