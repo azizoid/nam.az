@@ -1,4 +1,6 @@
+import moment from 'moment-hijri';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import { hijriMonthList } from '../../assist/hijriMonthList';
 
 import { Clock } from './Clock/Clock';
 
@@ -28,7 +30,10 @@ const Location = ({
 
       <h2>{location}</h2>
 
-      <small className="text-sm font-normal">{tarix}</small>
+      <small className="text-sm font-normal">
+        {hijriMonthList[Number(moment().format('iM')) - 1]} ayı{', '}
+        {moment().format('iD, iYYYY')} / {tarix}
+      </small>
     </div>
 
     <button className="btn text-blue-300" onClick={() => changeDd(dd + 1)}>
