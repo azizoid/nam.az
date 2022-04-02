@@ -17,29 +17,33 @@ const Location = ({
   tarix,
   dd,
   changeDd,
-}: LocationProps): JSX.Element => (
-  <div className="flex justify-around align-middle">
-    <button className="btn text-blue-300" onClick={() => changeDd(dd - 1)}>
-      <MdNavigateBefore />
-    </button>
+}: LocationProps): JSX.Element => {
+  const hijri = moment(tarix);
 
-    <div className="flex flex-col space-y-2 text-center text-3xl font-semibold">
-      <h2 className="text-slate-300">
-        <Clock />
-      </h2>
+  return (
+    <div className="flex justify-around align-middle">
+      <button className="btn text-blue-300" onClick={() => changeDd(dd - 1)}>
+        <MdNavigateBefore />
+      </button>
 
-      <h2>{location}</h2>
+      <div className="flex flex-col space-y-2 text-center text-3xl font-semibold">
+        <h2 className="text-slate-300">
+          <Clock />
+        </h2>
 
-      <small className="text-sm font-normal">
-        {hijriMonthList[Number(moment().format('iM')) - 1]} ayı{', '}
-        {moment().format('iD, iYYYY')} / {tarix}
-      </small>
+        <h2>{location}</h2>
+
+        <small className="text-sm font-normal">
+          {hijriMonthList[Number(hijri.format('iM')) - 1]} ayı{', '}
+          {hijri.format('iD, iYYYY')} / {tarix}
+        </small>
+      </div>
+
+      <button className="btn text-blue-300" onClick={() => changeDd(dd + 1)}>
+        <MdNavigateNext />
+      </button>
     </div>
-
-    <button className="btn text-blue-300" onClick={() => changeDd(dd + 1)}>
-      <MdNavigateNext />
-    </button>
-  </div>
-);
+  );
+};
 
 export default Location;
