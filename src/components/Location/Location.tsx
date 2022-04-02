@@ -1,6 +1,8 @@
 import moment from 'moment-hijri';
+moment.locale('az');
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { hijriMonthList } from '../../assist/hijriMonthList';
+import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz';
 
 import { Clock } from './Clock/Clock';
 
@@ -18,7 +20,7 @@ const Location = ({
   dd,
   changeDd,
 }: LocationProps): JSX.Element => {
-  const hijri = moment(tarix);
+  const momentTarix = moment(tarix);
 
   return (
     <div className="flex justify-around align-middle">
@@ -34,8 +36,11 @@ const Location = ({
         <h2>{location}</h2>
 
         <small className="text-sm font-normal">
-          {hijriMonthList[Number(hijri.format('iM')) - 1]} ayı{', '}
-          {hijri.format('iD, iYYYY')} / {tarix}
+          {hijriMonthList[Number(momentTarix.format('iM')) - 1]} ayı{', '}
+          {numberSuffixAz(Number(momentTarix.format('iD')))} gün{', '}
+          {numberSuffixAz(Number(momentTarix.format('iYYYY')))} il
+          <br />
+          {tarix}
         </small>
       </div>
 
