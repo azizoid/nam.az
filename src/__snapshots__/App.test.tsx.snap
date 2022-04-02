@@ -184,16 +184,6 @@ Object {
           class="flex-grow container mx-auto mt-10 pb-2"
         >
           <div
-            class="my-3 w-full bg-gray-200 h-1"
-            role="progressbar"
-            style="display: none;"
-          >
-            <div
-              class="h-1 bg-green-500"
-              style="width: 0%;"
-            />
-          </div>
-          <div
             class="text-center"
           >
             <div
@@ -580,16 +570,6 @@ Object {
       <div
         class="flex-grow container mx-auto mt-10 pb-2"
       >
-        <div
-          class="my-3 w-full bg-gray-200 h-1"
-          role="progressbar"
-          style="display: none;"
-        >
-          <div
-            class="h-1 bg-green-500"
-            style="width: 0%;"
-          />
-        </div>
         <div
           class="text-center"
         >

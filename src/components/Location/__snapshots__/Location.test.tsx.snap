@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders App 1`] = `
+exports[`renders Location 1`] = `
 <div>
   <div
     class="flex justify-around align-middle"
@@ -44,7 +44,16 @@ exports[`renders App 1`] = `
       <small
         class="text-sm font-normal"
       >
-        Monday, 6 December 2021
+        Ramazan
+         ayı
+        , 
+        1-ci
+         gün
+        , 
+        1443-cü
+         il
+        <br />
+        Şənbə, 2 aprel 2022
       </small>
     </div>
     <button
