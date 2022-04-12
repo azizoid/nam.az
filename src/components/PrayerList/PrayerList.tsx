@@ -9,7 +9,6 @@ export type PrayerListProps = {
 export const PrayerList = ({
   prayers,
   currentPrayer,
-  progress = 0,
 }: PrayerListProps): JSX.Element => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => {
@@ -23,7 +22,7 @@ export const PrayerList = ({
       } else {
         if (index === currentPrayer) {
           isCur = true;
-          finalClass.push(progress < 75 ? 'alert-success' : 'alert-danger');
+          finalClass.push('alert-success');
         }
       }
 
