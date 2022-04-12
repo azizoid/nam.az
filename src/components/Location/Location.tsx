@@ -9,6 +9,7 @@ import { Clock } from './Clock/Clock';
 export type LocationProps = {
   location: string;
   tarix: string;
+  hijri?: string;
   dd: number;
   changeDd: (dd: number) => void;
 };
