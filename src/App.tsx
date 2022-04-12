@@ -52,9 +52,9 @@ const fetchData = async ({ city, dd }: FetchDataProps) => {
 };
 
 const newDate = new Date();
+const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 const App = (): JSX.Element => {
-  const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
   const [city, setCity] = useLocalStorage('city', 1);
 
   const [prayers, setPrayers] = useState([
@@ -128,6 +128,7 @@ const App = (): JSX.Element => {
   const changeCity = (v: number): void => {
     if (v in cities) {
       setPref(prev => ({ ...prev, location: cities[v] }));
+      setDd(today);
       setCity(v);
     }
   };
