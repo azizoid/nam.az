@@ -13,7 +13,13 @@ import { Loader } from './components/Loader/Loader';
 
 import { percentageCounter } from './utility/percentageCounter/percentageCounter';
 
-import { format, formatDistanceStrict, parse, getDayOfYear } from 'date-fns';
+import {
+  format,
+  formatDistanceStrict,
+  parse,
+  getDayOfYear,
+  isLeapYear,
+} from 'date-fns';
 import az from 'date-fns/locale/az';
 
 import cities from './assist/cities';
@@ -45,9 +51,10 @@ const fetchData = async ({ city, dd }: FetchDataProps) => {
   return response.json();
 };
 
+const newDate = new Date();
+
 const App = (): JSX.Element => {
-  const newDate = useMemo(() => new Date(), []);
-  const today = getDayOfYear(newDate) + 1;
+  const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
   const [city, setCity] = useLocalStorage('city', 1);
 
   const [prayers, setPrayers] = useState([
