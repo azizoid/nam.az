@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense, useMemo } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useLocalStorage } from './hooks/index';
 
 import { Header } from './components/Header/Header';
@@ -123,7 +123,7 @@ const App = (): JSX.Element => {
         hijri: data.hijri,
       }));
     });
-  }, [city, dd, newDate, pref.nowis, pref.today]);
+  }, [city, dd, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
     if (v in cities) {
