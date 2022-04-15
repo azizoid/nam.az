@@ -1,15 +1,16 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useLocalStorage } from './hooks/index';
 
-import { Header } from './components/Header/Header';
-//import Ramadan from "./components/ramadan.component";
+// //import Ramadan from "./components/ramadan.component";
 
-import { Progress } from './components/Progress/Progress';
-import { PrayerList } from './components/PrayerList/PrayerList';
-import { PrayerListStill } from './components/PrayerList/PrayerListStill';
-
-import { Footer } from './components/Footer/Footer';
-import { Loader } from './components/Loader/Loader';
+import {
+  Header,
+  Progress,
+  PrayerList,
+  PrayerListStill,
+  Loader,
+  Footer,
+} from './components';
 
 import { percentageCounter } from './utility/percentageCounter/percentageCounter';
 
