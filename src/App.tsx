@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useLocalStorage } from './hooks/index';
+import { useLocalStorage, percentageCounter } from 'utility';
 
 // //import Ramadan from "./components/ramadan.component";
 
@@ -10,9 +10,7 @@ import {
   PrayerListStill,
   Loader,
   Footer,
-} from './components';
-
-import { percentageCounter } from './utility/percentageCounter/percentageCounter';
+} from 'components';
 
 import {
   format,
@@ -23,12 +21,12 @@ import {
 } from 'date-fns';
 import az from 'date-fns/locale/az';
 
-import cities from './assist/cities';
+import cities from 'assist/cities';
 
-import { PrayerProps } from './components/PrayerList/Prayer';
+import { PrayerProps } from 'components';
 
-const Location = lazy(() => import('./components/Location/Location'));
-const Ayah = lazy(() => import('./components/Ayah/Ayah'));
+const Location = lazy(() => import('components/Location/Location'));
+const Ayah = lazy(() => import('components/Ayah/Ayah'));
 
 type FetchDataProps = {
   city: number;

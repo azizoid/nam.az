@@ -1,8 +1,8 @@
 import moment from 'moment-hijri';
 moment.locale('az');
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import { hijriMonthList } from '../../assist/hijriMonthList';
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz';
+import { hijriMonthList } from 'assist/hijriMonthList';
+import { numberSuffixAz } from 'utility';
 
 import { Clock } from './Clock/Clock';
 

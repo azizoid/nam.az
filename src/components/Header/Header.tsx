@@ -1,4 +1,4 @@
-import cities from '../../assist/cities';
+import cities from 'assist/cities';
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
