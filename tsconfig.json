@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +14,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "assist/*": ["./assist/*"],
+      "components/*": ["./components/*"],
+      "utility/*": ["./utility/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
