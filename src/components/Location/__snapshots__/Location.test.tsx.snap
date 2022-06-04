@@ -44,15 +44,6 @@ exports[`renders Location 1`] = `
       <small
         class="text-sm font-normal"
       >
-        Ramazan
-         ayı
-        , 
-        1-ci
-         gün
-        , 
-        1443-cü
-         il
-        <br />
         Şənbə, 2 aprel 2022
       </small>
     </div>
