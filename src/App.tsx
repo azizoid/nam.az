@@ -133,10 +133,10 @@ const App = (): JSX.Element => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between">
       <Header changeCity={changeCity} city={city} />
 
-      <div className="flex-grow container mx-auto my-10 pb-2">
+      <div className="align-middle container mx-auto my-10 pb-2">
         <Suspense fallback={<Loader />}>
           <Location
             location={pref.location}
