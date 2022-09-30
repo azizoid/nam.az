@@ -8,7 +8,7 @@ export type HeaderProps = {
 };
 
 export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <nav className="flex justify-between container mx-auto">
       <a
