@@ -30,6 +30,7 @@ export const Map = React.memo(
     const { isLoaded } = useJsApiLoader({
       id: 'google-map-script',
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string,
+      language: 'az',
     });
 
     if (isLoaded) {
