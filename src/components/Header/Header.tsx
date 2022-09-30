@@ -34,7 +34,11 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
           Xəritə
         </button>
         <Modal open={showModal} onClose={() => setShowModal(false)}>
-          <Map onClick={changeCity} setShowModal={setShowModal} />
+          <Map
+            onClick={changeCity}
+            setShowModal={setShowModal}
+            selectedCity={city}
+          />
         </Modal>
 
         <small>

@@ -32,7 +32,7 @@ export const Modal: FC<ModalProps> = ({ open, onClose, children }) => {
         />
 
         <div
-          className={`relative top-5 mx-auto p-3 h-full bg-white shadow-lg w-full max-w-screen-sm ${
+          className={`relative top-5 mx-auto flex flex-col content-center p-3 h-full bg-white shadow-lg w-full max-w-screen-sm ${
             open ? 'opacity-100' : 'pointer-events-none opacity-0'
           }`}
         >
