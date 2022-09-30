@@ -5,7 +5,7 @@ import {
   Marker,
   Polyline,
 } from '@react-google-maps/api';
-import { faMapPin as faMosque } from '@fortawesome/free-solid-svg-icons';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 
 import { coordinates } from '../../assist/coordinates';
 
@@ -35,14 +35,14 @@ export const Map = React.memo(
 
     if (isLoaded) {
       const icon = {
-        path: faMosque.icon[4] as string,
+        path: faMapPin.icon[4] as string,
         fillColor: 'red',
         fillOpacity: 1,
         strokeWeight: 0.1,
         scale: 0.04,
         anchor: new window.google.maps.Point(
-          faMosque.icon[0] / 2,
-          faMosque.icon[1]
+          faMapPin.icon[0] / 2,
+          faMapPin.icon[1]
         ),
       };
       return (

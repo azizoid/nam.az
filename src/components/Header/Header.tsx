@@ -1,6 +1,9 @@
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot as asd } from '@fortawesome/free-solid-svg-icons';
+
 import { Modal } from 'components/Modal/Modal';
 import { Map } from 'components/Map/Map';
-import { useState } from 'react';
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
@@ -31,7 +34,7 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
           type="button"
           onClick={() => setShowModal(true)}
         >
-          Xəritə
+          Xəritə <FontAwesomeIcon icon={asd} beat transform="shrink-2" />
         </button>
         <Modal open={showModal} onClose={() => setShowModal(false)}>
           <Map
