@@ -13,12 +13,6 @@ export const percentageCounter = ({
   nowis,
   newDate,
 }: PercentageCouter): number => {
-  console.table({
-    currentPrayer,
-    apiPrayers,
-    nowis,
-    newDate,
-  });
   const untillNow = differenceInSeconds(
     parse(nowis, 'HH:mm', newDate),
     parse(apiPrayers[currentPrayer], 'HH:mm', newDate)

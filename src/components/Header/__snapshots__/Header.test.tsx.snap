@@ -2,173 +2,68 @@
 
 exports[`renders PrayerList component 1`] = `
 <div>
-  <nav
-    class="flex justify-between container mx-auto"
+  <div
+    class="bg-gray-100 py-2 px-2"
   >
-    <a
-      class="py-2 flex items-center content-start text-gray-500 hover:opacity-75"
-      href="/"
+    <nav
+      class="flex justify-between container mx-auto"
     >
-      <img
-        alt="nam.az"
-        class="mr-2"
-        height="30"
-        src="/favicon.png"
-        width="30"
-      />
-      Nam.az
-    </a>
-    <div
-      class="flex flex-col"
-    >
-      <select
-        aria-label="Haradasınız?"
-        class="border-green-400 bg-green-50 text-sm rounded-md"
+      <a
+        class="py-2 flex items-center content-start text-gray-500 hover:opacity-75"
+        href="/"
       >
-        <option
-          value="0"
+        <img
+          alt="nam.az"
+          class="mr-2"
+          height="30"
+          src="/favicon.png"
+          width="30"
+        />
+        Nam.az
+      </a>
+      <div
+        class="flex flex-col"
+      >
+        <button
+          class="bg-green-500 text-white active:bg-green-600 text-sm py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+          type="button"
         >
-          Haradasınız?
-        </option>
-        <option
-          value="1"
-        >
-          Bakı
-        </option>
-        <option
-          value="2"
-        >
-          Sumqayıt
-        </option>
-        <option
-          value="3"
-        >
-          Gəncə
-        </option>
-        <option
-          value="4"
-        >
-          Lənkaran
-        </option>
-        <option
-          value="5"
-        >
-          Mingəçevir
-        </option>
-        <option
-          value="6"
-        >
-          Naxçıvan
-        </option>
-        <option
-          value="7"
-        >
-          Ağdam
-        </option>
-        <option
-          value="8"
-        >
-          Astara
-        </option>
-        <option
-          value="9"
-        >
-          Beyləqan
-        </option>
-        <option
-          value="10"
-        >
-          Cəlilabad
-        </option>
-        <option
-          value="11"
-        >
-          Göyçay
-        </option>
-        <option
-          value="12"
-        >
-          Qəbələ
-        </option>
-        <option
-          value="13"
-        >
-          Qazax
-        </option>
-        <option
-          value="14"
-        >
-          Quba
-        </option>
-        <option
-          value="15"
-        >
-          Qusar
-        </option>
-        <option
-          value="16"
-        >
-          Saatlı
-        </option>
-        <option
-          value="17"
-        >
-          Sabirabad
-        </option>
-        <option
-          value="18"
-        >
-          Şamaxı
-        </option>
-        <option
-          value="19"
-        >
-          Şəki
-        </option>
-        <option
-          value="20"
-        >
-          Şirvan
-        </option>
-        <option
-          value="21"
-        >
-          Xaçmaz
-        </option>
-        <option
-          value="22"
-        >
-          Yevlax
-        </option>
-        <option
-          value="23"
-        >
-          Zaqatala
-        </option>
-        <option
-          value="24"
-        >
-          Şuşa
-        </option>
-        <option
-          value="25"
-        >
-          Marneuli
-        </option>
-        <option
-          value="26"
-        >
-          Bolnisi
-        </option>
-      </select>
-      <small>
-        Bakı, Gəncə, 
-        <u>
-          Şuşa
-        </u>
-         və digər
-      </small>
-    </div>
-  </nav>
+          Xəritə 
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-location-dot fa-beat "
+            data-icon="location-dot"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style="transform-origin: 0.375em 0.5em;"
+            viewBox="0 0 384 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              transform="translate(192 256)"
+            >
+              <g
+                transform="translate(0, 0)  scale(0.875, 0.875)  rotate(0 0 0)"
+              >
+                <path
+                  d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"
+                  fill="currentColor"
+                  transform="translate(-192 -256)"
+                />
+              </g>
+            </g>
+          </svg>
+        </button>
+        <small>
+          Bakı, Gəncə, 
+          <u>
+            Şuşa
+          </u>
+           və digər
+        </small>
+      </div>
+    </nav>
+  </div>
 </div>
 `;
