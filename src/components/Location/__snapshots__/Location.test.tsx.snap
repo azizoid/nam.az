@@ -45,6 +45,7 @@ exports[`renders Location 1`] = `
         class="text-sm font-normal"
       >
         Şənbə, 2 aprel 2022
+        , 
       </small>
     </div>
     <button

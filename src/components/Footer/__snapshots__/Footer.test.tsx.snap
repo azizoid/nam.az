@@ -3,7 +3,7 @@
 exports[`renders Footer component 1`] = `
 <div>
   <nav
-    class="py-4 bg-gray-700 text-slate-300"
+    class="sticky top-[100vh] w-full py-3 bg-gray-700 text-slate-300"
   >
     <ol
       class="w-lg flex px-0 mx-4 md:mx-auto container"
