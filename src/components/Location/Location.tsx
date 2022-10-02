@@ -13,6 +13,7 @@ export type LocationProps = {
 const Location = ({
   location,
   tarix,
+  hijri,
   dd,
   changeDd,
 }: LocationProps): JSX.Element => (
@@ -28,7 +29,9 @@ const Location = ({
 
       <h2>{location}</h2>
 
-      <small className="text-sm font-normal">{tarix}</small>
+      <small className="text-sm font-normal">
+        {tarix}, {hijri}
+      </small>
     </div>
 
     <button className="btn text-blue-300" onClick={() => changeDd(dd + 1)}>
