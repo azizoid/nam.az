@@ -1,7 +1,11 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useLocalStorage, percentageCounter } from 'utility';
-
-// //import Ramadan from "./components/ramadan.component";
+import {
+  useLocalStorage,
+  percentageCounter,
+  selectCity,
+  fetchData,
+  ResponseDataProps,
+} from 'utility';
 
 import {
   Header,
@@ -10,6 +14,7 @@ import {
   PrayerListStill,
   Loader,
   Footer,
+  Location,
 } from 'components';
 
 import {
@@ -19,41 +24,17 @@ import {
   getDayOfYear,
   isLeapYear,
 } from 'date-fns';
-import az from 'date-fns/locale/az';
 
-import { coordinates as cities } from 'assist/coordinates';
+import az from 'date-fns/locale/az';
 
 import { PrayerProps } from 'components';
 
-const Location = lazy(() => import('components/Location/Location'));
 const Ayah = lazy(() => import('components/Ayah/Ayah'));
-
-type FetchDataProps = {
-  city: number;
-  dd: number;
-};
-
-type ResponseDataProps = {
-  city: number;
-  d: number;
-  dd: number;
-  hijri: string;
-  m: number;
-  prayers: string[];
-  tarix: string;
-  y: number;
-  _id: string;
-};
-
-const fetchData = async ({ city, dd }: FetchDataProps) => {
-  const response = await fetch(`https://nam.az/api/${city}/${dd}`);
-  return response.json();
-};
 
 const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
-const App = (): JSX.Element => {
+export const App = (): JSX.Element => {
   const [city, setCity] = useLocalStorage('city', 1);
 
   const [prayers, setPrayers] = useState([
@@ -69,7 +50,7 @@ const App = (): JSX.Element => {
     location: 'Bakı',
     currentPrayer: -1,
     nowis: format(newDate, 'HH:mm'),
-    tarix: format(newDate, 'EEEE, d MMMM yyyy', { locale: az }),
+    tarix: '',
     hijri: '',
     today: today,
     progress: 0,
@@ -117,7 +98,7 @@ const App = (): JSX.Element => {
         ...prev,
         progress: progress,
         currentPrayer: currentPrayer,
-        location: cities[city - 1].city || cities[0].city,
+        location: selectCity(city),
         tarix: data.tarix,
         hijri: data.hijri,
       }));
@@ -125,13 +106,10 @@ const App = (): JSX.Element => {
   }, [city, dd, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
-    const changeCityTo =
-      cities.find(item => item.id === v)?.city || cities[0].city;
-    if (changeCityTo) {
-      setPref(prev => ({ ...prev, location: changeCityTo }));
-      setDd(today);
-      setCity(v);
-    }
+    const changeCityTo = selectCity(v);
+    setPref(prev => ({ ...prev, location: changeCityTo }));
+    setDd(today);
+    setCity(v);
   };
 
   return (
@@ -170,5 +148,3 @@ const App = (): JSX.Element => {
     </div>
   );
 };
-
-export default App;

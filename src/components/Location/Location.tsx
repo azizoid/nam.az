@@ -10,7 +10,7 @@ export type LocationProps = {
   changeDd: (dd: number) => void;
 };
 
-const Location = ({
+export const Location = ({
   location,
   tarix,
   hijri,
@@ -30,7 +30,7 @@ const Location = ({
       <h2>{location}</h2>
 
       <small className="text-sm font-normal">
-        {tarix}, {hijri}
+        {tarix}, <span className="whitespace-nowrap">{hijri}</span>
       </small>
     </div>
 
@@ -39,5 +39,3 @@ const Location = ({
     </button>
   </div>
 );
-
-export default Location;

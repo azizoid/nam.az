@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import MockDate from 'mockdate';
 
-import Location from './Location';
+import { Location } from './Location';
 
 const mockDate = Date.parse('2021-12-06T01:14:36.710Z');
 

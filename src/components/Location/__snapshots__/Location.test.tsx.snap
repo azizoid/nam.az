@@ -46,6 +46,9 @@ exports[`renders Location 1`] = `
       >
         Şənbə, 2 aprel 2022
         , 
+        <span
+          class="whitespace-nowrap"
+        />
       </small>
     </div>
     <button
