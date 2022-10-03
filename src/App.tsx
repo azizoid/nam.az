@@ -21,7 +21,7 @@ import {
 } from 'date-fns';
 import az from 'date-fns/locale/az';
 
-import cities from 'assist/cities';
+import { coordinates as cities } from 'assist/coordinates';
 
 import { PrayerProps } from 'components';
 
@@ -117,7 +117,7 @@ const App = (): JSX.Element => {
         ...prev,
         progress: progress,
         currentPrayer: currentPrayer,
-        location: cities[city],
+        location: cities[city - 1].city || cities[0].city,
         tarix: data.tarix,
         hijri: data.hijri,
       }));
@@ -125,8 +125,10 @@ const App = (): JSX.Element => {
   }, [city, dd, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
-    if (v in cities) {
-      setPref(prev => ({ ...prev, location: cities[v] }));
+    const changeCityTo =
+      cities.find(item => item.id === v)?.city || cities[0].city;
+    if (changeCityTo) {
+      setPref(prev => ({ ...prev, location: changeCityTo }));
       setDd(today);
       setCity(v);
     }
