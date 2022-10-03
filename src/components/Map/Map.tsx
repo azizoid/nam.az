@@ -7,7 +7,7 @@ import {
 } from '@react-google-maps/api';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 
-import { coordinates } from '../../assist/coordinates';
+import { coordinates } from 'assist/coordinates';
 
 const containerStyle = {
   width: '100%',
@@ -21,12 +21,13 @@ const center = {
 
 export type MapProps = {
   selectedCity: number;
-  setShowModal: (v: boolean) => void;
   onClick: (city: number) => void;
+  setShowModal: (v: boolean) => void;
+  showQibla: boolean;
 };
 
 export const Map = React.memo(
-  ({ selectedCity, onClick, setShowModal }: MapProps) => {
+  ({ selectedCity, onClick, setShowModal, showQibla }: MapProps) => {
     const { isLoaded } = useJsApiLoader({
       id: 'google-map-script',
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string,
@@ -47,10 +48,12 @@ export const Map = React.memo(
       };
       return (
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
-          <Polyline
-            path={[center, { lat: 21.4225, lng: 39.8262 }]}
-            options={{ strokeColor: 'red' }}
-          />
+          {showQibla && (
+            <Polyline
+              path={[center, { lat: 21.4225, lng: 39.8262 }]}
+              options={{ strokeColor: 'red' }}
+            />
+          )}
           {coordinates.map(({ id, city, lat, lng }) => (
             <Marker
               key={id}

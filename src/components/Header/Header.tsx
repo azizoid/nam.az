@@ -12,6 +12,8 @@ export type HeaderProps = {
 
 export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
+  const [showQibla, setShowQibla] = useState(false);
+
   return (
     <div className="bg-gray-100 py-2 px-2">
       <nav className="flex justify-between container mx-auto">
@@ -37,11 +39,17 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
           >
             Xəritə <FontAwesomeIcon icon={asd} beat transform="shrink-2" />
           </button>
-          <Modal open={showModal} onClose={() => setShowModal(false)}>
+          <Modal
+            open={showModal}
+            onClose={() => setShowModal(false)}
+            showQibla={showQibla}
+            toggleQibla={() => setShowQibla(prev => !prev)}
+          >
             <Map
               onClick={changeCity}
               setShowModal={setShowModal}
               selectedCity={city}
+              showQibla={showQibla}
             />
           </Modal>
 
