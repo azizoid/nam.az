@@ -31,5 +31,11 @@ export const coordinates: CoordinatesProps[] = [
   { id: 23, city: 'Zaqatala', lat: 41.6031, lng: 46.6383 },
   { id: 24, city: 'Şuşa', lat: 39.7537, lng: 46.7465 },
   { id: 25, city: 'Marneuli', lat: 41.4689, lng: 44.7851 },
-  { id: 26, city: 'Bolnisi', lat: 41.4494, lng: 44.5489 },
+  { id: 26, city: 'Ərdəbil', lat: 41.4494, lng: 44.5489 },
+  { id: 27, city: 'Füzuli', lat: 39.5379, lng: 47.3034 },
+  { id: 28, city: 'Cəbrayıl', lat: 39.3987, lng: 47.0245 },
+  { id: 29, city: 'Zəngilan', lat: 39.0857, lng: 46.6525 },
+  { id: 30, city: 'Qubadlı', lat: 39.3453, lng: 46.5789 },
+  { id: 31, city: 'Kəlbəcər', lat: 40.1316, lng: 46.1675 },
+  { id: 32, city: 'Laçın', lat: 39.6383, lng: 46.5461 },
 ];
