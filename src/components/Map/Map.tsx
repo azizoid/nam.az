@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   GoogleMap,
-  useJsApiLoader,
   Marker,
   Polyline,
+  useJsApiLoader,
 } from '@react-google-maps/api';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 

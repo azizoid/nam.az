@@ -1,28 +1,28 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import {
-  useLocalStorage,
-  percentageCounter,
-  selectCity,
   fetchData,
+  percentageCounter,
   ResponseDataProps,
+  selectCity,
+  useLocalStorage,
 } from 'utility';
 
 import {
+  Footer,
   Header,
-  Progress,
+  Loader,
+  Location,
   PrayerList,
   PrayerListStill,
-  Loader,
-  Footer,
-  Location,
+  Progress,
 } from 'components';
 
 import {
   format,
   formatDistanceStrict,
-  parse,
   getDayOfYear,
   isLeapYear,
+  parse,
 } from 'date-fns';
 
 import az from 'date-fns/locale/az';
