@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MdFormatQuote } from 'react-icons/md';
 
 const fetchAyah = async () => {
