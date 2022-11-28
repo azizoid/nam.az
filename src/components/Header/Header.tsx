@@ -7,11 +7,11 @@ import { Map } from 'components/Map/Map';
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
-  city: number;
+  city?: number;
 };
 
 export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(!city);
   const [showQibla, setShowQibla] = useState(false);
 
   return (
@@ -41,7 +41,7 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
           </button>
           <Modal
             open={showModal}
-            onClose={() => setShowModal(false)}
+            onClose={() => city && setShowModal(false)}
             showQibla={showQibla}
             toggleQibla={() => setShowQibla(prev => !prev)}
           >

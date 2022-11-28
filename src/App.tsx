@@ -35,7 +35,10 @@ const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 export const App = (): JSX.Element => {
-  const [city, setCity] = useLocalStorage('city', 1);
+  const [city, setCity] = useLocalStorage<number | undefined>(
+    'city',
+    undefined
+  );
 
   const [prayers, setPrayers] = useState([
     { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
@@ -60,6 +63,10 @@ export const App = (): JSX.Element => {
   const [dd, setDd] = useState(today);
 
   useEffect(() => {
+    if (!city) {
+      return;
+    }
+
     fetchData({ city, dd }).then((data: ResponseDataProps) => {
       let currentPrayer = 5;
 

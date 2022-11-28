@@ -20,7 +20,7 @@ const center = {
 };
 
 export type MapProps = {
-  selectedCity: number;
+  selectedCity?: number;
   onClick: (city: number) => void;
   setShowModal: (v: boolean) => void;
   showQibla: boolean;
