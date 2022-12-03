@@ -6,7 +6,7 @@ export const useLocalStorage = <T>(
 ): [T, React.Dispatch<T>] => {
   const [state, setState] = React.useState<T>(() => {
     const item = localStorage.getItem(storageName);
-    if (item) {
+    if (item && item !== 'undefined') {
       return JSON.parse(item);
     }
     return defaultValue;
