@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   GoogleMap,
-  Marker,
+  MarkerF as Marker,
   Polyline,
   useJsApiLoader,
 } from '@react-google-maps/api';
