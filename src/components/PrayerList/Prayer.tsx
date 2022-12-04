@@ -22,9 +22,9 @@ export const Prayer = ({
   index,
 }: PrayerContainerProps): JSX.Element => (
   <div className={`prayer alert ${classes}`}>
-    <h6>{prayer.title}</h6>
+    <h6 className="w-full text-right md:w-auto">{prayer.title}</h6>
 
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full md:w-auto">
       <h4 className="text-2xl">{prayer.time}</h4>
 
       <div className="flex justify-center">
