@@ -6,7 +6,7 @@ import path from 'path';
 export default defineConfig({
   build: {
     manifest: true,
-    outDir: '../build',
+    outDir: './build',
   },
   server: {
     port: 3000,
