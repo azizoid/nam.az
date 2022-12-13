@@ -14,9 +14,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      utility: path.resolve('src/utility'),
-      components: path.resolve('src/components'),
       assist: path.resolve('src/assist'),
+      components: path.resolve('src/components'),
+      utility: path.resolve('src/utility'),
+      ui: path.resolve('src/ui'),
     },
   },
 });

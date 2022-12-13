@@ -19,7 +19,8 @@
     "paths": {
       "assist/*": ["./assist/*"],
       "components/*": ["./components/*"],
-      "utility/*": ["./utility/*"]
+      "utility/*": ["./utility/*"],
+      "ui/*": ["./ui/*"]
     }
   },
   "include": ["src", "vite.config.ts"],
