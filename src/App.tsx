@@ -34,7 +34,7 @@ const Ayah = lazy(() => import('components/Ayah/Ayah'));
 const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
-export const App = (): JSX.Element => {
+export const App = () => {
   const [city, setCity] = useLocalStorage<number | undefined>(
     'city',
     undefined

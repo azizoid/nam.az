@@ -9,7 +9,7 @@ export type HeaderProps = {
   city?: number;
 };
 
-export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
+export const Header = ({ changeCity, city }: HeaderProps) => {
   const [showModal, setShowModal] = useState(!city);
   const [showQibla, setShowQibla] = useState(false);
 

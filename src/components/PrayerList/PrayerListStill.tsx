@@ -1,7 +1,7 @@
 import { MdBrightness7 } from 'react-icons/md';
 import { PrayerListProps } from './PrayerList';
 
-export const PrayerListStill = ({ prayers }: PrayerListProps): JSX.Element => (
+export const PrayerListStill = ({ prayers }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => (
       <div className="prayer alert text-slate-400" key={index}>

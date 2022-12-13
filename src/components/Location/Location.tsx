@@ -16,7 +16,7 @@ export const Location = ({
   hijri,
   dd,
   changeDd,
-}: LocationProps): JSX.Element => (
+}: LocationProps) => (
   <div className="flex justify-around align-middle">
     <button className="btn text-blue-300" onClick={() => changeDd(dd - 1)}>
       <MdNavigateBefore />

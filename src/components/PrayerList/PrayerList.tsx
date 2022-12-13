@@ -6,10 +6,7 @@ export type PrayerListProps = {
   progress?: number;
 };
 
-export const PrayerList = ({
-  prayers,
-  currentPrayer,
-}: PrayerListProps): JSX.Element => (
+export const PrayerList = ({ prayers, currentPrayer }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => {
       let isCur = false;

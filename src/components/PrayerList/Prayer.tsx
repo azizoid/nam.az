@@ -20,7 +20,7 @@ export const Prayer = ({
   classes,
   current,
   index,
-}: PrayerContainerProps): JSX.Element => (
+}: PrayerContainerProps) => (
   <div className={`prayer alert ${classes}`}>
     <h6 className="w-full text-right md:w-auto">{prayer.title}</h6>
 

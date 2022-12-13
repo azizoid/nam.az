@@ -16,7 +16,7 @@ export type AyahApiProps = {
   translator: number;
 };
 
-const Ayah = (): JSX.Element => {
+const Ayah = () => {
   const [randomAyah, setRandomAyah] = useState<AyahApiProps>({
     id: 'defaultID',
     soorah: 40,
