@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot as asd } from '@fortawesome/free-solid-svg-icons';
 
-import { Modal } from 'components/Modal/Modal';
-import { Map } from 'components/Map/Map';
+const MapModal = lazy(() => import('ui/MapModal/MapModal'));
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
@@ -39,19 +38,15 @@ export const Header = ({ changeCity, city }: HeaderProps): JSX.Element => {
           >
             Xəritə <FontAwesomeIcon icon={asd} beat transform="shrink-2" />
           </button>
-          <Modal
+          <MapModal
             open={showModal}
             onClose={() => city && setShowModal(false)}
             showQibla={showQibla}
             toggleQibla={() => setShowQibla(prev => !prev)}
-          >
-            <Map
-              onClick={changeCity}
-              setShowModal={setShowModal}
-              selectedCity={city}
-              showQibla={showQibla}
-            />
-          </Modal>
+            onClick={changeCity}
+            setShowModal={setShowModal}
+            selectedCity={city}
+          />
 
           <small>
             Bakı, Gəncə, <u>Şuşa</u> və digər
