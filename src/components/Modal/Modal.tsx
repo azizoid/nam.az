@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useCallback, useEffect } from 'react';
+import { ReactElement, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ModalProps = {
@@ -6,15 +6,17 @@ export type ModalProps = {
   onClose: () => void;
   showQibla: boolean;
   toggleQibla: () => void;
-} & PropsWithChildren;
+  children?: ReactElement;
+};
 
-export const Modal: FC<ModalProps> = ({
+export const Modal = ({
   open,
   onClose,
   showQibla,
   toggleQibla,
+
   children,
-}) => {
+}: ModalProps) => {
   const keyPress = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape' && open) {
@@ -48,10 +50,13 @@ export const Modal: FC<ModalProps> = ({
             type="button"
             onClick={onClose}
             className="btn text-lg text-right"
+            title="Şəhəri seç və bağla"
           >
             Bağla [ x ]
           </button>
+
           {children}
+
           <small className={'mt-2'}>
             * Namaz vaxtlarını görmək üçün yaşadığınız şəhər və ya ən yaxın
             şəhəri seçin
