@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useReducer, useState } from 'react';
 import {
   fetchData,
   percentageCounter,
@@ -24,6 +24,7 @@ import { Progress } from './Progress/Progress';
 import type { PrayerProps } from './PrayerList/Prayer';
 import { PrayerList } from './PrayerList/PrayerList';
 import { PrayerListStill } from './PrayerList/PrayerListStill';
+import { AppInitialState, AppReducer } from './App.reducer';
 
 const Ayah = lazy(() => import('./Ayah/Ayah'));
 
@@ -35,6 +36,8 @@ export const App = () => {
     'city',
     undefined
   );
+
+  const [state, dispatch] = useReducer(AppReducer, AppInitialState);
 
   const [prayers, setPrayers] = useState([
     { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
@@ -98,14 +101,16 @@ export const App = () => {
           });
         }
 
-        setPref(prev => ({
-          ...prev,
-          progress: progress,
-          currentPrayer: currentPrayer,
-          location: selectCity(city),
-          tarix: data.tarix,
-          hijri: data.hijri,
-        }));
+        dispatch({
+          type: 'init',
+          payload: {
+            progress,
+            currentPrayer,
+            location: selectCity(state.city),
+            tarix: data.tarix,
+            hijri: data.hijri,
+          },
+        });
       })
       .catch(error => {
         // console.error(error);
@@ -113,11 +118,12 @@ export const App = () => {
   }, [city, dd, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
-    const changeCityTo = selectCity(v);
-    setPref(prev => ({ ...prev, location: changeCityTo }));
-    setDd(today);
-    setCity(v);
+    dispatch({ type: 'location', payload: v });
   };
+
+  useEffect(() => {
+    console.table(state);
+  }, [state]);
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
@@ -130,7 +136,9 @@ export const App = () => {
             tarix={pref.tarix}
             hijri={pref.hijri}
             dd={dd}
-            changeDd={(v: number) => setDd(v)}
+            changeDd={(day: number) =>
+              dispatch({ type: 'dayOfTheYear', payload: day })
+            }
           />
 
           <Progress bar={pref.progress} />
