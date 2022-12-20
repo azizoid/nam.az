@@ -1,6 +1,6 @@
 import { differenceInSeconds, parse } from 'date-fns';
 
-export type PercentageCouter = {
+type PercentageCouterProps = {
   currentPrayer: number;
   apiPrayers: string[];
   nowis: string;
@@ -12,7 +12,7 @@ export const percentageCounter = ({
   apiPrayers,
   nowis,
   newDate,
-}: PercentageCouter): number => {
+}: PercentageCouterProps): number => {
   const untillNow = differenceInSeconds(
     parse(nowis, 'HH:mm', newDate),
     parse(apiPrayers[currentPrayer], 'HH:mm', newDate)

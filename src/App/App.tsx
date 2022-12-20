@@ -7,7 +7,7 @@ import {
   useLocalStorage,
 } from 'utility';
 
-import { Footer, Header, Loader } from 'components';
+import { Footer, Header, Loader } from 'ui';
 
 import {
   format,

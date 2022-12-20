@@ -15,9 +15,8 @@ export default defineConfig({
   resolve: {
     alias: {
       assist: path.resolve('src/assist'),
-      components: path.resolve('src/components'),
-      utility: path.resolve('src/utility'),
-      ui: path.resolve('src/ui'),
+      utility: path.resolve('src/components/utility'),
+      ui: path.resolve('src/components/ui'),
     },
   },
 });

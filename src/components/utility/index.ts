@@ -1,7 +1,8 @@
-export * from './percentageCounter/percentageCounter';
-export * from './numberSuffixAz/numberSuffixAz';
-export * from './selectCity/selectCity';
-export * from './fetchData/fetchData';
+export { percentageCounter } from './percentageCounter/percentageCounter';
+export { numberSuffixAz } from './numberSuffixAz/numberSuffixAz';
+export { selectCity } from './selectCity/selectCity';
+export { fetchData } from './fetchData/fetchData';
+export type { ResponseDataProps } from './fetchData/fetchData';
 
 // Hooks
-export * from './useLocalStorage/useLocalStorage';
+export { useLocalStorage } from './useLocalStorage/useLocalStorage';

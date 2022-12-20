@@ -18,9 +18,9 @@
     "baseUrl": "src",
     "paths": {
       "assist/*": ["./assist/*"],
-      "components/*": ["./components/*"],
-      "utility/*": ["./utility/*"],
-      "ui/*": ["./ui/*"]
+      "utility": ["./components/utility"],
+      "ui": ["./components/ui"],
+      "ui/*": ["./components/ui/*"]
     }
   },
   "include": ["src", "vite.config.ts"],

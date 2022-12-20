@@ -1,4 +1,4 @@
-import { Map, MapProps, Modal, ModalProps } from 'components';
+import { Map, MapProps, Modal, ModalProps } from 'ui';
 
 export const MapModal = ({
   open,
