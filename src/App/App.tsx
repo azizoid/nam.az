@@ -7,15 +7,7 @@ import {
   useLocalStorage,
 } from 'utility';
 
-import {
-  Footer,
-  Header,
-  Loader,
-  Location,
-  PrayerList,
-  PrayerListStill,
-  Progress,
-} from 'components';
+import { Footer, Header, Loader } from 'components';
 
 import {
   format,
@@ -27,9 +19,13 @@ import {
 
 import az from 'date-fns/locale/az';
 
-import { PrayerProps } from 'components';
+import { Location } from './Location/Location';
+import { Progress } from './Progress/Progress';
+import type { PrayerProps } from './PrayerList/Prayer';
+import { PrayerList } from './PrayerList/PrayerList';
+import { PrayerListStill } from './PrayerList/PrayerListStill';
 
-const Ayah = lazy(() => import('components/Ayah/Ayah'));
+const Ayah = lazy(() => import('./Ayah/Ayah'));
 
 const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);

@@ -2,7 +2,7 @@ import { lazy, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot as asd } from '@fortawesome/free-solid-svg-icons';
 
-const MapModal = lazy(() => import('ui/MapModal/MapModal'));
+const MapModal = lazy(() => import('components/MapModal/MapModal'));
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
