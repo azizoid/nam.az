@@ -28,7 +28,11 @@ const Ayah = () => {
   });
 
   useEffect(() => {
-    fetchAyah().then(({ out }) => setRandomAyah(out));
+    fetchAyah()
+      .then(({ out }) => setRandomAyah(out))
+      .catch(error => {
+        // console.error(error);
+      });
   }, []);
 
   return (

@@ -63,49 +63,53 @@ export const App = () => {
       return;
     }
 
-    fetchData({ city, dd }).then((data: ResponseDataProps) => {
-      let currentPrayer = 5;
+    fetchData({ city, dd })
+      .then((data: ResponseDataProps) => {
+        let currentPrayer = 5;
 
-      setPrayers(prev =>
-        prev.map((prayer: PrayerProps, i) => {
-          prayer.time = data.prayers[i];
+        setPrayers(prev =>
+          prev.map((prayer: PrayerProps, i) => {
+            prayer.time = data.prayers[i];
 
-          prayer.ago = formatDistanceStrict(
+            prayer.ago = formatDistanceStrict(
+              newDate,
+              parse(data.prayers[i], 'HH:mm', newDate),
+              { locale: az, addSuffix: true }
+            );
+
+            if (data.prayers[i] < pref.nowis) {
+              currentPrayer = i;
+            }
+
+            return prayer;
+          })
+        );
+
+        let progress = 0;
+
+        if (pref.today !== data.dd) {
+          currentPrayer = -1;
+        } else {
+          progress = percentageCounter({
+            currentPrayer,
+            apiPrayers: data.prayers,
+            nowis: pref.nowis,
             newDate,
-            parse(data.prayers[i], 'HH:mm', newDate),
-            { locale: az, addSuffix: true }
-          );
+          });
+        }
 
-          if (data.prayers[i] < pref.nowis) {
-            currentPrayer = i;
-          }
-
-          return prayer;
-        })
-      );
-
-      let progress = 0;
-
-      if (pref.today !== data.dd) {
-        currentPrayer = -1;
-      } else {
-        progress = percentageCounter({
-          currentPrayer,
-          apiPrayers: data.prayers,
-          nowis: pref.nowis,
-          newDate,
-        });
-      }
-
-      setPref(prev => ({
-        ...prev,
-        progress: progress,
-        currentPrayer: currentPrayer,
-        location: selectCity(city),
-        tarix: data.tarix,
-        hijri: data.hijri,
-      }));
-    });
+        setPref(prev => ({
+          ...prev,
+          progress: progress,
+          currentPrayer: currentPrayer,
+          location: selectCity(city),
+          tarix: data.tarix,
+          hijri: data.hijri,
+        }));
+      })
+      .catch(error => {
+        // console.error(error);
+      });
   }, [city, dd, pref.nowis, pref.today]);
 
   const changeCity = (v: number): void => {
