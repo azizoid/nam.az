@@ -1,19 +1,26 @@
-import React from 'react';
-
 export const useLocalStorage = <T>(
   storageName: string,
   defaultValue: T
-): [T, React.Dispatch<T>] => {
-  const [state, setState] = React.useState<T>(() => {
-    const item = localStorage.getItem(storageName);
-    if (item && item !== 'undefined') {
-      return JSON.parse(item);
+): [T, (newValue: T) => void] => {
+  try {
+    const serializedValue = localStorage.getItem(storageName);
+    if (serializedValue === null) {
+      localStorage.setItem(storageName, JSON.stringify(defaultValue));
+      return [
+        defaultValue,
+        newValue => localStorage.setItem(storageName, JSON.stringify(newValue)),
+      ];
     }
-    return defaultValue;
-  });
-  React.useEffect(() => {
-    localStorage.setItem(storageName, JSON.stringify(state));
-  }, [storageName, state]);
-
-  return [state, setState];
+    return [
+      JSON.parse(serializedValue),
+      newValue => localStorage.setItem(storageName, JSON.stringify(newValue)),
+    ];
+  } catch (error) {
+    console.error(error);
+    localStorage.setItem(storageName, JSON.stringify(defaultValue));
+    return [
+      defaultValue,
+      newValue => localStorage.setItem(storageName, JSON.stringify(newValue)),
+    ];
+  }
 };
