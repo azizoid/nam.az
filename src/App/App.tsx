@@ -10,7 +10,6 @@ import {
 import { Footer, Header, Loader } from 'ui';
 
 import {
-  format,
   formatDistanceStrict,
   getDayOfYear,
   isLeapYear,
@@ -32,10 +31,9 @@ const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 export const App = () => {
-  const [city, setCity] = useLocalStorage<number | undefined>(
-    'city',
-    undefined
-  );
+  const [localStorageCity, setLocalStorageCity] = useLocalStorage<
+    number | undefined
+  >('city', undefined);
 
   const [state, dispatch] = useReducer(AppReducer, AppInitialState);
 
@@ -48,25 +46,18 @@ export const App = () => {
     { id: 6, time: '-:-', rakat: 4, ago: '', title: 'İşa namazı' },
   ]);
 
-  const [pref, setPref] = useState({
-    location: 'Bakı',
-    currentPrayer: -1,
-    nowis: format(newDate, 'HH:mm'),
-    tarix: '',
-    hijri: '',
-    today: today,
-    progress: 0,
-    ramadan: 0,
-  });
-
-  const [dd, setDd] = useState(today);
+  useEffect(() => {
+    if (state.city) {
+      setLocalStorageCity(state.city);
+    }
+  }, [state.city]);
 
   useEffect(() => {
-    if (!city) {
+    if (!localStorageCity) {
       return;
     }
 
-    fetchData({ city, dd })
+    fetchData({ city: localStorageCity, dd: state.today })
       .then((data: ResponseDataProps) => {
         let currentPrayer = 5;
 
@@ -80,7 +71,7 @@ export const App = () => {
               { locale: az, addSuffix: true }
             );
 
-            if (data.prayers[i] < pref.nowis) {
+            if (data.prayers[i] < state.nowis) {
               currentPrayer = i;
             }
 
@@ -90,13 +81,13 @@ export const App = () => {
 
         let progress = 0;
 
-        if (pref.today !== data.dd) {
+        if (today !== data.dd) {
           currentPrayer = -1;
         } else {
           progress = percentageCounter({
             currentPrayer,
             apiPrayers: data.prayers,
-            nowis: pref.nowis,
+            nowis: state.nowis,
             newDate,
           });
         }
@@ -106,7 +97,7 @@ export const App = () => {
           payload: {
             progress,
             currentPrayer,
-            location: selectCity(state.city),
+            location: selectCity(data.city),
             tarix: data.tarix,
             hijri: data.hijri,
           },
@@ -115,40 +106,40 @@ export const App = () => {
       .catch(error => {
         // console.error(error);
       });
-  }, [city, dd, pref.nowis, pref.today]);
+  }, [localStorageCity, state.today]);
 
   const changeCity = (v: number): void => {
     dispatch({ type: 'location', payload: v });
   };
 
-  useEffect(() => {
-    console.table(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.table(state);
+  // }, [state]);
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Header changeCity={changeCity} city={city} />
+      <Header changeCity={changeCity} city={localStorageCity} />
 
       <div className="align-middle container mx-auto my-10 pb-2">
         <Suspense fallback={<Loader />}>
           <Location
-            location={pref.location}
-            tarix={pref.tarix}
-            hijri={pref.hijri}
-            dd={dd}
+            location={state.location}
+            tarix={state.tarix}
+            hijri={state.hijri}
+            dd={state.today}
             changeDd={(day: number) =>
               dispatch({ type: 'dayOfTheYear', payload: day })
             }
           />
 
-          <Progress bar={pref.progress} />
+          <Progress bar={state.progress} />
         </Suspense>
 
-        {pref.today === dd ? (
+        {state.today === today ? (
           <PrayerList
             prayers={prayers}
-            currentPrayer={pref.currentPrayer}
-            progress={pref.progress}
+            currentPrayer={state.currentPrayer}
+            progress={state.progress}
           />
         ) : (
           <PrayerListStill prayers={prayers} />

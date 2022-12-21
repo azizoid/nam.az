@@ -5,7 +5,7 @@ const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 export type StateProps = {
-  city: number;
+  city?: number;
   location: string;
   currentPrayer: number;
   nowis: string;
