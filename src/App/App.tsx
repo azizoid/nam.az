@@ -4,7 +4,6 @@ import {
   percentageCounter,
   ResponseDataProps,
   selectCity,
-  useLocalStorage,
 } from 'utility';
 
 import { Footer, Header, Loader } from 'ui';
@@ -31,10 +30,6 @@ const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 export const App = () => {
-  const [localStorageCity, setLocalStorageCity] = useLocalStorage<
-    number | undefined
-  >('city', undefined);
-
   const [state, dispatch] = useReducer(AppReducer, AppInitialState);
 
   const [prayers, setPrayers] = useState([
@@ -47,17 +42,11 @@ export const App = () => {
   ]);
 
   useEffect(() => {
-    if (state.city) {
-      setLocalStorageCity(state.city);
-    }
-  }, [state.city]);
-
-  useEffect(() => {
-    if (!localStorageCity) {
+    if (!state.city) {
       return;
     }
 
-    fetchData({ city: localStorageCity, dd: state.today })
+    fetchData({ city: state.city, dd: state.today })
       .then((data: ResponseDataProps) => {
         let currentPrayer = 5;
 
@@ -106,19 +95,19 @@ export const App = () => {
       .catch(error => {
         // console.error(error);
       });
-  }, [localStorageCity, state.today]);
+  }, [state.city, state.today]);
 
-  const changeCity = (v: number): void => {
-    dispatch({ type: 'location', payload: v });
+  const changeCity = (newCity: number) => {
+    dispatch({ type: 'location', payload: newCity });
   };
 
-  // useEffect(() => {
-  //   console.table(state);
-  // }, [state]);
+  useEffect(() => {
+    console.table(state);
+  }, [state]);
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Header changeCity={changeCity} city={localStorageCity} />
+      <Header changeCity={changeCity} city={state.city} />
 
       <div className="align-middle container mx-auto my-10 pb-2">
         <Suspense fallback={<Loader />}>

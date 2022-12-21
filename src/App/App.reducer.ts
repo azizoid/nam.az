@@ -1,11 +1,13 @@
 import { format, getDayOfYear, isLeapYear } from 'date-fns';
-import { selectCity } from 'utility';
+import { selectCity, useLocalStorage } from 'utility';
 
 const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
+const [readCity, writeCity] = useLocalStorage<number>('city', 0);
+
 export type StateProps = {
-  city?: number;
+  city: number;
   location: string;
   currentPrayer: number;
   nowis: string;
@@ -17,8 +19,8 @@ export type StateProps = {
 };
 
 export const AppInitialState: StateProps = {
-  city: 1,
-  location: 'Bakı',
+  city: readCity,
+  location: '',
   currentPrayer: 5,
   nowis: format(newDate, 'HH:mm'),
   tarix: '',
@@ -29,7 +31,7 @@ export const AppInitialState: StateProps = {
 };
 
 type ActionProps = {
-  type: 'init' | 'location' | 'dayOfTheYear' | 'chaneCity'; //| 'currentPrayer' | 'hijri' | 'tarix' | 'progress' ;
+  type: 'init' | 'location' | 'dayOfTheYear';
   payload: Partial<StateProps> | string | number;
 };
 
@@ -42,23 +44,20 @@ export const AppReducer = (state: StateProps, action: ActionProps) => {
         ...(typeof action.payload === 'object' && action.payload),
       };
     case 'location':
-      const changeCityTo = selectCity(Number(action.payload));
+      const cityToNumber = Number(action.payload);
+
+      writeCity(cityToNumber);
+
+      const changeCityTo = selectCity(cityToNumber);
+
       return {
         ...state,
         location: String(changeCityTo),
-        city: Number(action.payload),
+        city: cityToNumber,
         today,
       };
     case 'dayOfTheYear':
       return { ...state, today: Number(action.payload) };
-    // case 'currentPrayer':
-    //   return { ...state, currentPrayer: Number(action.payload) };
-    // case 'hijri':
-    //   return { ...state, hijri: String(action.payload) };
-    // case 'tarix':
-    //   return { ...state, tarix: String(action.payload) };
-    // case 'progress':
-    //   return { ...state, progress: Number(action.payload) };
 
     default:
       throw new Error();

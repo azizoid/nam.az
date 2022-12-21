@@ -6,7 +6,7 @@ const MapModal = lazy(() => import('ui/MapModal/MapModal'));
 
 export type HeaderProps = {
   changeCity: (city: number) => void;
-  city?: number;
+  city: number;
 };
 
 export const Header = ({ changeCity, city }: HeaderProps) => {
@@ -40,7 +40,7 @@ export const Header = ({ changeCity, city }: HeaderProps) => {
           </button>
           <MapModal
             open={showModal}
-            onClose={() => city && setShowModal(false)}
+            onClose={() => !!city && setShowModal(false)}
             showQibla={showQibla}
             toggleQibla={() => setShowQibla(prev => !prev)}
             onClick={changeCity}
