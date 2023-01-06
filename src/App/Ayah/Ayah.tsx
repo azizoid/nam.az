@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import { useFetch } from 'usehooks-ts';
 import { MdFormatQuote } from 'react-icons/md';
-
-const fetchAyah = async () => {
-  const response = await fetch('https://quran.az/api/random');
-  const json = await response.json();
-  return json;
-};
 
 export type AyahApiProps = {
   id: string;
@@ -16,24 +11,26 @@ export type AyahApiProps = {
   translator: number;
 };
 
-const Ayah = () => {
-  const [randomAyah, setRandomAyah] = useState<AyahApiProps>({
-    id: 'defaultID',
-    soorah: 40,
-    ayah: 60,
-    content:
-      "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
-    content_latinized: '',
-    translator: 4,
-  });
+export const Ayah = () => {
+  const { data } = useFetch<{ out: AyahApiProps; success: boolean }>(
+    'https://quran.az/api/random'
+  );
 
-  useEffect(() => {
-    fetchAyah()
-      .then(({ out }) => setRandomAyah(out))
-      .catch(error => {
-        // console.error(error);
-      });
-  }, []);
+  const randomAyah = useMemo<AyahApiProps>(() => {
+    if (data) {
+      return data.out;
+    }
+
+    return {
+      id: 'defaultID',
+      soorah: 40,
+      ayah: 60,
+      content:
+        "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
+      content_latinized: '',
+      translator: 4,
+    };
+  }, [data]);
 
   return (
     <blockquote className="md:block flex flex-col space-y-2 w-4/5 md:w-2/3 mx-auto p-4 my-4 italic border-l-2 text-neutral-600 border-green-400 quote">
