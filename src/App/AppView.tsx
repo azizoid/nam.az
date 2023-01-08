@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useReducer } from 'react';
 import { getDayOfYear, isLeapYear } from 'date-fns';
 
-import { generatePrayers, ResponseDataProps, selectCity } from 'utility';
+import { usePrayersData, ResponseDataProps, selectCity } from 'utility';
 
 import { Loader } from 'ui';
 
@@ -21,7 +21,7 @@ type AppViewProps = {
 export const AppView = ({ data }: AppViewProps) => {
   const [state, dispatch] = useReducer(AppReducer, AppInitialState);
 
-  const { currentPrayer, prayers, progress } = generatePrayers({
+  const { currentPrayer, prayers, progress } = usePrayersData({
     apiPrayers: data.prayers,
     nowis: state.nowis,
     newDate,

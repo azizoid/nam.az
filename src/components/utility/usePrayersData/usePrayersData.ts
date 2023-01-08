@@ -13,7 +13,7 @@ const prayersTemplate = [
   { id: 6, time: '-:-', rakat: 4, ago: '', title: 'İşa namazı' },
 ];
 
-type GeneratePrayersProps = {
+type PrayersDataProps = {
   apiPrayers: string[];
   nowis: string;
   newDate: Date;
@@ -21,19 +21,19 @@ type GeneratePrayersProps = {
   dataDd: number;
 };
 
-type GeneratePrayersReturn = {
+type PrayersDataReturn = {
   prayers: PrayerProps[];
   currentPrayer: number;
   progress: number;
 };
 
-export const generatePrayers = ({
+export const usePrayersData = ({
   apiPrayers,
   nowis,
   newDate,
   today,
   dataDd,
-}: GeneratePrayersProps): GeneratePrayersReturn => {
+}: PrayersDataProps): PrayersDataReturn => {
   let currentPrayer = 5;
 
   const prayers = prayersTemplate.map((prayer, i) => {
