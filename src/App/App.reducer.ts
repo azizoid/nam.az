@@ -6,7 +6,7 @@ const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 const [readCity, writeCity] = useLocalStorage<number>('city', 0);
 
-export type StateProps = {
+type StateProps = {
   city: number;
   location: string;
   currentPrayer: number;
@@ -16,6 +16,15 @@ export type StateProps = {
   today: number;
   progress: number;
   ramadan: number;
+  prayers: ApiPrayerProps[];
+};
+
+type ApiPrayerProps = {
+  id: number;
+  time: string;
+  rakat: number;
+  ago: string;
+  title: string;
 };
 
 export const AppInitialState: StateProps = {
@@ -28,6 +37,14 @@ export const AppInitialState: StateProps = {
   today: today,
   progress: 0,
   ramadan: 0,
+  prayers: [
+    { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
+    { id: 2, time: '-:-', rakat: 0, ago: '', title: 'Gün çıxır' },
+    { id: 3, time: '-:-', rakat: 4, ago: '', title: 'Zöhr namazı' },
+    { id: 4, time: '-:-', rakat: 4, ago: '', title: 'Əsr namazı' },
+    { id: 5, time: '-:-', rakat: 3, ago: '', title: 'Məğrib namazı' },
+    { id: 6, time: '-:-', rakat: 4, ago: '', title: 'İşa namazı' },
+  ],
 };
 
 type ActionProps = {
