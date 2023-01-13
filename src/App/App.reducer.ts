@@ -1,4 +1,5 @@
 import { format, getDayOfYear, isLeapYear } from 'date-fns';
+// import { useLocalStorage } from 'usehooks-ts';
 import { selectCity, useLocalStorage } from 'utility';
 
 const newDate = new Date();
@@ -6,7 +7,7 @@ const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
 
 const [readCity, writeCity] = useLocalStorage<number>('city', 0);
 
-type StateProps = {
+export type StateProps = {
   city: number;
   location: string;
   currentPrayer: number;
@@ -47,7 +48,7 @@ export const AppInitialState: StateProps = {
   ],
 };
 
-type ActionProps = {
+export type ActionProps = {
   type: 'init' | 'location' | 'dayOfTheYear';
   payload: Partial<StateProps> | string | number;
 };
@@ -73,8 +74,9 @@ export const AppReducer = (state: StateProps, action: ActionProps) => {
         city: cityToNumber,
         today,
       };
-    case 'dayOfTheYear':
-      return { ...state, today: Number(action.payload) };
+    case 'dayOfTheYear': {
+      return { ...state, today: Number(action.payload), progress: 0 };
+    }
 
     default:
       throw new Error();
