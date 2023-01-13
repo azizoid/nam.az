@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useReducer } from 'react';
+import { Suspense, useContext, useEffect, useReducer } from 'react';
 import { getDayOfYear, isLeapYear } from 'date-fns';
 
 import { usePrayersData, ResponseDataProps, selectCity } from 'utility';
@@ -9,7 +9,7 @@ import { Location } from './Location/Location';
 import { Progress } from './Progress/Progress';
 import { PrayerList } from './PrayerList/PrayerList';
 import { PrayerListStill } from './PrayerList/PrayerListStill';
-import { AppInitialState, AppReducer } from './App.reducer';
+import { MyContext, MyContextValue } from './App.store';
 
 const newDate = new Date();
 const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
@@ -19,7 +19,7 @@ type AppViewProps = {
 };
 
 export const AppView = ({ data }: AppViewProps) => {
-  const [state, dispatch] = useReducer(AppReducer, AppInitialState);
+  const { state, dispatch } = useContext<MyContextValue>(MyContext);
 
   const { currentPrayer, prayers, progress } = usePrayersData({
     apiPrayers: data.prayers,
