@@ -1,24 +1,20 @@
-import { lazy, Suspense, useReducer } from 'react';
+import { lazy, Suspense, useContext, useEffect, useReducer } from 'react';
 import { useFetch } from 'usehooks-ts';
 import { ResponseDataProps } from 'utility';
 
 import { Footer, Header, Loader } from 'ui';
 
 import { AppView } from './AppView';
-import { AppInitialState, AppReducer } from './App.reducer';
+import { MyContext, MyContextValue } from './App.store';
 
 const Ayah = lazy(() => import('./Ayah/Ayah'));
 
 export const App = () => {
-  const [state, dispatch] = useReducer(AppReducer, AppInitialState);
+  const { state, dispatch } = useContext<MyContextValue>(MyContext);
 
   const { data } = useFetch<ResponseDataProps>(
-    `http://localhost:4000/api/${state.city}/${state.today}`
+    `https://nam.az/api/${state.city}/${state.today}`
   );
-
-  if (!data) {
-    return <Loader />;
-  }
 
   const changeCity = (newCity: number) => {
     dispatch({ type: 'location', payload: newCity });
@@ -28,7 +24,8 @@ export const App = () => {
     <div className="min-h-screen flex flex-col justify-between">
       <Header changeCity={changeCity} city={state.city} />
 
-      <AppView data={data} />
+      {!data && <Loader />}
+      {data && <AppView data={data} />}
 
       <Suspense fallback={<Loader />}>
         <Ayah />
