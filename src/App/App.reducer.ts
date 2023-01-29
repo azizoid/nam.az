@@ -1,9 +1,8 @@
 import { format, getDayOfYear, isLeapYear } from 'date-fns';
-// import { useLocalStorage } from 'usehooks-ts';
 import { selectCity, useLocalStorage } from 'utility';
 
 const newDate = new Date();
-const today = getDayOfYear(newDate) + (isLeapYear(newDate) ? 0 : 1);
+const today = getDayOfYear(newDate); //+ (isLeapYear(newDate) ? 0 : 1);
 
 const [readCity, writeCity] = useLocalStorage<number>('city', 0);
 

@@ -19,9 +19,9 @@ export const MyContextProvider: FC<MyContextProviderProps> = ({
     AppInitialState
   );
 
-  useEffect(() => {
-    console.log('MyContextProvider', state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.table(state);
+  // }, [state]);
 
   return (
     <MyContext.Provider value={{ state, dispatch }}>
