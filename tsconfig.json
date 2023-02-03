@@ -19,6 +19,7 @@
     "paths": {
       "assist/*": ["./assist/*"],
       "utility": ["./components/utility"],
+      "utility/*": ["./components/utility/*"],
       "ui": ["./components/ui"],
       "ui/*": ["./components/ui/*"]
     }
