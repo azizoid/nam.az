@@ -2,7 +2,9 @@ import { format, getDayOfYear, isLeapYear } from 'date-fns';
 import { selectCity, useLocalStorage } from 'utility';
 
 const newDate = new Date();
-const today = getDayOfYear(newDate); //+ (isLeapYear(newDate) ? 0 : 1);
+const dayOfYear = getDayOfYear(newDate);
+export const today =
+  dayOfYear + (dayOfYear > 59 && isLeapYear(newDate) ? 1 : 0);
 
 const [readCity, writeCity] = useLocalStorage<number>('city', 0);
 
