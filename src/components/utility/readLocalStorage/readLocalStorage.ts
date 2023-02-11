@@ -1,4 +1,4 @@
-export const useLocalStorage = <T>(
+export const readLocalStorage = <T>(
   storageName: string,
   defaultValue: T
 ): [T, (newValue: T) => void] => {

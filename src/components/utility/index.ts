@@ -6,4 +6,4 @@ export type { ResponseDataProps } from './fetchData/fetchData';
 export { usePrayersData } from './usePrayersData/usePrayersData';
 
 // Hooks
-export { useLocalStorage } from './useLocalStorage/useLocalStorage';
+export { readLocalStorage } from './readLocalStorage/readLocalStorage';
