@@ -1,4 +1,4 @@
-import { Suspense, useContext, useEffect } from 'react';
+import { Suspense, useContext } from 'react';
 
 import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
@@ -10,6 +10,7 @@ import { PrayerList } from './PrayerList/PrayerList';
 import { PrayerListStill } from './PrayerList/PrayerListStill';
 import { MyContext, MyContextValue } from './App.store';
 import { today } from './App.reducer';
+import { useEffectOnce } from 'usehooks-ts';
 
 type AppViewProps = {
   data: ResponseDataProps;
@@ -26,7 +27,7 @@ export const AppView = ({ data }: AppViewProps) => {
     dataDd: data.dd,
   });
 
-  useEffect(() => {
+  useEffectOnce(() => {
     dispatch({
       type: 'init',
       payload: {
@@ -38,7 +39,7 @@ export const AppView = ({ data }: AppViewProps) => {
         prayers,
       },
     });
-  }, [data]);
+  });
 
   return (
     <div className="align-middle container mx-auto my-10 pb-2">
