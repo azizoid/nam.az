@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext, useEffect, useReducer } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import { useFetch } from 'usehooks-ts';
 import { ResponseDataProps } from 'utility';
 

@@ -1,4 +1,4 @@
-import { FC, ReactNode, Reducer, useEffect, useReducer } from 'react';
+import { FC, ReactNode, Reducer, useReducer } from 'react';
 import { MyContext } from '../App/App.store';
 import {
   ActionProps,

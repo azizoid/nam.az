@@ -1,6 +1,6 @@
-import { Suspense, useContext, useEffect, useReducer } from 'react';
+import { Suspense, useContext, useEffect } from 'react';
 
-import { usePrayersData, ResponseDataProps, selectCity } from 'utility';
+import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
 import { Loader } from 'ui';
 

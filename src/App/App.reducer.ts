@@ -1,12 +1,12 @@
 import { format, getDayOfYear, isLeapYear } from 'date-fns';
-import { selectCity, useLocalStorage } from 'utility';
+import { readLocalStorage, selectCity } from 'utility';
 
 const newDate = new Date();
 const dayOfYear = getDayOfYear(newDate);
 export const today =
   dayOfYear + (dayOfYear > 59 && isLeapYear(newDate) ? 1 : 0);
 
-const [readCity, writeCity] = useLocalStorage<number>('city', 0);
+const [readCity, writeCity] = readLocalStorage<number>('city', 0);
 
 export type StateProps = {
   city: number;
