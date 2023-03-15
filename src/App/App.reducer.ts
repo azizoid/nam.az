@@ -4,7 +4,7 @@ import { readLocalStorage, selectCity } from 'utility';
 const newDate = new Date();
 const dayOfYear = getDayOfYear(newDate);
 export const today =
-  dayOfYear + (dayOfYear > 59 && isLeapYear(newDate) ? 1 : 0);
+  dayOfYear + (dayOfYear > 59 ? (isLeapYear(newDate) ? 1 : 2) : 0);
 
 const [readCity, writeCity] = readLocalStorage<number>('city', 0);
 

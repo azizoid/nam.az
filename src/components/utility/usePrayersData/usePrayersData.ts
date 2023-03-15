@@ -49,9 +49,9 @@ export const usePrayersData = ({
       currentPrayer = i;
     }
 
-    if (today !== dataDd) {
-      currentPrayer = -1;
-    }
+    // if (today !== dataDd) {
+    //   currentPrayer = -1;
+    // }
 
     return prayer;
   });
