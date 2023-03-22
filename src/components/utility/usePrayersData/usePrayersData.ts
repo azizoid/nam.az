@@ -40,8 +40,8 @@ export const usePrayersData = ({
     prayer.time = apiPrayers[i];
 
     prayer.ago = formatDistanceStrict(
-      newDate,
       parse(apiPrayers[i], 'HH:mm', newDate),
+      newDate,
       { locale: az, addSuffix: true }
     );
 
