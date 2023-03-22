@@ -10,7 +10,7 @@ export type HeaderProps = {
 };
 
 export const Header = ({ changeCity, city }: HeaderProps) => {
-  const [showModal, setShowModal] = useState(!city);
+  const [showModal, setShowModal] = useState(false);
   const [showQibla, setShowQibla] = useState(false);
 
   return (

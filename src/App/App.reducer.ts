@@ -6,7 +6,7 @@ const dayOfYear = getDayOfYear(newDate);
 export const today =
   dayOfYear + (dayOfYear > 59 ? (isLeapYear(newDate) ? 1 : 2) : 0);
 
-const [readCity, writeCity] = readLocalStorage<number>('city', 0);
+const [readCity, writeCity] = readLocalStorage<number>('city', 1);
 
 export type StateProps = {
   city: number;
