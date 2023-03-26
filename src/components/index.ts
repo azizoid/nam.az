@@ -5,4 +5,5 @@ export type { HeaderProps } from './Header/Header';
 
 export { Loader } from './Loader/Loader';
 
+export { Layout } from './Layout/Layout'
 
