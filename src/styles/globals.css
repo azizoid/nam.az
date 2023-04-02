@@ -4,19 +4,19 @@
 
 @layer components {
   .prayer {
-    @apply col-span-12 md: col-span-4 flex md:flex-col justify-around items-center mx-2;
+    @apply col-span-12 md:col-span-4 flex md:flex-col justify-around items-center mx-2;
   }
 
   .btn {
-    @apply py-2 px-0 md: px-3 text-6xl font-thin;
+    @apply py-2 px-0 md:px-3 text-6xl font-thin;
   }
 
   .btn-green {
-    @apply bg-green-200 text-green-900 hover: bg-green-300;
+    @apply bg-green-200 text-green-900 hover:bg-green-300;
   }
 
   .alert {
-    @apply px-4 py-3 space-y-0 md: space-y-4 md:my-3 rounded-lg;
+    @apply px-4 py-3 space-y-0 md:space-y-4 md:my-3 rounded-lg;
   }
 
   .alert-success {
@@ -46,5 +46,5 @@
 
 html,
 body {
-  overflow-x: hidden;
+  overflow-x:hidden;
 }
