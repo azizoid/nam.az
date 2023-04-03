@@ -1,11 +1,19 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
+
 import { Location } from './Location/Location';
+// import { Progress } from './Progress/Progress';
+// import { PrayerList } from './PrayerList/PrayerList';
+// import { PrayerListStill } from './PrayerList/PrayerListStill';
 import { Loader } from '@/components';
 import { PrayerData } from './Namaz.entity';
 import { selectCity } from '@/utilities';
 import { setNamazData } from '@/store/namazSlice';
+import { getDayOfYear } from 'date-fns';
+import { PrayerList } from './PrayerList/PrayerList';
+import { PrayerListStill } from './PrayerList/PrayerListStill';
 
 export type ResponseDataProps = {
   city: number;
@@ -22,6 +30,8 @@ export type ResponseDataProps = {
 type AppViewProps = {
   data: ResponseDataProps;
 };
+
+const today = getDayOfYear(new Date())
 
 export const Namaz = ({ data }: AppViewProps) => {
   const dispatch = useDispatch();
@@ -43,6 +53,15 @@ export const Namaz = ({ data }: AppViewProps) => {
           dayOfYear={convertedData.dayOfYear}
         />
       </Suspense>
+
+      {convertedData.dayOfYear === today ? (
+        <PrayerList
+          prayers={convertedData.prayers}
+          currentPrayer={convertedData.currentPrayer}
+        />
+      ) : (
+        <PrayerListStill prayers={convertedData.prayers} />
+      )}
     </div>
   );
 };
