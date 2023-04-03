@@ -1,3 +1,4 @@
+import { percentageCounter } from '@/utilities';
 import { format, formatDistanceStrict, parse } from 'date-fns';
 import { az } from 'date-fns/locale';
 
@@ -9,7 +10,8 @@ interface Prayer {
   title: string;
 }
 
-const nowis = format(new Date(), 'HH:mm');
+const newDate = new Date()
+const nowis = format(newDate, 'HH:mm');
 
 const prayersTemplate = [
   { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
@@ -28,6 +30,7 @@ export class PrayerData {
   prayers: Prayer[];
   nowis: string;
   currentPrayer: number;
+  progress: number = 0
 
   constructor(data: any) {
     this.city = data.city;
@@ -53,5 +56,11 @@ export class PrayerData {
     });
 
     this.currentPrayer = currentPrayer;
+    this.progress = percentageCounter({
+      currentPrayer,
+      apiPrayers: data.prayers,
+      nowis: nowis,
+      newDate,
+    });
   }
 }
