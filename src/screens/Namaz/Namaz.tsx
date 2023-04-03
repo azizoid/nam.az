@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { Location } from './Location/Location';
+import { Loader } from '@/components';
 import { PrayerData } from './Namaz.entity';
-
+import { selectCity } from '@/utilities';
 import { setNamazData } from '@/store/namazSlice';
 
 export type ResponseDataProps = {
@@ -32,7 +34,15 @@ export const Namaz = ({ data }: AppViewProps) => {
 
   return (
     <div className="align-middle container mx-auto my-10 pb-2">
-
+      <Suspense fallback={<Loader />}>
+        <Location
+          city={convertedData.city}
+          location={selectCity(convertedData.city)}
+          tarix={convertedData.tarix}
+          hijri={convertedData.hijri}
+          dayOfYear={convertedData.dayOfYear}
+        />
+      </Suspense>
     </div>
   );
 };
