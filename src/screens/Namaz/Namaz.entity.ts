@@ -1,5 +1,5 @@
 import { percentageCounter } from '@/utilities';
-import { format, formatDistanceStrict, parse } from 'date-fns';
+import { format, formatDistanceStrict, getDayOfYear, parse } from 'date-fns';
 import { az } from 'date-fns/locale';
 
 interface Prayer {
@@ -56,11 +56,14 @@ export class PrayerData {
     });
 
     this.currentPrayer = currentPrayer;
-    this.progress = percentageCounter({
-      currentPrayer,
-      apiPrayers: data.prayers,
-      nowis: nowis,
-      newDate,
-    });
+
+    if (getDayOfYear(new Date()) === this.dayOfYear) {
+      this.progress = percentageCounter({
+        currentPrayer,
+        apiPrayers: data.prayers,
+        nowis: nowis,
+        newDate,
+      })
+    }
   }
 }
