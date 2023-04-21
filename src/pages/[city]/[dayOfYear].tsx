@@ -9,7 +9,7 @@ const CityDayPage = () => {
 
   const { city, dayOfYear } = router.query
 
-  const { data, error } = useSWR(city && dayOfYear ? `https://nam.az/api/${city}/${dayOfYear}` : null, fetcher)
+  const { data, error } = useSWR(city && dayOfYear ? `/api/v1/${city}/${dayOfYear}` : null, fetcher)
 
   if (error) return <div>Error</div>
   if (!data) return <Loader />

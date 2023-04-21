@@ -9,7 +9,7 @@ const CityPage = () => {
 
   const { city } = router.query
 
-  const { data, error } = useSWR(city ? `https://nam.az/api/${city}` : null, fetcher)
+  const { data, error } = useSWR(city ? `/api/v1/${city}` : null, fetcher)
 
   if (error) return <div>Error</div>
   if (!data) return <Loader />
