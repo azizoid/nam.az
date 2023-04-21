@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getDayOfYear } from 'date-fns'
-import { connectToDatabase, leapYearOffset } from '@/utilities';
+import { leapYearOffset } from '@/utilities';
+import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const client = await connectToDatabase()
