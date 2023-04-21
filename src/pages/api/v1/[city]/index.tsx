@@ -13,19 +13,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       method,
     } = req;
 
+    const dayOfTheYear = getDayOfYear(new Date())
+    const tempLeapYearAdjustment = leapYearOffset(dayOfTheYear)
+    const dd = tempLeapYearAdjustment + dayOfTheYear // TODO: rename to `dayOfYearWithLeapYearAdjustment`
+    const query = { city: Number(city), dd }
+
     switch (method) {
       case 'GET': {
-
-        const dd = leapYearOffset(getDayOfYear(new Date()))
-        const query = { city: Number(city), dd }
-
         const prayerTimes = await db.findOne(query);
 
         if (!prayerTimes) {
           return res.status(404).json({ message: 'Date not found' });
         }
 
-        return res.status(200).json(prayerTimes);
+        return res.status(200).json({ ...prayerTimes, dd: prayerTimes.dd - tempLeapYearAdjustment });
       }
 
       default:
