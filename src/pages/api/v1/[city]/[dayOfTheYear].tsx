@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getDayOfYear } from 'date-fns'
 import { connectToDatabase, leapYearOffset } from '@/utilities';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,13 +7,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const {
-      query: { city },
+      query: { city, dayOfTheYear },
       method,
     } = req;
 
-    const dayOfTheYear = getDayOfYear(new Date())
-    const tempLeapYearAdjustment = leapYearOffset(dayOfTheYear)
-    const dd = tempLeapYearAdjustment + dayOfTheYear // TODO: rename to `dayOfYearWithLeapYearAdjustment`
+    const tempLeapYearAdjustment = leapYearOffset(Number(dayOfTheYear))
+    const dd = tempLeapYearAdjustment + Number(dayOfTheYear) // TODO: rename to `dayOfYearWithLeapYearAdjustment`
     const query = { city: Number(city), dd }
 
     switch (method) {
