@@ -18,8 +18,8 @@ export const Location = ({
   changeDd,
 }: LocationProps) => (
   <div className="flex justify-around align-middle">
-    <button className="btn text-blue-300" onClick={() => changeDd(dd - 1)}>
-      <MdNavigateBefore />
+    <button className="btn text-blue-300" disabled={true}>
+      {/* <MdNavigateBefore /> */}
     </button>
 
     <div className="flex flex-col space-y-2 text-center text-3xl font-semibold">
