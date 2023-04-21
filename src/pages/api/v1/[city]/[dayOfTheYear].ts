@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { leapYearOffset } from '@/utilities';
+import { generateDates, leapYearOffset } from '@/utilities';
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -24,7 +24,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(404).json({ message: 'Date not found' });
         }
 
-        return res.status(200).json({ ...prayerTimes, dd: prayerTimes.dd - tempLeapYearAdjustment });
+        const twoDates = generateDates({ m: prayerTimes.m, d: prayerTimes.d })
+
+        return res.status(200).json({ ...prayerTimes, dd: prayerTimes.dd - tempLeapYearAdjustment, ...twoDates });
       }
 
       default:
