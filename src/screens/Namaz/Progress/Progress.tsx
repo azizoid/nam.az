@@ -9,4 +9,4 @@ export const Progress = ({ bar }: ProgressProps) => (
       style={{ width: `${bar}%` }}
     ></div>
   </div>
-);
+)

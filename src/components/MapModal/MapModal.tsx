@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
-import { Modal, ModalProps } from "./Modal/Modal";
-import { Xerite } from "./Xerite/Xerite";
-import { selectNamazData } from "@/store/namazSlice";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
+import { useSelector } from 'react-redux'
+
+import { selectNamazData } from '@/store/namazSlice'
+
+import { Modal, ModalProps } from './Modal/Modal'
+import { Xerite } from './Xerite/Xerite'
 
 export const MapModal = ({
   open,
@@ -18,11 +20,11 @@ export const MapModal = ({
       onClose={onClose}
     >
       <Xerite
-        onClick={(city) => router.push(`/${city}`).finally(() => onClose())}
+        onClick={(newCityId) => router.push(`/${newCityId}`).finally(() => onClose())}
         selectedCity={city ?? 1}
       />
     </Modal>
   )
-};
+}
 
-export default MapModal;
+export default MapModal

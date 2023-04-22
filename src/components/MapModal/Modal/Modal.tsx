@@ -1,5 +1,6 @@
-import { ReactElement, useCallback, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { ReactElement, useCallback, useEffect } from 'react'
+
+import { createPortal } from 'react-dom'
 
 export type ModalProps = {
   open?: boolean;
@@ -15,16 +16,16 @@ export const Modal = ({
   const keyPress = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape' && open) {
-        onClose();
+        onClose()
       }
     },
     [onClose, open]
-  );
+  )
 
   useEffect(() => {
-    document.addEventListener('keydown', keyPress);
-    return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress]);
+    document.addEventListener('keydown', keyPress)
+    return () => document.removeEventListener('keydown', keyPress)
+  }, [keyPress])
 
   if (typeof document !== 'undefined') {
     return createPortal(
@@ -55,8 +56,8 @@ export const Modal = ({
         </div>
       </div>,
       document.body
-    );
+    )
   } else {
-    return null;
+    return null
   }
-};
+}

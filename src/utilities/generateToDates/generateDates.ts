@@ -1,4 +1,4 @@
-import { ResponseDataProps } from "@/screens/Namaz/Namaz"
+import { ResponseDataProps } from '@/screens/Namaz/Namaz'
 
 export const generateDates = (
   { m: month = 1, d: day = 1 }: Partial<ResponseDataProps>,
@@ -12,22 +12,22 @@ export const generateDates = (
   )
 
   const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    numberingSystem: "latn",
-    timeZone: "Asia/Baku",
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    numberingSystem: 'latn',
+    timeZone: 'Asia/Baku',
   } as const
 
-  const tarix = new Intl.DateTimeFormat("az", {
+  const tarix = new Intl.DateTimeFormat('az', {
     ...options,
-    calendar: "gregory",
-    weekday: "long",
+    calendar: 'gregory',
+    weekday: 'long',
   }).format(generatedDate)
 
-  const hijri = new Intl.DateTimeFormat("az", {
+  const hijri = new Intl.DateTimeFormat('az', {
     ...options,
-    calendar: "islamic",
+    calendar: 'islamic',
   })
     .format(generatedDate)
     .slice(3)

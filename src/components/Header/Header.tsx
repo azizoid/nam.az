@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-import Image from 'next/image';
-import { MapModal } from '@/components';
+import { useState } from 'react'
+
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { MapModal } from '@/components'
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="bg-gray-100 py-2 px-2">
@@ -40,12 +42,11 @@ export const Header = () => {
             onClose={() => setShowModal(false)}
           />
 
-
           <small>
             Bakı, Gəncə, <u>Şuşa</u> və digər
           </small>
         </div>
       </nav >
     </div >
-  );
-};
+  )
+}

@@ -14,4 +14,4 @@ export const Footer = () => (
       </li>
     </ol>
   </nav>
-);
+)

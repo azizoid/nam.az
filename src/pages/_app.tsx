@@ -1,13 +1,15 @@
 import '@/styles/globals.css'
 
 import { useEffect } from 'react'
+
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
+
 import TagManager from 'react-gtm-module'
 import { Provider } from 'react-redux'
 
 import { Layout } from '@/components'
 import { store } from '@/store'
-import Head from 'next/head'
 
 export default function App({ Component, pageProps }: AppProps) {
 

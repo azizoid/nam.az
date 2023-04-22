@@ -1,7 +1,7 @@
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import Link from 'next/link'
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
 
-import { Clock } from './Clock/Clock';
-import Link from 'next/link';
+import { Clock } from './Clock/Clock'
 
 export type LocationProps = {
   city: number;

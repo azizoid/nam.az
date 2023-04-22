@@ -1,14 +1,13 @@
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
-export { Footer } from './Footer/Footer';
+export { Footer } from './Footer/Footer'
 
-export { Header } from './Header/Header';
+export { Header } from './Header/Header'
 
-export { Loader } from './Loader/Loader';
+export { Loader } from './Loader/Loader'
 
 export { Layout } from './Layout/Layout'
 
 export const MapModal = dynamic(() => import('./MapModal/MapModal'), {
   ssr: false
 })
-

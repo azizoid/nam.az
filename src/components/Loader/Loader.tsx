@@ -1,4 +1,4 @@
-import styles from './Loader.module.css';
+import styles from './Loader.module.css'
 
 export const Loader = () => (
   <div className="text-center">
@@ -8,4 +8,4 @@ export const Loader = () => (
       <div></div>
     </div>
   </div>
-);
+)

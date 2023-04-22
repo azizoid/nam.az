@@ -1,18 +1,20 @@
 import dynamic from 'next/dynamic'
-import Error from 'next/error';
-import { Loader } from "@/components";
-import { fetcher } from "@/utilities/fetcher";
-import { useRouter } from "next/router"
-import useSWR from 'swr'
+import Error from 'next/error'
+import { useRouter } from 'next/router'
+
 import Joi from 'joi'
-import { cityRule } from '@/assist/joiValidationRules';
+import useSWR from 'swr'
+
+import { cityRule } from '@/assist/joiValidationRules'
+import { Loader } from '@/components'
+import { fetcher } from '@/utilities/fetcher'
 
 const Namaz = dynamic(() => import('@/screens/Namaz/Namaz').then(page => page.Namaz))
 const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah))
 
 const schema = Joi.object({
   city: cityRule,
-});
+})
 
 const CityPage = () => {
   const router = useRouter()

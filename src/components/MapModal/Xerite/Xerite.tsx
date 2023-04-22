@@ -1,22 +1,23 @@
-import React from 'react';
+import React from 'react'
+
+import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import {
   GoogleMap,
   MarkerF as Marker,
   useJsApiLoader,
-} from '@react-google-maps/api';
-import { faMapPin } from '@fortawesome/free-solid-svg-icons';
+} from '@react-google-maps/api'
 
-import { coordinates } from '@/assist/coordinates';
+import { coordinates } from '@/assist/coordinates'
 
 const containerStyle = {
   width: '100%',
   height: '75%',
-};
+}
 
 const center = {
   lat: 40.1431,
   lng: 47.5769,
-};
+}
 
 export type XeriteProps = {
   selectedCity?: number;
@@ -28,7 +29,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
     language: 'az',
-  });
+  })
 
   if (isLoaded) {
     const icon = {
@@ -41,7 +42,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
         faMapPin.icon[0] / 2,
         faMapPin.icon[1]
       ),
-    };
+    }
     return (
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
         {coordinates.map(({ id, city, lat, lng }) => (
@@ -54,7 +55,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
           />
         ))}
       </GoogleMap>
-    );
+    )
   }
 
   return (
@@ -70,5 +71,5 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
         </option>
       ))}
     </select>
-  );
+  )
 }

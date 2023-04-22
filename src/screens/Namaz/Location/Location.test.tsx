@@ -1,26 +1,27 @@
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import MockDate from 'mockdate';
+import { render } from '@testing-library/react'
 
-import { Location } from './Location';
+import '@testing-library/jest-dom'
+import MockDate from 'mockdate'
 
-const mockDate = Date.parse('2021-12-06T01:14:36.710Z');
+import { Location } from './Location'
 
-MockDate.set(mockDate);
+const mockDate = Date.parse('2021-12-06T01:14:36.710Z')
+
+MockDate.set(mockDate)
 
 const mockProps = {
   location: 'Bakı',
   tarix: 'Şənbə, 2 aprel 2022',
   dd: 93,
   changeDd: jest.fn(),
-};
+}
 
 test('renders Location', async () => {
-  const { container, getByText } = render(<Location {...mockProps} />);
+  const { container, getByText } = render(<Location {...mockProps} />)
 
-  const city = getByText('Bakı');
+  const city = getByText('Bakı')
 
-  expect(city).toBeInTheDocument();
+  expect(city).toBeInTheDocument()
 
-  expect(container).toMatchSnapshot();
-});
+  expect(container).toMatchSnapshot()
+})

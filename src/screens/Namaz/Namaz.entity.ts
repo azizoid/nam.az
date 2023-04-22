@@ -1,6 +1,8 @@
-import { percentageCounter } from '@/utilities';
-import { format, formatDistanceStrict, getDayOfYear, parse } from 'date-fns';
-import { az } from 'date-fns/locale';
+import { az } from 'date-fns/locale'
+
+import { format, formatDistanceStrict, getDayOfYear, parse } from 'date-fns'
+
+import { percentageCounter } from '@/utilities'
 
 interface Prayer {
   id: number;
@@ -11,7 +13,7 @@ interface Prayer {
 }
 
 const newDate = new Date()
-const nowis = format(newDate, 'HH:mm');
+const nowis = format(newDate, 'HH:mm')
 
 const prayersTemplate = [
   { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
@@ -23,39 +25,39 @@ const prayersTemplate = [
 ]
 
 export class PrayerData {
-  city: number;
-  tarix: string;
-  hijri: string;
-  dayOfYear: number;
-  prayers: Prayer[];
-  nowis: string;
-  currentPrayer: number;
+  city: number
+  tarix: string
+  hijri: string
+  dayOfYear: number
+  prayers: Prayer[]
+  nowis: string
+  currentPrayer: number
   progress: number = 0
 
   constructor(data: any) {
-    this.city = data.city;
-    this.tarix = data.tarix;
-    this.hijri = data.hijri;
-    this.dayOfYear = data.dd;
-    this.nowis = nowis;
+    this.city = data.city
+    this.tarix = data.tarix
+    this.hijri = data.hijri
+    this.dayOfYear = data.dd
+    this.nowis = nowis
 
-    let currentPrayer = 0;
+    let currentPrayer = 0
     this.prayers = prayersTemplate.map((prayer, i) => {
       prayer.time = data.prayers[i]
       prayer.ago = formatDistanceStrict(
         parse(prayer.time, 'HH:mm', new Date()),
         new Date(),
         { locale: az, addSuffix: true }
-      );
+      )
 
       if (prayer.time < nowis) {
-        currentPrayer = prayer.id;
+        currentPrayer = prayer.id
       }
 
-      return prayer;
-    });
+      return prayer
+    })
 
-    this.currentPrayer = currentPrayer;
+    this.currentPrayer = currentPrayer
 
     if (getDayOfYear(new Date()) === this.dayOfYear) {
       this.progress = percentageCounter({

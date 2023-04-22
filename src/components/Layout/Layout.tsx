@@ -1,4 +1,4 @@
-import { Footer, Header } from '@/components';
+import { Footer, Header } from '@/components'
 
 type LayoutProps = {
   children: JSX.Element
@@ -14,5 +14,5 @@ export const Layout = ({ children }: LayoutProps) => {
 
       <Footer />
     </div>
-  );
-};
+  )
+}

@@ -1,6 +1,8 @@
 import useSWR from 'swr'
-import { fetcher } from '@/utilities';
-import { AyahView } from './AyahView';
+
+import { fetcher } from '@/utilities'
+
+import { AyahView } from './AyahView'
 
 export type AyahApiProps = {
   id: string;
@@ -16,7 +18,7 @@ const displayAyahByDefault = {
   soorah: 40,
   ayah: 60,
   content:
-    "Rəbbiniz dedi: 'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər'.",
+    'Rəbbiniz dedi: \'Mənə dua edin, Mən də sizə cavab verim. Həqiqətən, Mənə ibadət etməyə təkəbbür göstərənlər Cəhənnəmə zəlil olaraq girəcəklər\'.',
   content_latinized: '',
   translator: 4,
 }
@@ -28,4 +30,4 @@ export const Ayah = () => {
   })
 
   return <AyahView randomAyah={data ? data.out : displayAyahByDefault} />
-};
+}

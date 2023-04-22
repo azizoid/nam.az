@@ -1,4 +1,4 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb'
 
 export const connectToDatabase = async () =>
   await MongoClient.connect(process.env.MONGODB_URI || '', {
@@ -7,4 +7,4 @@ export const connectToDatabase = async () =>
       strict: true,
       deprecationErrors: true,
     }
-  });
+  })

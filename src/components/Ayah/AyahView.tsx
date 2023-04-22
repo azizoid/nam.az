@@ -1,5 +1,6 @@
-import { MdFormatQuote } from 'react-icons/md';
-import { AyahApiProps } from './Ayah';
+import { MdFormatQuote } from 'react-icons/md'
+
+import { AyahApiProps } from './Ayah'
 
 type AyahProps = { randomAyah: AyahApiProps }
 
@@ -20,4 +21,4 @@ export const AyahView = ({ randomAyah }: AyahProps) => (
       </a>
     </cite>
   </blockquote>
-);
+)

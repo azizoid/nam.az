@@ -1,5 +1,6 @@
-import { MdBrightness7 } from 'react-icons/md';
-import { PrayerListProps } from './PrayerList';
+import { MdBrightness7 } from 'react-icons/md'
+
+import { PrayerListProps } from './PrayerList'
 
 export const PrayerListStill = ({ prayers }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
@@ -17,4 +18,4 @@ export const PrayerListStill = ({ prayers }: PrayerListProps) => (
       </div>
     ))}
   </div>
-);
+)

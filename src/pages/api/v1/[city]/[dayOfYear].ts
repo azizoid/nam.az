@@ -1,13 +1,14 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { generateDates, leapYearOffset } from '@/utilities';
-import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase';
-import Joi from 'joi';
-import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
+import Joi from 'joi'
+import { NextApiRequest, NextApiResponse } from 'next'
+
+import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules'
+import { generateDates, leapYearOffset } from '@/utilities'
+import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
 
 const schema = Joi.object({
   city: cityRule,
   dayOfYear: dayOfYearRule
-});
+})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const client = await connectToDatabase()
@@ -17,12 +18,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const {
       query: { city, dayOfYear },
       method,
-    } = req;
+    } = req
 
     const { value: validationValue, error: validationError } = schema.validate({ city, dayOfYear })
-    console.log({ validationValue, validationError })
+
     if (validationError) {
-      return res.status(404).json({ message: 'City or Date not found' });
+      return res.status(404).json({ message: 'City or Date not found' })
     }
 
     const tempLeapYearAdjustment = leapYearOffset(Number(validationValue.dayOfYear))
@@ -31,26 +32,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     switch (method) {
       case 'GET': {
-        const prayerTimes = await db.findOne(query);
+        const prayerTimes = await db.findOne(query)
 
         if (!prayerTimes) {
-          return res.status(404).json({ message: 'Date not found' });
+          return res.status(404).json({ message: 'Date not found' })
         }
 
         const twoDates = generateDates({ m: prayerTimes.m, d: prayerTimes.d })
 
-        return res.status(200).json({ ...prayerTimes, dd: prayerTimes.dd - tempLeapYearAdjustment, ...twoDates });
+        return res.status(200).json({ ...prayerTimes, dd: prayerTimes.dd - tempLeapYearAdjustment, ...twoDates })
       }
 
       default:
-        return res.status(405).json({ message: 'Method not allowed' });
+        return res.status(405).json({ message: 'Method not allowed' })
     }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
+    // eslint-disable-next-line no-console
+    console.error(error)
+    return res.status(500).json({ message: 'Internal server error' })
   } finally {
     if (client) {
-      await client.close();
+      await client.close()
     }
   }
 }

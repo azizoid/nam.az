@@ -1,4 +1,4 @@
-import { Prayer, PrayerProps } from './Prayer';
+import { Prayer, PrayerProps } from './Prayer'
 
 export type PrayerListProps = {
   prayers: PrayerProps[];
@@ -8,17 +8,17 @@ export type PrayerListProps = {
 export const PrayerList = ({ prayers, currentPrayer }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => {
-      let isCur = false;
-      const finalClass = [];
+      let isCur = false
+      const finalClass = []
 
       if (index === 1) {
         if (index !== currentPrayer) {
-          finalClass.push('text-slate-400');
+          finalClass.push('text-slate-400')
         }
       } else {
         if (index === currentPrayer) {
-          isCur = true;
-          finalClass.push('alert-success');
+          isCur = true
+          finalClass.push('alert-success')
         }
       }
 
@@ -30,7 +30,7 @@ export const PrayerList = ({ prayers, currentPrayer }: PrayerListProps) => (
           index={index}
           key={index}
         />
-      );
+      )
     })}
   </div>
-);
+)

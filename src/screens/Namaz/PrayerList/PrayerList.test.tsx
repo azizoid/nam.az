@@ -1,6 +1,8 @@
-import { render } from '@testing-library/react';
-import React from 'react';
-import { PrayerList } from './PrayerList';
+import React from 'react'
+
+import { render } from '@testing-library/react'
+
+import { PrayerList } from './PrayerList'
 
 const mock = [
   { id: 1, title: 'Fəcr namazı', time: '-:-', rakat: 2, ago: '1 minute ago' },
@@ -15,15 +17,15 @@ const mock = [
     ago: '5 minutes ago',
   },
   { id: 6, title: 'İşa namazı', time: '-:-', rakat: 4, ago: '6 minutes ago' },
-];
+]
 
 test('renders PrayerList component', async () => {
   const { container, findAllByText } = render(
     <PrayerList prayers={mock} currentPrayer={2} />
-  );
+  )
 
-  const prayers = await findAllByText(/namazı/);
-  expect(prayers).toHaveLength(5);
+  const prayers = await findAllByText(/namazı/)
+  expect(prayers).toHaveLength(5)
 
-  expect(container).toMatchSnapshot();
-});
+  expect(container).toMatchSnapshot()
+})

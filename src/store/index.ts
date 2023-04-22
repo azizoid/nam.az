@@ -1,5 +1,6 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { namazSlice } from './namazSlice';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
+
+import { namazSlice } from './namazSlice'
 
 export const store = configureStore({
   reducer: {
@@ -7,7 +8,7 @@ export const store = configureStore({
   },
   // middleware: (getDefaultMiddleware) =>
   //   getDefaultMiddleware().concat(/* any custom middleware here */),
-});
+})
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<

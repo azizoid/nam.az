@@ -1,4 +1,4 @@
-import { MdBrightness7 } from 'react-icons/md';
+import { MdBrightness7 } from 'react-icons/md'
 
 export type PrayerProps = {
   id: number;
@@ -44,4 +44,4 @@ export const Prayer = ({
       </div>
     </div>
   </div>
-);
+)

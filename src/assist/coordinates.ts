@@ -39,4 +39,4 @@ export const coordinates: CoordinatesProps[] = [
   { id: 31, city: 'Kəlbəcər', lat: 40.1316, lng: 46.1675 },
   { id: 32, city: 'Laçın', lat: 39.6383, lng: 46.5461 },
   { id: 33, city: 'Zəngəzur', lat: 39.4202, lng: 45.8022 },
-];
+]

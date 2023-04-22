@@ -1,19 +1,22 @@
-import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Suspense, useEffect } from 'react'
+
+import Head from 'next/head'
+
+import { getDayOfYear } from 'date-fns'
+import { useDispatch } from 'react-redux'
 
 // import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
-import { Location } from './Location/Location';
-import { Loader } from '@/components';
-import { PrayerData } from './Namaz.entity';
-import { selectCity } from '@/utilities';
-import { setNamazData } from '@/store/namazSlice';
-import { getDayOfYear } from 'date-fns';
-import { PrayerList } from './PrayerList/PrayerList';
-import { PrayerListStill } from './PrayerList/PrayerListStill';
-import { Progress } from './Progress/Progress';
-import Head from 'next/head';
-import { coordinates } from '@/assist/coordinates';
+import { coordinates } from '@/assist/coordinates'
+import { Loader } from '@/components'
+import { setNamazData } from '@/store/namazSlice'
+import { selectCity } from '@/utilities'
+
+import { Location } from './Location/Location'
+import { PrayerData } from './Namaz.entity'
+import { PrayerList } from './PrayerList/PrayerList'
+import { PrayerListStill } from './PrayerList/PrayerListStill'
+import { Progress } from './Progress/Progress'
 
 export type ResponseDataProps = {
   city: number;
@@ -34,12 +37,12 @@ type AppViewProps = {
 const today = getDayOfYear(new Date())
 
 export const Namaz = ({ data }: AppViewProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const convertedData = new PrayerData(data)
 
   useEffect(() => {
-    dispatch(setNamazData({ city: convertedData.city, dayOfYear: convertedData.dayOfYear }));
+    dispatch(setNamazData({ city: convertedData.city, dayOfYear: convertedData.dayOfYear }))
   }, [convertedData.city, convertedData.dayOfYear, dispatch])
 
   return (
@@ -70,5 +73,5 @@ export const Namaz = ({ data }: AppViewProps) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import { isLeapYear } from "date-fns"
+import { isLeapYear } from 'date-fns'
 
 let cachedIsLeapYear: boolean
 
