@@ -25,8 +25,6 @@ export default function Document() {
         <meta name="twitter:image" content="https://nam.az/img/ogimage.png" />
 
         <link rel="apple-touch-icon" href="./favicon.png" />
-
-        <link rel="manifest" href="/manifest.json" />
       </Head>
       <body>
         <Main />
