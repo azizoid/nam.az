@@ -5,8 +5,6 @@ import { useRouter } from "next/router"
 import useSWR from 'swr'
 import Joi from 'joi'
 import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
-import Head from 'next/head';
-import { coordinates } from '@/assist/coordinates';
 import dynamic from 'next/dynamic';
 
 const Namaz = dynamic(() => import('@/screens/Namaz/Namaz').then(page => page.Namaz))
@@ -40,12 +38,7 @@ const CityDayPage = () => {
     return <Loader />
   }
 
-  return <>
-    <Head>
-      <title>{coordinates[value.city - 1].city} | Nam.az - Namazını qıl</title>
-    </Head>
-    <Namaz data={data} />
-  </>
+  return <Namaz data={data} />
 }
 
 export default CityDayPage

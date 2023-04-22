@@ -12,6 +12,8 @@ import { getDayOfYear } from 'date-fns';
 import { PrayerList } from './PrayerList/PrayerList';
 import { PrayerListStill } from './PrayerList/PrayerListStill';
 import { Progress } from './Progress/Progress';
+import Head from 'next/head';
+import { coordinates } from '@/assist/coordinates';
 
 export type ResponseDataProps = {
   city: number;
@@ -41,27 +43,32 @@ export const Namaz = ({ data }: AppViewProps) => {
   }, [convertedData.city, convertedData.dayOfYear, dispatch])
 
   return (
-    <div className="align-middle container mx-auto my-10 pb-2">
-      <Suspense fallback={<Loader />}>
-        <Location
-          city={convertedData.city}
-          location={selectCity(convertedData.city)}
-          tarix={convertedData.tarix}
-          hijri={convertedData.hijri}
-          dayOfYear={convertedData.dayOfYear}
-        />
+    <>
+      <Head>
+        <title>{coordinates[convertedData.city - 1].city} | Nam.az - Namazını qıl</title>
+      </Head>
+      <div className="align-middle container mx-auto my-10 pb-2">
+        <Suspense fallback={<Loader />}>
+          <Location
+            city={convertedData.city}
+            location={selectCity(convertedData.city)}
+            tarix={convertedData.tarix}
+            hijri={convertedData.hijri}
+            dayOfYear={convertedData.dayOfYear}
+          />
 
-        <Progress bar={convertedData.progress} />
-      </Suspense>
+          <Progress bar={convertedData.progress} />
+        </Suspense>
 
-      {convertedData.dayOfYear === today ? (
-        <PrayerList
-          prayers={convertedData.prayers}
-          currentPrayer={convertedData.currentPrayer}
-        />
-      ) : (
-        <PrayerListStill prayers={convertedData.prayers} />
-      )}
-    </div>
+        {convertedData.dayOfYear === today ? (
+          <PrayerList
+            prayers={convertedData.prayers}
+            currentPrayer={convertedData.currentPrayer}
+          />
+        ) : (
+          <PrayerListStill prayers={convertedData.prayers} />
+        )}
+      </div>
+    </>
   );
 };
