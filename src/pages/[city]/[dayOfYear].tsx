@@ -6,6 +6,8 @@ import { useRouter } from "next/router"
 import useSWR from 'swr'
 import Joi from 'joi'
 import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
+import Head from 'next/head';
+import { coordinates } from '@/assist/coordinates';
 
 const schema = Joi.object({
   city: cityRule,
@@ -36,7 +38,12 @@ const CityDayPage = () => {
     return <Loader />
   }
 
-  return <Namaz data={data} />
+  return <>
+    <Head>
+      <title>{coordinates[value.city - 1].city} | Nam.az - Namazını qıl</title>
+    </Head>
+    <Namaz data={data} />
+  </>
 }
 
 export default CityDayPage
