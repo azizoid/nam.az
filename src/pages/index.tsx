@@ -1,6 +1,7 @@
 
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Loader } from '@/components';
 
 const Home = () => {
   const router = useRouter();
@@ -11,12 +12,7 @@ const Home = () => {
     router.push(`/${city || '1'}`);
   }, [router]);
 
-  return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Loading...</p>
-    </div>
-  );
+  return <Loader />
 };
 
 export default Home;
