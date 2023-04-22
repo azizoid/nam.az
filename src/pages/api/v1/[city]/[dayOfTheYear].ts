@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { generateDates, leapYearOffset } from '@/utilities';
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase';
+import Joi from 'joi';
+import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
+
+const schema = Joi.object({
+  city: cityRule,
+  dayOfTheYear: dayOfYearRule
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const client = await connectToDatabase()
@@ -12,9 +19,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       method,
     } = req;
 
-    const tempLeapYearAdjustment = leapYearOffset(Number(dayOfTheYear))
-    const dd = tempLeapYearAdjustment + Number(dayOfTheYear) // TODO: rename to `dayOfYearWithLeapYearAdjustment`
-    const query = { city: Number(city), dd }
+    const { value: validationValue, error: validationError } = schema.validate({ city, dayOfTheYear })
+    console.log({ validationValue, validationError })
+    if (validationError) {
+      return res.status(404).json({ message: 'City or Date not found' });
+    }
+
+    const tempLeapYearAdjustment = leapYearOffset(Number(validationValue.dayOfTheYear))
+    const dd = tempLeapYearAdjustment + Number(validationValue.dayOfTheYear) // TODO: rename to `dayOfYearWithLeapYearAdjustment`
+    const query = { city: validationValue.city, dd }
 
     switch (method) {
       case 'GET': {
