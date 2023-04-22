@@ -1,18 +1,39 @@
+import Error from 'next/error';
 import { Loader } from "@/components";
 import { Namaz } from "@/screens/Namaz/Namaz";
 import { fetcher } from "@/utilities/fetcher";
 import { useRouter } from "next/router"
 import useSWR from 'swr'
+import Joi from 'joi'
+import { coordinates } from "@/assist/coordinates";
+
+const schema = Joi.object({
+  city: Joi.number().integer().min(0).max(coordinates.length - 1),
+});
 
 const CityPage = () => {
   const router = useRouter()
 
-  const { city } = router.query
+  const { city = null } = router.query
 
-  const { data, error } = useSWR(city ? `/api/v1/${city}` : null, fetcher)
+  // Validate city query using Joi
+  const { value, error } = schema.validate({ city: Number(city) })
 
-  if (error) return <div>Error</div>
-  if (!data) return <Loader />
+  const { data, error: fetchError } = useSWR(value.city && !error ? `/api/v1/${value.city}` : null, fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+  })
+
+  if (city && error) {
+    return <Error statusCode={404} /> // Render the built-in 404 (Not Found) page
+  }
+
+  if (fetchError) {
+    return <Error statusCode={400} /> // Render the built-in 400 (Bad Request) page
+  }
+  if (!data) {
+    return <Loader />
+  }
 
   return <Namaz data={data} />
 }
