@@ -1,6 +1,10 @@
 {
-  "short_name": "Namaz",
   "name": "Azərbaycan şəhərləri üzrə namaz vaxtı",
+  "short_name": "Namaz",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "favicon.png",
@@ -12,9 +16,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
