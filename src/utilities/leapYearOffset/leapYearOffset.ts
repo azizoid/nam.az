@@ -3,10 +3,10 @@ import { isLeapYear } from "date-fns"
 let cachedIsLeapYear: boolean
 
 export const leapYearOffset = (
-  dayOfTheYear: number,
+  dayOfYear: number,
   year: number = new Date().getFullYear()
 ): number => {
-  if (dayOfTheYear <= 59) {
+  if (dayOfYear <= 59) {
     return 0
   }
 

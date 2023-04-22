@@ -24,9 +24,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ message: 'City not found' });
     }
 
-    const dayOfTheYear = getDayOfYear(new Date())
-    const tempLeapYearAdjustment = leapYearOffset(dayOfTheYear)
-    const dd = tempLeapYearAdjustment + dayOfTheYear // TODO: rename to `dayOfYearWithLeapYearAdjustment`
+    const dayOfYear = getDayOfYear(new Date())
+    const tempLeapYearAdjustment = leapYearOffset(dayOfYear)
+    const dd = tempLeapYearAdjustment + dayOfYear // TODO: rename to `dayOfYearWithLeapYearAdjustment`
     const query = { city: validationValue.city, dd }
 
     switch (method) {

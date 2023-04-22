@@ -6,7 +6,7 @@ import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
 
 const schema = Joi.object({
   city: cityRule,
-  dayOfTheYear: dayOfYearRule
+  dayOfYear: dayOfYearRule
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -15,18 +15,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const {
-      query: { city, dayOfTheYear },
+      query: { city, dayOfYear },
       method,
     } = req;
 
-    const { value: validationValue, error: validationError } = schema.validate({ city, dayOfTheYear })
+    const { value: validationValue, error: validationError } = schema.validate({ city, dayOfYear })
     console.log({ validationValue, validationError })
     if (validationError) {
       return res.status(404).json({ message: 'City or Date not found' });
     }
 
-    const tempLeapYearAdjustment = leapYearOffset(Number(validationValue.dayOfTheYear))
-    const dd = tempLeapYearAdjustment + Number(validationValue.dayOfTheYear) // TODO: rename to `dayOfYearWithLeapYearAdjustment`
+    const tempLeapYearAdjustment = leapYearOffset(Number(validationValue.dayOfYear))
+    const dd = tempLeapYearAdjustment + Number(validationValue.dayOfYear) // TODO: rename to `dayOfYearWithLeapYearAdjustment`
     const query = { city: validationValue.city, dd }
 
     switch (method) {
