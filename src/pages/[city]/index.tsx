@@ -8,6 +8,7 @@ import Joi from 'joi'
 import { cityRule } from '@/assist/joiValidationRules';
 
 const Namaz = dynamic(() => import('@/screens/Namaz/Namaz').then(page => page.Namaz))
+const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah))
 
 const schema = Joi.object({
   city: cityRule,
@@ -37,7 +38,10 @@ const CityPage = () => {
     return <Loader />
   }
 
-  return <Namaz data={data} />
+  return <>
+    <Namaz data={data} />
+    <Ayah />
+  </>
 }
 
 export default CityPage
