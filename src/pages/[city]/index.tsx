@@ -1,6 +1,6 @@
+import dynamic from 'next/dynamic'
 import Error from 'next/error';
 import { Loader } from "@/components";
-import { Namaz } from "@/screens/Namaz/Namaz";
 import { fetcher } from "@/utilities/fetcher";
 import { useRouter } from "next/router"
 import useSWR from 'swr'
@@ -8,6 +8,8 @@ import Joi from 'joi'
 import { cityRule } from '@/assist/joiValidationRules';
 import Head from 'next/head';
 import { coordinates } from '@/assist/coordinates';
+
+const Namaz = dynamic(() => import('@/screens/Namaz/Namaz').then(page => page.Namaz))
 
 const schema = Joi.object({
   city: cityRule,
