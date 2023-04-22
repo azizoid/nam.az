@@ -5,10 +5,10 @@ import { fetcher } from "@/utilities/fetcher";
 import { useRouter } from "next/router"
 import useSWR from 'swr'
 import Joi from 'joi'
-import { coordinates } from "@/assist/coordinates";
+import { cityRule } from '@/assist/joiValidationRules';
 
 const schema = Joi.object({
-  city: Joi.number().integer().min(0).max(coordinates.length - 1),
+  city: cityRule,
 });
 
 const CityPage = () => {

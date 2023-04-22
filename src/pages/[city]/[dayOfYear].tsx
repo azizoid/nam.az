@@ -5,12 +5,11 @@ import { fetcher } from "@/utilities/fetcher";
 import { useRouter } from "next/router"
 import useSWR from 'swr'
 import Joi from 'joi'
-import { coordinates } from "@/assist/coordinates";
-import { getDayOfYear } from 'date-fns';
+import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules';
 
 const schema = Joi.object({
-  city: Joi.number().integer().min(0).max(coordinates.length - 1),
-  dayOfYear: Joi.number().integer().min(1).max(366).default(getDayOfYear(new Date()))
+  city: cityRule,
+  dayOfYear: dayOfYearRule
 });
 
 const CityDayPage = () => {
