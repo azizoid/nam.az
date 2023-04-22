@@ -17,6 +17,9 @@ export const namazSlice = createSlice({
     setNamazData: (state, action: PayloadAction<NamazState>) => {
       state.city = action.payload.city;
       state.dayOfYear = action.payload.dayOfYear;
+
+      // NOTE: whenever we change the city, we write it to the localStorage to be able to read on the next homepage load
+      localStorage.setItem('city', String(action.payload.city));
     }
   },
 });

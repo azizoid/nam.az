@@ -7,9 +7,6 @@ const Home = () => {
 
   useEffect(() => {
     const city = localStorage.getItem('city');
-    if (!city) {
-      localStorage.setItem('city', '1');
-    }
 
     router.push(`/${city || '1'}`);
   }, [router]);
