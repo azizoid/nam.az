@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot as asd } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MapModal } from '@/components';
@@ -30,8 +30,9 @@ export const Header = () => {
             className="bg-green-500 text-white active:bg-green-600 text-sm py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => setShowModal(true)}
+            style={{ height: 36 }}
           >
-            Xəritə <FontAwesomeIcon icon={asd} beat transform="shrink-2" />
+            Xəritə <FontAwesomeIcon icon={faLocationDot} beat transform="shrink-2" />
           </button>
 
           <MapModal
@@ -44,7 +45,7 @@ export const Header = () => {
             Bakı, Gəncə, <u>Şuşa</u> və digər
           </small>
         </div>
-      </nav>
-    </div>
+      </nav >
+    </div >
   );
 };
