@@ -21,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={store}>
-      <Head><title>Nam.az - Namazını qıl</title></Head>
+      <Head>
+        <title>Nam.az - Namazını qıl</title><meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
