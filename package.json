@@ -15,30 +15,27 @@
     "@react-google-maps/api": "^2.18.1",
     "@reduxjs/toolkit": "^1.9.3",
     "@tanstack/react-query": "^4.28.0",
-    "@types/node": "18.15.6",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
     "date-fns": "^2.29.3",
-    "eslint": "8.36.0",
-    "eslint-config-next": "13.2.4",
     "joi": "^17.9.1",
     "mongodb": "^5.2.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-gtm-module": "^2.0.11",
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "redux-thunk": "^2.4.2",
-    "swr": "^2.1.1",
-    "typescript": "5.0.2",
-    "usehooks-ts": "^2.9.1"
+    "swr": "^2.1.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "@types/react-gtm-module": "^2.0.1",
+    "@types/node": "18.15.6",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.4.14",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "typescript": "5.0.2"
   }
 }
