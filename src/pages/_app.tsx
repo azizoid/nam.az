@@ -24,7 +24,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <>
+    <Provider store={store}>
+      <Head>
+        <title>Nam.az - Namazını qıl</title><meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Script
         id="gtag-base"
         strategy="afterInteractive"
@@ -38,14 +41,9 @@ export default function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <Provider store={store}>
-        <Head>
-          <title>Nam.az - Namazını qıl</title><meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Provider>
-    </>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   )
 }
