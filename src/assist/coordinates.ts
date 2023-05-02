@@ -36,7 +36,7 @@ export const coordinates: CoordinatesProps[] = [
   { id: 28, city: 'Cəbrayıl', lat: 39.3987, lng: 47.0245 },
   { id: 29, city: 'Zəngilan', lat: 39.0857, lng: 46.6525 },
   { id: 30, city: 'Qubadlı', lat: 39.3453, lng: 46.5789 },
-  { id: 31, city: 'Kəlbəcər', lat: 40.1316, lng: 46.1675 },
+  { id: 31, city: 'Kəlbəcər', lat: 40.1024, lng: 46.0365 },
   { id: 32, city: 'Laçın', lat: 39.6383, lng: 46.5461 },
   { id: 33, city: 'Zəngəzur', lat: 39.2029, lng: 46.4798 },
 ]

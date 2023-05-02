@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import {
   GoogleMap,
   MarkerF as Marker,
+  MarkerProps,
   useJsApiLoader,
 } from '@react-google-maps/api'
 
@@ -30,23 +30,19 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
     language: 'az',
     region: 'az',
-
   })
 
   if (isLoaded) {
-    const icon = {
-      path: faMapPin.icon[4] as string,
+    const icon: MarkerProps['icon'] = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
       fillColor: 'red',
       fillOpacity: 1,
-      strokeWeight: 0.1,
-      scale: 0.04,
-      anchor: new window.google.maps.Point(
-        faMapPin.icon[0] / 2,
-        faMapPin.icon[1]
-      ),
+      strokeWeight: 0,
+      scale: 4.5,
     }
+
     return (
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7} options={{ streetViewControl: false }}>
         {coordinates.map(({ id, city, lat, lng }) => (
           <Marker
             key={id}

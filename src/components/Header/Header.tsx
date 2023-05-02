@@ -7,7 +7,7 @@ import { FaSearchLocation } from 'react-icons/fa'
 import { MapModal } from '@/components'
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="bg-gray-100 py-2 px-2">
