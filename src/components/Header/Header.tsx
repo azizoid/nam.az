@@ -1,14 +1,13 @@
 import { useState } from 'react'
 
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaSearchLocation } from 'react-icons/fa'
 
 import { MapModal } from '@/components'
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   return (
     <div className="bg-gray-100 py-2 px-2">
@@ -34,7 +33,10 @@ export const Header = () => {
             onClick={() => setShowModal(true)}
             style={{ height: 36 }}
           >
-            Xəritə <FontAwesomeIcon icon={faLocationDot} beat transform="shrink-2" />
+            <div className="flex justify-center items-center">
+              Xəritə &nbsp;
+              <FaSearchLocation size="1em" />
+            </div>
           </button>
 
           <MapModal
