@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { cityRule } from '@/assist/joiValidationRules'
 import { generateDates, leapYearOffset } from '@/utilities'
+import { runMiddleware } from '@/utilities'
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
 
 const schema = Joi.object({
@@ -15,6 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const db = client.db(process.env.MONGODB_DB).collection(process.env.MONGODB_COLLECTION || '')
 
   try {
+
+    await runMiddleware(req, res)
+
     const {
       query: { city },
       method,
