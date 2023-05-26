@@ -1,6 +1,6 @@
 import { isLeapYear } from 'date-fns'
 
-let cachedIsLeapYear: boolean | undefined
+let cachedIsLeapYear: boolean
 
 export const leapYearOffset = (
   dayOfYear: number,
