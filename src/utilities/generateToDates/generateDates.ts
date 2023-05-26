@@ -4,12 +4,12 @@ export const generateDates = (
   { m: month = 1, d: day = 1 }: Partial<ResponseDataProps>,
   currentJsDate = new Date(),
 ) => {
-  const generatedDate = new Date(
-    currentJsDate.getFullYear(),
-    month - 1,
-    day,
-    12
-  )
+  const generatedDate = new Date(currentJsDate.getFullYear(), month - 1, day, 12)
+
+  const hijriOffset = Number(process.env.NEXT_PUBLIC_HIJRI_OFFSET ?? 0) // Offset of -1 day
+
+  const hijriDate = new Date(generatedDate)
+  hijriDate.setDate(hijriDate.getDate() + hijriOffset) // Apply offset to Hijri date
 
   const options = {
     year: 'numeric',
@@ -19,24 +19,19 @@ export const generateDates = (
     timeZone: 'Asia/Baku',
   } as const
 
-  const tarix = new Intl.DateTimeFormat('az', {
+  const formatter = new Intl.DateTimeFormat('az', {
     ...options,
-    calendar: 'gregory',
     weekday: 'long',
-  }).format(generatedDate)
+  })
+
+  const tarix = formatter.formatToParts(generatedDate)
+    .map(({ type, value }) => (type === 'dayPeriod') ? value.toLowerCase() : value)
+    .join('')
 
   const hijri = new Intl.DateTimeFormat('az', {
     ...options,
     calendar: 'islamic',
-  })
-    .format(generatedDate)
-    .slice(3)
+  }).format(hijriDate).slice(3)
 
-  const result = {
-    // tarix: capitalizeFirstLetter(tarix, "az"),
-    tarix,
-    hijri,
-  }
-
-  return result
+  return { tarix, hijri }
 }
