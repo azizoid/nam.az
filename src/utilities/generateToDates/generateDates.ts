@@ -17,15 +17,22 @@ export const generateDates = (
     day: 'numeric',
     numberingSystem: 'latn',
     timeZone: 'Asia/Baku',
+    weekday: 'long',
   } as const
 
-  const formatter = new Intl.DateTimeFormat('az', {
-    ...options,
-    weekday: 'long',
-  })
+  const formatter = new Intl.DateTimeFormat('az', options)
 
-  const tarix = formatter.formatToParts(generatedDate)
-    .map(({ type, value }) => (type === 'dayPeriod') ? value.toLowerCase() : value)
+  const formatToLowerCase = (part: Intl.DateTimeFormatPart) => {
+    if (part.type === 'dayPeriod') {
+      return { ...part, value: part.value.toLowerCase() }
+    }
+    return part
+  }
+
+  const tarix = formatter
+    .formatToParts(generatedDate)
+    .map(formatToLowerCase)
+    .map(({ value }) => value)
     .join('')
 
   const hijri = new Intl.DateTimeFormat('az', {
