@@ -1,6 +1,6 @@
 import { differenceInSeconds, parse } from 'date-fns'
 
-type PercentageCouterProps = {
+type PercentageCounterProps = {
   currentPrayer: number;
   apiPrayers: string[];
   nowis: string;
@@ -12,25 +12,26 @@ export const percentageCounter = ({
   apiPrayers,
   nowis,
   newDate,
-}: PercentageCouterProps): number => {
-  const untillNow = differenceInSeconds(
-    parse(nowis, 'HH:mm', newDate),
-    parse(apiPrayers[currentPrayer], 'HH:mm', newDate)
-  )
+}: PercentageCounterProps): number => {
+  const currentTime = parse(nowis, 'HH:mm', newDate)
+  const currentPrayerTime = parse(apiPrayers[currentPrayer], 'HH:mm', newDate)
 
-  let untillNext
+  const untillNow = differenceInSeconds(currentTime, currentPrayerTime)
+
+  let untillNext: number
 
   if (currentPrayer === 5) {
     untillNext = differenceInSeconds(
       parse('23:59', 'HH:mm', newDate),
-      parse(apiPrayers[currentPrayer], 'HH:mm', newDate)
+      currentPrayerTime
     )
   } else {
     untillNext = differenceInSeconds(
-      parse(apiPrayers[currentPrayer++], 'HH:mm', newDate),
-      parse(apiPrayers[currentPrayer], 'HH:mm', newDate)
+      parse(apiPrayers[currentPrayer + 1], 'HH:mm', newDate),
+      currentPrayerTime
     )
   }
-  const progress = Math.abs(Math.floor((untillNow * 100) / untillNext))
-  return progress > 100 ? 100 : progress
+
+  const progress = Math.max(Math.floor(((untillNow * 100) / untillNext)), 0)
+  return progress
 }

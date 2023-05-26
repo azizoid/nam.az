@@ -12,9 +12,6 @@ interface Prayer {
   title: string;
 }
 
-const newDate = new Date()
-const nowis = format(newDate, 'HH:mm')
-
 const prayersTemplate = [
   { id: 1, time: '-:-', rakat: 2, ago: '', title: 'Sübh namazı' },
   { id: 2, time: '-:-', rakat: 0, ago: '', title: 'Gün çıxır' },
@@ -35,23 +32,24 @@ export class PrayerData {
   progress: number = 0
 
   constructor(data: any) {
+    const newDate = new Date()
     this.city = data.city
     this.tarix = data.tarix
     this.hijri = data.hijri
     this.dayOfYear = data.dd
-    this.nowis = nowis
+    this.nowis = format(newDate, 'HH:mm')
 
-    let currentPrayer = 0
+    let currentPrayer = 5
     this.prayers = prayersTemplate.map((prayer, i) => {
       prayer.time = data.prayers[i]
       prayer.ago = formatDistanceStrict(
-        parse(prayer.time, 'HH:mm', new Date()),
-        new Date(),
+        parse(prayer.time, 'HH:mm', newDate),
+        newDate,
         { locale: az, addSuffix: true }
       )
 
-      if (prayer.time < nowis) {
-        currentPrayer = prayer.id
+      if (prayer.time < this.nowis) {
+        currentPrayer = i
       }
 
       return prayer
@@ -59,11 +57,11 @@ export class PrayerData {
 
     this.currentPrayer = currentPrayer
 
-    if (getDayOfYear(new Date()) === this.dayOfYear) {
+    if (getDayOfYear(newDate) === this.dayOfYear) {
       this.progress = percentageCounter({
         currentPrayer,
         apiPrayers: data.prayers,
-        nowis: nowis,
+        nowis: this.nowis,
         newDate,
       })
     }
