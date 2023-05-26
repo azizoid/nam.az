@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 
 import { Layout } from '@/components'
 import { store } from '@/store'
-import { GTM_ID, pageview } from '@/utilities/gtm'
+import { GTM_ID, pageview } from '@/utilities'
 
 export default function App({ Component, pageProps }: AppProps) {
 
