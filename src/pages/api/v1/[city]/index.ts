@@ -3,9 +3,9 @@ import Joi from 'joi'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { cityRule } from '@/assist/joiValidationRules'
-import { generateDates, leapYearOffset } from '@/utilities'
-import { runMiddleware } from '@/utilities'
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
+import { generateDates, leapYearOffset } from '@/utilities/server'
+import { runMiddleware } from '@/utilities/server'
 
 const schema = Joi.object({
   city: cityRule,
