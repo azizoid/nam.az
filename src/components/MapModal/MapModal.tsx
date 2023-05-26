@@ -7,22 +7,18 @@ import { selectNamazData } from '@/store/namazSlice'
 import { Modal, ModalProps } from './Modal/Modal'
 import { Xerite } from './Xerite/Xerite'
 
-export const MapModal = ({
-  open,
-  onClose,
-}: ModalProps) => {
+export const MapModal = ({ open, onClose }: ModalProps) => {
   const router = useRouter()
   const { city } = useSelector(selectNamazData)
 
+  const handleCityChange = (newCityId: number) => {
+    router.push(`/${newCityId}`)
+    onClose()
+  }
+
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-    >
-      <Xerite
-        onClick={(newCityId) => router.push(`/${newCityId}`).finally(() => onClose())}
-        selectedCity={city ?? 1}
-      />
+    <Modal open={open} onClose={onClose}>
+      <Xerite onClick={handleCityChange} selectedCity={city ?? 1} />
     </Modal>
   )
 }

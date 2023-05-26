@@ -38,5 +38,5 @@ export const Location = ({
     <Link href={`/${city}/${dayOfYear + 1}`} className="btn text-blue-300">
       <MdNavigateNext />
     </Link>
-  </div >
+  </div>
 )

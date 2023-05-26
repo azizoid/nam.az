@@ -11,17 +11,15 @@ const date2date = () =>
 export const Clock = () => {
   const [date, setDate] = useState(date2date())
 
-  const tick = () => {
-    setDate(date2date())
-  }
-
   useEffect(() => {
-    const timerID = setInterval(() => tick(), 1000)
+    const timerID = setInterval(() => {
+      setDate(date2date())
+    }, 1000)
 
     return () => {
       clearInterval(timerID)
     }
-  })
+  }, [])
 
   return <p className={styles.clock}>{date}</p>
 }
