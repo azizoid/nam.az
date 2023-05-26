@@ -8,27 +8,16 @@ export type PrayerListProps = {
 export const PrayerList = ({ prayers, currentPrayer }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => {
-      let isCur = false
-      const finalClass = []
-
-      if (index === 1) {
-        if (index !== currentPrayer) {
-          finalClass.push('text-slate-400')
-        }
-      } else {
-        if (index === currentPrayer) {
-          isCur = true
-          finalClass.push('alert-success')
-        }
-      }
+      const isCur = index === currentPrayer && index !== 1
+      const classes = isCur ? 'alert-success' : index === 1 ? 'text-slate-400' : ''
 
       return (
         <Prayer
-          classes={finalClass.join(' ')}
+          classes={classes}
           prayer={prayer}
           current={isCur}
           index={index}
-          key={index}
+          key={prayer.id}
         />
       )
     })}

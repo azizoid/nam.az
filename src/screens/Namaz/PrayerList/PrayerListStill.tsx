@@ -5,7 +5,7 @@ import { PrayerListProps } from './PrayerList'
 export const PrayerListStill = ({ prayers }: PrayerListProps) => (
   <div className="grid grid-cols-12 text-center">
     {prayers.map((prayer, index) => (
-      <div className="prayer alert text-slate-400" key={index}>
+      <div className="prayer alert text-slate-400" key={prayer.id}>
         <h6>{prayer.title}</h6>
 
         <div className="flex flex-col">
