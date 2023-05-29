@@ -1,23 +1,39 @@
-'use client'
 import '@/styles/globals.css'
 
 import { ReactNode } from 'react'
 
 const GTM_ID = process.env.GTM_ID
 
-import { Provider } from 'react-redux'
+import { Metadata } from 'next'
 
-import { Footer } from '@/components/Footer/Footer'
-import { Header } from '@/components/Header/Header'
-import { store } from '@/store'
+export const metadata: Metadata = {
 
+  icons: './favicon.ico',
+  themeColor: '#155724',
+  description: 'Azərbaycan şəhərləri üzrə namaz vaxtları',
+  keywords: ['Azərbaycan', 'şəhərləri', 'vaxtları', 'namaz', 'namaz vaxt', 'namaz vaxtları', 'namaz vaxtları namaz', 'namaz vaxtları namazları', 'namaz vaxtları namazları', 'namaz vaxtları namazları', 'təqvim'],
+  metadataBase: new URL('https://nam.az'),
+  openGraph: {
+    title: 'Nam.az - Namazını qıl',
+    description: 'Azərbaycan və azərbaycanlıların yaşadığı şəhərləri üzrə namaz vaxtları',
+    images: 'https://nam.az/img/ogimage.png'
+  },
+  twitter: {
+    title: 'Nam.az - Namazını qıl',
+    description: 'Azərbaycan və azərbaycanlıların yaşadığı şəhərləri üzrə namaz vaxtları',
+    creator: '@azizoid',
+    images: 'https://nam.az/img/ogimage.png'
+  },
+}
 type RootLayoutProps = {
   children: ReactNode
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {
-  return (<html><head>
-  </head>
+  return (<html>
+    <head>
+
+    </head>
     <body>
       <noscript>
         <iframe
@@ -28,17 +44,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         />
       </noscript>
 
-      <Provider store={store}>
-        <div className="min-h-screen flex flex-col justify-between">
-
-          <Header />
-
-          {children}
-
-          <Footer />
-
-        </div>
-      </Provider>
+      {children}
     </body>
   </html>
 
