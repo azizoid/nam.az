@@ -1,10 +1,11 @@
+'use client'
 import { useEffect } from 'react'
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
-import { Loader } from '@/components'
+import { Loader } from '@/components/Loader/Loader'
 
-const Home = () => {
+const HomePage = () => {
   const router = useRouter()
 
   useEffect(() => {
@@ -16,4 +17,4 @@ const Home = () => {
   return <Loader />
 }
 
-export default Home
+export default HomePage
