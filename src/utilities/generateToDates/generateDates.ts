@@ -38,6 +38,7 @@ export const generateDates = (
   const hijri = new Intl.DateTimeFormat('az', {
     ...options,
     calendar: 'islamic',
+    weekday: undefined,
   }).format(hijriDate).slice(3)
 
   return { tarix, hijri }
