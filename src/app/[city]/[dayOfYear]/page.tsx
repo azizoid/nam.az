@@ -3,6 +3,7 @@
 import Error from 'next/error'
 
 import Joi from 'joi'
+import { NextPageContext } from 'next'
 import useSWR from 'swr'
 
 import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules'
@@ -19,7 +20,9 @@ const schema = Joi.object({
   dayOfYear: dayOfYearRule
 })
 
-const DayOfYearPage = ({ params }) => {
+type DayOfYearPageProps = { params: { city: string, dayOfYear: string } }
+
+const DayOfYearPage = ({ params }: DayOfYearPageProps) => {
   const { city = null, dayOfYear = null } = params
 
   // Validate city query using Joi

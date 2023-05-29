@@ -1,23 +1,25 @@
 'use client'
+import dynamic from 'next/dynamic'
 import Error from 'next/error'
 
 import Joi from 'joi'
 import useSWR from 'swr'
 
 import { cityRule } from '@/assist/joiValidationRules'
-// import { Loader } from '@/components'
+import { CutLoader } from '@/components/CutLoader/CutLoader'
 import { Loader } from '@/components/Loader/Loader'
-import { Namaz } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
-// const Namaz = dynamic(() => import('@/app/[soorah]/Namaz').then(page => page.Namaz))
-// const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah))
+const Namaz = dynamic(() => import('@/screens/Namaz/Namaz').then(page => page.Namaz), { ssr: false })
+const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah), { ssr: false, loading: () => <CutLoader /> })
 
 const schema = Joi.object({
   city: cityRule,
 })
 
-const CityPage = ({ params }) => {
+type CityPageProps = { params: { city: string } }
+
+const CityPage = ({ params }: CityPageProps) => {
   const { city = null } = params
 
   // Validate city query using Joi
@@ -41,7 +43,8 @@ const CityPage = ({ params }) => {
 
   return <>
     <Namaz data={data} />
-    {/* <Ayah /> */}
+
+    <Ayah />
   </>
 }
 

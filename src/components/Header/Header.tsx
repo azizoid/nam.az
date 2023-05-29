@@ -1,10 +1,14 @@
+'use client'
 import { useState } from 'react'
 
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearchLocation } from 'react-icons/fa'
 
-import { MapModal } from '@/components'
+export const MapModal = dynamic(() => import('@/components/MapModal/MapModal'), {
+  ssr: false
+})
 
 export const Header = () => {
   const [showModal, setShowModal] = useState(false)

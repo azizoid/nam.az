@@ -9,7 +9,6 @@ import { Provider } from 'react-redux'
 
 import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
-// import { Header } from '@/components/Header/Header'
 import { store } from '@/store'
 
 type RootLayoutProps = {
@@ -29,15 +28,17 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         />
       </noscript>
 
-      <div className="min-h-screen flex flex-col justify-between">
-        <Header />
+      <Provider store={store}>
+        <div className="min-h-screen flex flex-col justify-between">
 
-        <Provider store={store}>
+          <Header />
+
           {children}
-        </Provider>
 
-        <Footer />
-      </div>
+          <Footer />
+
+        </div>
+      </Provider>
     </body>
   </html>
 
