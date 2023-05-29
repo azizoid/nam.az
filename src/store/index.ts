@@ -6,8 +6,6 @@ export const store = configureStore({
   reducer: {
     namaz: namazSlice.reducer,
   },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(/* any custom middleware here */),
 })
 
 export type RootState = ReturnType<typeof store.getState>;
