@@ -17,7 +17,7 @@ const schema = Joi.object({
   city: cityRule,
 })
 
-type CityPageProps = { params: { city: string } }
+export type CityPageProps = { params: { city: string } }
 
 const CityPage = ({ params }: CityPageProps) => {
   const { city = null } = params
@@ -43,7 +43,6 @@ const CityPage = ({ params }: CityPageProps) => {
 
   return <>
     <Namaz data={data} />
-
     <Ayah />
   </>
 }
