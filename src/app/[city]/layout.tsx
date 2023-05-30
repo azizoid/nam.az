@@ -17,7 +17,7 @@ export const generateMetadata = async (
   const cityTitle = coordinates.find(({ id }) => id === Number(city))?.city
 
   return {
-    title: `${cityTitle} vaxtı`,
+    ...(cityTitle && { title: `${cityTitle} vaxtı` }),
   }
 }
 
