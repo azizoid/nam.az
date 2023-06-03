@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 
 // import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
-import { coordinates } from '@/assist/coordinates'
+import { coordinates } from '@/assets/coordinates'
 import { Loader } from '@/components'
 import { setNamazData } from '@/store/namazSlice'
 import { selectCity } from '@/utilities'

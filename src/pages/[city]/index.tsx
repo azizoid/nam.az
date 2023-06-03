@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Joi from 'joi'
 import useSWR from 'swr'
 
-import { cityRule } from '@/assist/joiValidationRules'
+import { cityRule } from '@/assets/joiValidationRules'
 import { Loader } from '@/components'
 import { fetcher } from '@/utilities/fetcher'
 

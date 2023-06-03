@@ -7,7 +7,7 @@ import {
   useJsApiLoader,
 } from '@react-google-maps/api'
 
-import { coordinates } from '@/assist/coordinates'
+import { coordinates } from '@/assets/coordinates'
 
 const containerStyle = {
   width: '100%',
