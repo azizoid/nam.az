@@ -7,8 +7,7 @@ import { useDispatch } from 'react-redux'
 
 // import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
-import { coordinates } from '@/assist/coordinates'
-import { Loader } from '@/components/Loader/Loader'
+import { coordinates } from '@/assets/coordinates'
 import { setNamazData } from '@/store/namazSlice'
 import { selectCity } from '@/utilities'
 
@@ -17,6 +16,8 @@ import { PrayerData } from './Namaz.entity'
 import { PrayerList } from './PrayerList/PrayerList'
 import { PrayerListStill } from './PrayerList/PrayerListStill'
 import { Progress } from './Progress/Progress'
+
+import { Loader } from '@/components'
 
 export type ResponseDataProps = {
   city: number;

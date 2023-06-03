@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import Joi from 'joi'
 
-import { cityRule, dayOfYearRule } from '@/assist/joiValidationRules'
+import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
 import { generateDates, leapYearOffset } from '@/utilities/server'
 
