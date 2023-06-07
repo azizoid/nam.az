@@ -4,23 +4,28 @@ import { useEffect } from 'react'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 
 import { Provider } from 'react-redux'
 
 import { Layout } from '@/components'
 import { store } from '@/store'
-import { GTM_ID, pageview } from '@/utilities/gtm'
+import * as gtag from '@/utilities/gtag' // Import the gtag helper functions
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter()
 
   useEffect(() => {
-    router.events.on('routeChangeComplete', pageview)
-    return () => {
-      router.events.off('routeChangeComplete', pageview)
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url) // Track pageview on route change
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
   }, [router.events])
 
   return (
@@ -29,16 +34,20 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Nam.az - Namazını qıl</title><meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Script
-        id="gtag-base"
+        id="ga-script"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="ga-inline-script"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer', '${GTM_ID}');
-          `,
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gtag.GA_TRACKING_ID}');
+              `,
         }}
       />
       <Layout>
@@ -47,3 +56,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Provider>
   )
 }
+
+export default App
