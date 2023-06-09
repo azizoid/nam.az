@@ -1,17 +1,10 @@
-'use client'
-
-import Error from 'next/error'
-
 import Joi from 'joi'
-import useSWR from 'swr'
 
+import ErrorPage from '@/app/error'
+import { coordinates } from '@/assets/coordinates'
 import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
-import { Loader } from '@/components/Loader/Loader'
-import { Namaz } from '@/screens/Namaz/Namaz'
-import { fetcher } from '@/utilities/fetcher'
 
-// const Namaz = dynamic(() => import('@/app/[soorah]/Namaz').then(page => page.Namaz))
-// const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah))
+import { DayOfYearPageView } from './pageView'
 
 const schema = Joi.object({
   city: cityRule,
@@ -20,29 +13,29 @@ const schema = Joi.object({
 
 type DayOfYearPageProps = { params: { city: string, dayOfYear: string } }
 
+export async function generateMetadata({ params }: DayOfYearPageProps) {
+  const { city = null } = params
+
+  const title = coordinates.find(({ id }) => id === Number(city))?.city
+
+  return {
+    title,
+    openGraph: { title },
+    twitter: { title }
+  }
+}
+
 const DayOfYearPage = ({ params }: DayOfYearPageProps) => {
   const { city = null, dayOfYear = null } = params
 
   // Validate city query using Joi
   const { value, error } = schema.validate({ city: Number(city), dayOfYear: Number(dayOfYear) })
 
-  const { data, error: fetchError } = useSWR(value.city && !error ? `/api/v2/${value.city}/${dayOfYear}` : null, fetcher, {
-    revalidateOnMount: true,
-    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
-  })
-
-  if (city && error) {
-    return <Error statusCode={404} /> // Render the built-in 404 (Not Found) page
+  if (error) {
+    return <ErrorPage />
   }
 
-  if (fetchError) {
-    return <Error statusCode={400} /> // Render the built-in 400 (Bad Request) page
-  }
-  if (!data) {
-    return <Loader />
-  }
-
-  return <Namaz data={data} />
+  return <DayOfYearPageView city={value.city} dayOfYear={value.dayOfYear} />
 }
 
 export default DayOfYearPage
