@@ -7,6 +7,15 @@ import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDataba
 import { generateDates, leapYearOffset } from '@/utilities/server'
 import { runMiddleware } from '@/utilities/server'
 
+export type PrayerReturnProps = {
+  prayers: string[],
+  city: number,
+  cityName: string,
+  dd: number,
+  m: number,
+  d: number
+}
+
 const schema = Joi.object({
   city: cityRule,
 })
@@ -36,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     switch (method) {
       case 'GET': {
-        const prayerTimes = await db.findOne(query)
+        const prayerTimes = await db.findOne<PrayerReturnProps>(query, { projection: { _id: 0 } })
 
         if (!prayerTimes) {
           return res.status(404).json({ message: 'Date not found' })

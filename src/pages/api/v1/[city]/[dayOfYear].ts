@@ -5,6 +5,8 @@ import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
 import { generateDates, leapYearOffset } from '@/utilities/server'
 
+import { PrayerReturnProps } from '.'
+
 const schema = Joi.object({
   city: cityRule,
   dayOfYear: dayOfYearRule
@@ -32,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     switch (method) {
       case 'GET': {
-        const prayerTimes = await db.findOne(query)
+        const prayerTimes = await db.findOne<PrayerReturnProps>(query, { projection: { _id: 0 } })
 
         if (!prayerTimes) {
           return res.status(404).json({ message: 'Date not found' })
