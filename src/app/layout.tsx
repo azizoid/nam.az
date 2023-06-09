@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 
 import { ReactNode } from 'react'
 
-const GTM_ID = process.env.GTM_ID
+const NEXT_PUBLIC_GA4_ID = process.env.GTM_ID
 
 import { Metadata } from 'next'
 
@@ -46,7 +46,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body>
         <noscript>
           <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            src={`https://www.googletagmanager.com/ns.html?id=${NEXT_PUBLIC_GA4_ID}`}
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}

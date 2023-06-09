@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-import { cityRule } from '@/assist/joiValidationRules'
+import { cityRule } from '@/assets/joiValidationRules'
 
 import ErrorPage from '../error'
 

@@ -3,13 +3,12 @@
 import Error from 'next/error'
 
 import Joi from 'joi'
-import { NextPageContext } from 'next'
 import useSWR from 'swr'
 
 import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
+import { Loader } from '@/components/Loader/Loader'
+import { Namaz } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
-
-import { Loader } from '@/components'
 
 // const Namaz = dynamic(() => import('@/app/[soorah]/Namaz').then(page => page.Namaz))
 // const Ayah = dynamic(() => import('@/components/Ayah/Ayah').then(page => page.Ayah))
