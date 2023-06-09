@@ -7,6 +7,15 @@ import { cityRule } from '@/assets/joiValidationRules'
 import { connectToDatabase } from '@/utilities/connectToDatabase/connectToDatabase'
 import { generateDates, leapYearOffset } from '@/utilities/server'
 
+export type PrayerReturnProps = {
+  prayers: string[],
+  city: number,
+  cityName: string,
+  dd: number,
+  m: number,
+  d: number
+}
+
 const schema = Joi.object({
   city: cityRule,
 })
@@ -31,7 +40,7 @@ export const GET = async (_: Request, { params }: ParamsType) => {
     const dd = tempLeapYearAdjustment + dayOfYear // TODO: rename to `dayOfYearWithLeapYearAdjustment`
     const query = { city: validationValue.city, dd }
 
-    const prayerTimes = await db.findOne(query)
+    const prayerTimes = await db.findOne<PrayerReturnProps>(query, { projection: { _id: 0 } })
 
     if (!prayerTimes) {
       return NextResponse.json({ error: 'Date not found' }, { status: 404 })
