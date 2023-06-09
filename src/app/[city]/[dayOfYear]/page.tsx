@@ -1,8 +1,9 @@
 import Joi from 'joi'
 
 import ErrorPage from '@/app/error'
-import { coordinates } from '@/assets/coordinates'
 import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
+
+import { generateMetadata as generateCityMetadata } from '../page'
 
 import { DayOfYearPageView } from './pageView'
 
@@ -13,17 +14,7 @@ const schema = Joi.object({
 
 type DayOfYearPageProps = { params: { city: string, dayOfYear: string } }
 
-export async function generateMetadata({ params }: DayOfYearPageProps) {
-  const { city = null } = params
-
-  const title = coordinates.find(({ id }) => id === Number(city))?.city
-
-  return {
-    title,
-    openGraph: { title },
-    twitter: { title }
-  }
-}
+export const generateMetadata = generateCityMetadata
 
 const DayOfYearPage = ({ params }: DayOfYearPageProps) => {
   const { city = null, dayOfYear = null } = params

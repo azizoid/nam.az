@@ -13,7 +13,7 @@ const schema = Joi.object({
   city: cityRule,
 })
 
-export async function generateMetadata({ params }: CityPageProps) {
+export const generateMetadata = async ({ params }: CityPageProps) => {
   const { city = null } = params
 
   const title = coordinates.find(({ id }) => id === Number(city))?.city
