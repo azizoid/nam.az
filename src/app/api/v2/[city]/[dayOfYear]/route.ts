@@ -3,8 +3,9 @@ import { NextResponse } from 'next/server'
 import Joi from 'joi'
 
 import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
-import { getNamazService } from '@/lib/getNamazService'
 import { leapYearOffset } from '@/utilities/server'
+
+import { getNamazService } from '../getNamazService'
 
 const schema = Joi.object({
   city: cityRule,

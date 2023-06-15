@@ -4,8 +4,9 @@ import { getDayOfYear } from 'date-fns'
 import Joi from 'joi'
 
 import { cityRule } from '@/assets/joiValidationRules'
-import { getNamazService } from '@/lib/getNamazService'
 import { leapYearOffset } from '@/utilities/server'
+
+import { getNamazService } from './getNamazService'
 
 const schema = Joi.object({
   city: cityRule,

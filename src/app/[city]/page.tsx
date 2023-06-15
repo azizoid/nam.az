@@ -18,6 +18,8 @@ export const generateMetadata = async ({ params }: CityPageProps) => {
 
   const title = coordinates.find(({ id }) => id === Number(city))?.city
 
+  if (!title) return
+
   return {
     title,
     openGraph: { title },
