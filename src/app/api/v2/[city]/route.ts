@@ -29,13 +29,7 @@ export const GET = async (_: Request, { params }: ParamsType) => {
 
     const prayerTimes = await getNamazService({ city: validationValue.city, dd })
 
-    return NextResponse.json(prayerTimes, {
-      status: 200, headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      },
-    })
+    return NextResponse.json(prayerTimes, { status: 200 })
 
   } catch (error) {
     // eslint-disable-next-line no-console
