@@ -1,3 +1,4 @@
+'use client'
 import { Suspense, useEffect } from 'react'
 
 import Head from 'next/head'
@@ -8,7 +9,7 @@ import { useDispatch } from 'react-redux'
 // import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
 
 import { coordinates } from '@/assets/coordinates'
-import { Loader } from '@/components'
+import { Loader } from '@/components/Loader/Loader'
 import { setNamazData } from '@/store/namazSlice'
 import { selectCity } from '@/utilities'
 
