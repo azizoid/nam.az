@@ -1,3 +1,4 @@
+'use client'
 import Error from 'next/error'
 import { notFound } from 'next/navigation'
 
@@ -5,19 +6,19 @@ import Joi from 'joi'
 import useSWR from 'swr'
 
 import { cityRule } from '@/assets/joiValidationRules'
+import { Loader } from '@/components/Loader/Loader'
 import { Namaz } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
-export type CityPageProps = { params: { city: string } }
+export type CityPageProps = { params: { city: string | null } }
 
 const schema = Joi.object({
   city: cityRule,
 })
 
-const CityPage = ({ params }: CityPageProps) => {
-  const { city = null } = params
+const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
 
-  const { value, error } = schema.validate({ city: Number(city) })
+  const { value: { city }, error } = schema.validate({ city: Number(cityParam) })
 
   if (error) {
     notFound()
@@ -32,7 +33,9 @@ const CityPage = ({ params }: CityPageProps) => {
     return <Error statusCode={400} /> // Render the built-in 400 (Bad Request) page
   }
 
-  if (!data) return
+  if (!data) {
+    return <Loader />
+  }
 
   return <Namaz data={data} />
 }
