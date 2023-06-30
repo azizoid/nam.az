@@ -58,7 +58,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
 
   return (
     <select
-      className="border-green-400 bg-green-50 text-sm rounded-md"
+      className="rounded-md border-green-400 bg-green-50 text-sm"
       aria-label="Haradasınız?"
       onChange={e => onClick(Number(e.target.value))}
       value={selectedCity}

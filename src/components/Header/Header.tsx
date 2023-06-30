@@ -13,10 +13,10 @@ export const Header = () => {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <div className="bg-gray-100 py-2 px-2">
-      <nav className="flex justify-between container mx-auto">
+    <div className="bg-gray-100 p-2">
+      <nav className="container mx-auto flex justify-between">
         <Link
-          className="py-2 flex items-center content-start text-gray-500 hover:opacity-75"
+          className="flex content-start items-center py-2 text-gray-500 hover:opacity-75"
           href="/"
         >
           <Image
@@ -31,12 +31,12 @@ export const Header = () => {
 
         <div className="flex flex-col">
           <button
-            className="bg-green-500 text-white active:bg-green-600 text-sm py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            className="mr-1 rounded-md bg-green-500 py-2 text-sm text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-green-600"
             type="button"
             onClick={() => setShowModal(true)}
             style={{ height: 36 }}
           >
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               Xəritə &nbsp;
               <FaSearchLocation size="1em" />
             </div>

@@ -24,7 +24,7 @@ export const Prayer = ({
   <div className={`prayer alert ${classes}`}>
     <h6 className="w-full text-right md:w-auto">{title}</h6>
 
-    <div className="flex flex-col w-full md:w-auto">
+    <div className="flex w-full flex-col md:w-auto">
       <h4 className="text-2xl">{time}</h4>
 
       <div className="flex justify-center">

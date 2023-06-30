@@ -26,7 +26,7 @@ const RootTemplate = ({ children }: RootLayoutProps) => {
           gtag('config', '${GA_TRACKING_ID}');
         `}
       </Script>
-      <div className="min-h-screen flex flex-col justify-between">
+      <div className="flex min-h-screen flex-col justify-between">
 
         <Header />
 

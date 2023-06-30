@@ -1,7 +1,7 @@
 export const Footer = () => (
-  <nav className="sticky top-[100vh] w-full py-3 bg-gray-700 text-slate-300">
-    <ol className="w-lg flex px-0 mx-4 md:mx-auto container">
-      <li className="active mr-6" aria-current="page">
+  <nav className="sticky top-[100vh] w-full bg-gray-700 py-3 text-slate-300">
+    <ol className="container mx-4 flex px-0 md:mx-auto">
+      <li className="mr-6" aria-current="page">
         &copy; {new Date().getFullYear()}
       </li>
       <li className="mr-6">

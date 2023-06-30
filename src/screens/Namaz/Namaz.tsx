@@ -51,7 +51,7 @@ export const Namaz = ({ data }: AppViewProps) => {
       <Head>
         <title>{coordinates[convertedData.city - 1].city} | Nam.az - Namazını qıl</title>
       </Head>
-      <div className="align-middle container mx-auto my-10 pb-2">
+      <div className="container mx-auto my-10 pb-2 align-middle">
         <Suspense fallback={<Loader />}>
           <Location
             city={convertedData.city}

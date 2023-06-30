@@ -37,12 +37,12 @@ export const Modal = ({
           />
 
           <div
-            className="fixed inset-0 bg-white top-5 mx-auto flex flex-col content-center p-3 pt-0 h-full shadow-lg w-full max-w-screen-sm opacity-100"
+            className="fixed inset-0 top-5 mx-auto flex h-full w-full max-w-screen-sm flex-col content-center bg-white p-3 pt-0 opacity-100 shadow-lg"
           >
             <button
               type="button"
               onClick={onClose}
-              className="btn text-lg text-right"
+              className="btn text-right text-lg"
               title="Şəhəri seç və bağla"
             >
               Bağla [ x ]
