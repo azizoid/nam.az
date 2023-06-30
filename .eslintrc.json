@@ -1,5 +1,12 @@
 {
-  "extends": "next/core-web-vitals",
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended"
+  ],
+  "plugins": [
+    "tailwindcss"
+  ],
   "rules": {
     "import/order": [
       "error",
@@ -76,5 +83,25 @@
     "prefer-const": "error",
     "no-unneeded-ternary": "error",
     "no-shadow": "error"
-  }
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": [
+        "cn"
+      ],
+      "config": "tailwind.config.js"
+    },
+    "next": {
+      "rootDir": true
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
 }
