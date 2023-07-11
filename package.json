@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --config ./config/jest.config.js",
+    "test:coverage": "jest --config ./config/jest.config.js --coverage"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.2",
