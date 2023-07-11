@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Location 1`] = `
+<div>
+  <div
+    class="flex justify-around align-middle"
+  >
+    <a
+      class="btn text-blue-300"
+      href="/1/92"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+        />
+      </svg>
+    </a>
+    <div
+      class="flex flex-col space-y-2 text-center text-3xl font-semibold"
+    >
+      <h2
+        class="text-slate-300"
+      >
+        <p
+          class="clock"
+        >
+          05:14:36
+        </p>
+      </h2>
+      <h2>
+        Bakı
+      </h2>
+      <small
+        class="text-sm font-normal"
+      >
+        Şənbə, 2 aprel 2022
+        , 
+        <span
+          class="whitespace-nowrap"
+        />
+      </small>
+    </div>
+    <a
+      class="btn text-blue-300"
+      href="/1/94"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+        />
+      </svg>
+    </a>
+  </div>
+</div>
+`;

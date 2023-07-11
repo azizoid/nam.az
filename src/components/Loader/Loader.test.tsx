@@ -4,7 +4,7 @@ import { render } from '@testing-library/react'
 
 import { Loader } from './Loader'
 
-test('renders PrayerList component', () => {
+test('renders Loader component', () => {
   const { container } = render(<Loader />)
 
   expect(container).toMatchSnapshot()
