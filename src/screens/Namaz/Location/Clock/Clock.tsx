@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+
+import { useInterval } from '@/utilities/useInterval'
 
 import styles from './Clock.module.css'
 
@@ -9,17 +11,11 @@ const date2date = () =>
   })
 
 export const Clock = () => {
-  const [date, setDate] = useState(date2date())
+  const [date, setDate] = useState(() => date2date())
 
-  useEffect(() => {
-    const timerID = setInterval(() => {
-      setDate(date2date())
-    }, 1000)
-
-    return () => {
-      clearInterval(timerID)
-    }
-  }, [])
+  useInterval(() => {
+    setDate(date2date())
+  }, 1000)
 
   return <p className={styles.clock}>{date}</p>
 }
