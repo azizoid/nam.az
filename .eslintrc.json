@@ -26,12 +26,11 @@
             "position": "before"
           },
           {
-            "pattern": "@next/*",
-            "group": "internal",
-            "position": "before"
+            "pattern": "next/*",
+            "group": "external"
           },
           {
-            "pattern": "src/**",
+            "pattern": "@/**",
             "group": "internal"
           },
           {
