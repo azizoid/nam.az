@@ -7,7 +7,7 @@ const metadataTitle = {
 const metadataUrl = new URL('https://nam.az')
 
 export const MainMetadata: Metadata = {
-  icons: './favicon.ico',
+  icons: '/favicon.ico',
   title: metadataTitle,
   themeColor: '#155724',
   description: 'Azərbaycanın müxtəlif şəhərləri üçün namaz vaxtlarını təqdim etdik. Bakı, Sumqayıt, Gəncə, Lənkaran, Mingəçevir, Naxçıvan, Ağdam, Astara, Beyləqan, Cəlilabad, Göyçay, Qəbələ, Qazax, Quba, Qusar, Saatlı, Sabirabad, Şamaxı, Şəki, Şirvan, Xaçmaz, Yevlax, Zaqatala, Şuşa, Füzuli, Cəbrayıl, Zəngilan, Qubadlı, Kəlbəcər, Laçın, Zəngəzur və digər şəhərlərdəki Sübh, Zöhr, Əsr, Məğrib (Şam), İşa vaxtlarını öyrənin.',
