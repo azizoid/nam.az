@@ -1,13 +1,33 @@
-import { fireEvent, render } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { Header } from './Header'; // Replace with the actual import
 
-import { Header } from './Header'
+// Mock the dynamically imported MapModal component
+jest.mock('@/components/MapModal/MapModal', 
+  () =>  ({ open }:{ open: boolean }) => (
+      <div data-testid="mockMapModal">
+        {open ? 'MapModal is open' : 'MapModal is closed'}
+      </div>
+    )
+  )
 
-test.skip('renders PrayerList component', () => {
-  const { container, getByRole } = render(<Header />)
+describe('Header component', () => {
+  it('should not render mock MapModal initially', async () => {
+    await act(async () => {
+      render(<Header />);
+    });
+    const mapModal = screen.queryByTestId('mockMapModal');
+    expect(mapModal).toHaveTextContent('MapModal is closed');
+  });
 
-  const citiesList = getByRole('combobox', { name: 'Haradasınız?' })
-
-  fireEvent.change(citiesList)
-
-  expect(container).toMatchSnapshot()
-})
+  it('should render mock MapModal when button is clicked', async () => {
+    await act(async () => {
+      render(<Header />);
+    });
+    
+    const button = screen.getByText(/Xəritə/);
+    fireEvent.click(button);
+    
+    const mapModal = screen.queryByTestId('mockMapModal');
+    expect(mapModal).toHaveTextContent('MapModal is open');
+  });
+});
