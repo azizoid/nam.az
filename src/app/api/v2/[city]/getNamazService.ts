@@ -18,7 +18,7 @@ type GetNamazServiceProps = {
 }
 
 export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps) => await withMongo(async (db: Db) => {
-  const contentCollection = db.collection(process.env.MONGODB_COLLECTION as string)
+  const contentCollection = db.collection(process.env.MONGODB_COLLECTION)
 
   const tempLeapYearAdjustment = leapYearOffset(dayOfYear)
 
