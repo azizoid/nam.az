@@ -1,4 +1,3 @@
-import { getDayOfYear } from 'date-fns'
 import { Db } from 'mongodb'
 
 import { withMongo } from '@/utilities/mongodb'
@@ -15,16 +14,15 @@ export type PrayerReturnProps = {
 
 type GetNamazServiceProps = {
   city: number;
-  dd: number;
+  dayOfYear: number;
 }
 
-export const getNamazService = async ({ city, dd }: GetNamazServiceProps) => await withMongo(async (db: Db) => {
+export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps) => await withMongo(async (db: Db) => {
   const contentCollection = db.collection(process.env.MONGODB_COLLECTION as string)
 
-  const dayOfYear = dd ?? getDayOfYear(new Date())
   const tempLeapYearAdjustment = leapYearOffset(dayOfYear)
 
-  const prayerTimes = await contentCollection.findOne<PrayerReturnProps>({ city, dd }, { projection: { _id: 0 } })
+  const prayerTimes = await contentCollection.findOne<PrayerReturnProps>({ city, dd: dayOfYear }, { projection: { _id: 0 } })
 
   if (!prayerTimes) {
     throw new Error('Date not found')
