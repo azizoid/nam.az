@@ -8,11 +8,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert "
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         Fəcr namazı
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"
@@ -31,11 +33,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert text-slate-400"
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         Günəş
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"
@@ -69,11 +73,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert alert-success"
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         Zöhr namazı
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"
@@ -96,11 +102,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert "
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         Əsr namazı
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"
@@ -119,11 +127,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert "
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         Məğrib namazı
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"
@@ -142,11 +152,13 @@ exports[`renders PrayerList component 1`] = `
     <div
       class="prayer alert "
     >
-      <h6>
+      <h6
+        class="w-full text-right md:w-auto"
+      >
         İşa namazı
       </h6>
       <div
-        class="flex flex-col"
+        class="flex w-full flex-col md:w-auto"
       >
         <h4
           class="text-2xl"

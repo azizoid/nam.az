@@ -7,7 +7,7 @@ import useSWR from 'swr'
 
 import { cityRule } from '@/assets/joiValidationRules'
 import { Loader } from '@/components/Loader/Loader'
-import { Namaz } from '@/screens/Namaz/Namaz'
+import { Namaz, ResponseDataProps } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
 export type CityPageProps = { params: { city: string | null } }
@@ -24,7 +24,7 @@ const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
     notFound()
   }
 
-  const { data, error: fetchError } = useSWR(`/api/v2/${city}`, fetcher, {
+  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v2/${city}`, fetcher, {
     // revalidateOnMount: true,
     // dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
