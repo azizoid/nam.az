@@ -26,7 +26,7 @@ export const GET = async (_: Request, { params }: ParamsType) => {
 
     const dayOfYear = getDayOfYear(new Date())
     const tempLeapYearAdjustment = leapYearOffset(dayOfYear)
-    const dayOfYearWithLeapYearAdjustment = tempLeapYearAdjustment + dayOfYear 
+    const dayOfYearWithLeapYearAdjustment = tempLeapYearAdjustment + dayOfYear
 
     const prayerTimes = await getNamazService({ city: validationValue.city, dayOfYear: dayOfYearWithLeapYearAdjustment })
 

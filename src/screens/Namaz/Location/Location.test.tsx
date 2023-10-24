@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import '@testing-library/jest-dom'
 import MockDate from 'mockdate'
@@ -17,9 +17,9 @@ const mockProps: LocationProps = {
 }
 
 test('renders Location', async () => {
-  const { container, getByText } = render(<Location {...mockProps} />)
+  const { container } = render(<Location {...mockProps} />)
 
-  const city = getByText('Bakı')
+  const city = screen.getByText('Bakı')
 
   expect(city).toBeInTheDocument()
 

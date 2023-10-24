@@ -1,6 +1,4 @@
-import React from 'react'
-
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { PrayerList } from './PrayerList'
 
@@ -20,11 +18,11 @@ const mock = [
 ]
 
 test('renders PrayerList component', async () => {
-  const { container, findAllByText } = render(
+  const { container, } = render(
     <PrayerList prayers={mock} currentPrayer={2} />
   )
 
-  const prayers = await findAllByText(/namazı/)
+  const prayers = await screen.findAllByText(/namazı/)
   expect(prayers).toHaveLength(5)
 
   expect(container).toMatchSnapshot()
