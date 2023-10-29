@@ -33,4 +33,4 @@ export const MainViewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-},
+}
