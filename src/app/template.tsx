@@ -1,4 +1,6 @@
 'use client'
+import { PropsWithChildren } from 'react'
+
 import Script from 'next/script'
 
 import { Provider } from 'react-redux'
@@ -8,10 +10,7 @@ import { Header } from '@/components/Header/Header'
 import { store } from '@/store'
 import { GA_TRACKING_ID } from '@/utilities/gtag'
 
-import { RootLayoutProps } from './layout'
-
-const RootTemplate = ({ children }: RootLayoutProps) => {
-  return (
+const RootTemplate = ({ children }: PropsWithChildren) => (
     <Provider store={store}>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
@@ -37,6 +36,5 @@ const RootTemplate = ({ children }: RootLayoutProps) => {
       </div>
     </Provider>
   )
-}
 
 export default RootTemplate

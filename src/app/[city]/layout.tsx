@@ -1,6 +1,8 @@
+import { PropsWithChildren } from 'react'
+
 import { coordinates } from '@/assets/coordinates'
 
-export type CityLayoutProps = { children?: React.ReactNode, params: { city: string } }
+export type CityLayoutProps = PropsWithChildren<{ params: { city: string } }>
 
 export const generateMetadata = async ({ params }: CityLayoutProps) => {
   const { city = null } = params

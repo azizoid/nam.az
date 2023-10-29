@@ -1,16 +1,13 @@
 import '@/styles/globals.css'
 
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
-import { MainMetadata } from './metadata'
+import { MainMetadata, MainViewport } from './metadata'
 
 export const metadata = MainMetadata
+export const viewport = MainViewport
 
-export type RootLayoutProps = {
-  children: ReactNode
-}
-
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="az">
       <body>

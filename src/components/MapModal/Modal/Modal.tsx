@@ -1,12 +1,11 @@
-import { ReactElement, useCallback, useEffect } from 'react'
+import { PropsWithChildren, useCallback, useEffect } from 'react';
 
-import { createPortal } from 'react-dom'
+import { createPortal } from 'react-dom';
 
-export type ModalProps = {
+export type ModalProps = PropsWithChildren<{
   open?: boolean;
   onClose: () => void;
-  children?: ReactElement;
-};
+}>
 
 export const Modal = ({
   open,
