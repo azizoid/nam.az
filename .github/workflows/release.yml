@@ -19,20 +19,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-    - name: Get Latest Tag
-      id: latest_tag
-      run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
-
-    - name: Generate Change Log
-      id: changelog
-      run: echo "::set-output name=log::$(git log ${{ steps.latest_tag.outputs.tag }}..HEAD --pretty=format:'- %s')"
-
     - name: Version Minor
       id: pnpm_version
       run: |
-        NEW_VERSION=$(pnpm version minor -m "Bump to %s")
+        NEW_VERSION=$(pnpm version minor -m "Staging v%s")
         echo "::set-output name=version::$NEW_VERSION"
 
     - name: Push Changes
       run: git push origin HEAD:main --follow-tags
-
