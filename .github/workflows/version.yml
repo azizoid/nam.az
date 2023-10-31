@@ -1,0 +1,23 @@
+name: CI/CD Main Branch
+
+on:
+  push:
+    branches:
+      - main # Change this to master if you're using master as the main branch
+
+jobs:
+  build-and-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Setup Node.js and other build steps here...
+
+    - name: Version Patch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        npm version patch
+        git push origin HEAD:main
