@@ -1,0 +1,38 @@
+name: Staging Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-version-minor:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install pnpm
+      run: npm install -g pnpm
+
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Get Latest Tag
+      id: latest_tag
+      run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
+
+    - name: Generate Change Log
+      id: changelog
+      run: echo "::set-output name=log::$(git log ${{ steps.latest_tag.outputs.tag }}..HEAD --pretty=format:'- %s')"
+
+    - name: Version Minor
+      id: pnpm_version
+      run: |
+        NEW_VERSION=$(pnpm version minor -m "Bump to %s")
+        echo "::set-output name=version::$NEW_VERSION"
+
+    - name: Push Changes
+      run: git push origin HEAD:main --follow-tags
+
