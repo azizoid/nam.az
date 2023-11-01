@@ -22,11 +22,9 @@ jobs:
     - name: Version Minor
       id: pnpm_version
       run: |
-        NEW_VERSION=$(pnpm version minor -m "Staging v%s" --no-git-tag-version)
+        NEW_VERSION=$(pnpm version minor -m "Staging v%s")
         echo "New Version: $NEW_VERSION"
         echo "::set-output name=version::$NEW_VERSION"
 
-    - name: Create and Push Tag
-      run: |
-        git tag "${{ steps.pnpm_version.outputs.version }}"
-        git push origin "${{ steps.pnpm_version.outputs.version }}"
+    - name: Push Changes
+      run: git push origin HEAD:main --follow-tags
