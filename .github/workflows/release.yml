@@ -23,6 +23,7 @@ jobs:
       id: pnpm_version
       run: |
         NEW_VERSION=$(pnpm version minor -m "Staging v%s")
+        echo "New Version: $NEW_VERSION"
         echo "::set-output name=version::$NEW_VERSION"
 
     - name: Push Changes
