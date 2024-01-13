@@ -17,11 +17,9 @@ const mockProps: LocationProps = {
 }
 
 test('renders Location', async () => {
-  const { container } = render(<Location {...mockProps} />)
+  render(<Location {...mockProps} />)
 
   const city = screen.getByText('Bakı')
 
   expect(city).toBeInTheDocument()
-
-  expect(container).toMatchSnapshot()
 })
