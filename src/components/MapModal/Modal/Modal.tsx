@@ -36,7 +36,7 @@ export const Modal = ({
           />
 
           <div
-            className="fixed inset-0 top-5 mx-auto flex h-full w-full max-w-screen-sm flex-col content-center bg-white p-3 pt-0 opacity-100 shadow-lg"
+            className="fixed inset-0 top-5 mx-auto flex size-full max-w-screen-sm flex-col content-center bg-white p-3 pt-0 opacity-100 shadow-lg"
           >
             <button
               type="button"
