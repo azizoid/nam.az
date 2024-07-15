@@ -1,8 +1,8 @@
-import { coordinates } from '@/assets/coordinates';
-import { PrayTimes } from '@/utilities';
-import { dayOfYearToDate } from '@/utilities/dayOfYearToDate';
+import { coordinates } from '@/assets/coordinates'
+import { PrayTimes } from '@/utilities'
+import { dayOfYearToDate } from '@/utilities/dayOfYearToDate'
+import { getUtcOffset } from '@/utilities/getUtcOffset'
 import { generateDates } from '@/utilities/server'
-import { getUtcOffset } from '@/utilities/getUtcOffset';
 
 export type PrayerReturnProps = {
   prayers: string[],
@@ -33,10 +33,8 @@ export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps)
 
   const tzDate = getUtcOffset(cityData.lat, cityData.lng) / 60
 
-  const calculatedPrayerTimes = PrayTimes();
-  const prayerTimes = calculatedPrayerTimes.getTimes(calculatedDate, [cityData.lat, cityData.lng], tzDate, 0);
-
-  console.log({ prayerTimes })
+  const calculatedPrayerTimes = PrayTimes()
+  const prayerTimes = calculatedPrayerTimes.getTimes(calculatedDate, [cityData.lat, cityData.lng], tzDate, 0)
 
   if (!prayerTimes) {
     throw new Error('Prayer times not found')
