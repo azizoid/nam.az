@@ -24,7 +24,7 @@ const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
     notFound()
   }
 
-  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v2/${city}`, fetcher, {
+  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v3/${city}`, fetcher, {
     // revalidateOnMount: true,
     // dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
