@@ -18,7 +18,7 @@ const schema = Joi.object({
 
 const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
 
-  const { value: { city }, error } = schema.validate({ city: Number(cityParam) })
+  const { value: { city }, error } = schema.validate({ city: cityParam })
 
   if (error) {
     notFound()
