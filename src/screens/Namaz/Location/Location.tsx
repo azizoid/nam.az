@@ -4,7 +4,7 @@ import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
 import { Clock } from './Clock/Clock'
 
 export type LocationProps = {
-  city: number;
+  city: string;
   location: string;
   tarix: string;
   hijri?: string;

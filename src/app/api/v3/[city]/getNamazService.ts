@@ -13,8 +13,8 @@ export type PrayerReturnProps = {
   d: number
 }
 
-type GetNamazServiceProps = {
-  city: number;
+export type GetNamazServiceProps = {
+  city: string;
   dayOfYear: number;
 }
 
@@ -26,7 +26,7 @@ export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps)
   const month = calculatedDate.getMonth() + 1
   const day = calculatedDate.getDate()
 
-  const cityData = coordinates.find(c => c.id === city)
+  const cityData = coordinates.find(c => c.slug === city)
   if (!cityData) {
     throw new Error('city not found')
   }
@@ -49,7 +49,7 @@ export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps)
       prayerTimes.maghrib,
       prayerTimes.isha,
     ],
-    city: cityData.id,
+    city: cityData.slug,
     cityName: cityData.city,
     dd: dayOfYear,
     m: month,

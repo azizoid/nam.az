@@ -20,8 +20,8 @@ const center = {
 }
 
 export type XeriteProps = {
-  selectedCity?: number;
-  onClick: (city: number) => void;
+  selectedCity?: string;
+  onClick: (city: string) => void;
 };
 
 export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
@@ -43,12 +43,12 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
 
     return (
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7} options={{ streetViewControl: false }}>
-        {coordinates.map(({ id, city, lat, lng }) => (
+        {coordinates.map(({ city, lat, lng, slug }) => (
           <Marker
-            key={id}
+            key={slug}
             position={{ lat, lng }}
             title={city}
-            onClick={() => onClick(id)}
+            onClick={() => onClick(slug)}
             icon={icon}
           />
         ))}
@@ -60,7 +60,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
     <select
       className="rounded-md border-green-400 bg-green-50 text-sm"
       aria-label="Haradasınız?"
-      onChange={e => onClick(Number(e.target.value))}
+      onChange={e => onClick(e.target.value)}
       value={selectedCity}
     >
       {coordinates.map(({ id, city }) => (
