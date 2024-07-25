@@ -9,9 +9,9 @@ const HomePage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const city = localStorage.getItem('city')
+    const city = localStorage.getItem('namaz:city')
 
-    router.push(`/${city || '1'}`)
+    router.push(`/${city || 'baki'}`)
   }, [router])
 
   return <Loader />

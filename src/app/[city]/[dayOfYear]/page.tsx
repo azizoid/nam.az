@@ -20,13 +20,13 @@ type DayOfYearPageProps = { params: { city: string | null, dayOfYear: string | n
 const DayOfYearPage = ({ params: { city: cityParam = null, dayOfYear: dayOfyearParam = null } }: DayOfYearPageProps) => {
 
   // Validate city query using Joi
-  const { value: { city, dayOfYear }, error } = schema.validate({ city: Number(cityParam), dayOfYear: Number(dayOfyearParam) })
+  const { value: { city, dayOfYear }, error } = schema.validate({ city: cityParam, dayOfYear: Number(dayOfyearParam) })
 
   if (error) {
     notFound()
   }
 
-  const { data, error: fetchError } = useSWR(city ? `/api/v2/${city}/${dayOfYear}` : null, fetcher, {
+  const { data, error: fetchError } = useSWR(city ? `/api/v3/${city}/${dayOfYear}` : null, fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })

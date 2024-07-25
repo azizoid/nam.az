@@ -22,7 +22,7 @@ const prayersTemplate = [
 ]
 
 export class PrayerData {
-  city: number
+  city: string
   tarix: string
   hijri: string
   dayOfYear: number

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface NamazState {
-  city: number | null;
+  city: string | null;
   dayOfYear: number | null;
 }
 
@@ -19,7 +19,7 @@ export const namazSlice = createSlice({
       state.dayOfYear = action.payload.dayOfYear
 
       // NOTE: whenever we change the city, we write it to the localStorage to be able to read on the next homepage load
-      localStorage.setItem('city', String(action.payload.city))
+      localStorage.setItem('namaz:city', String(action.payload.city))
     }
   },
 })

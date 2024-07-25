@@ -11,14 +11,14 @@ export const MapModal = ({ open, onClose }: ModalProps) => {
   const router = useRouter()
   const { city } = useSelector(selectNamazData)
 
-  const handleCityChange = (newCityId: number) => {
+  const handleCityChange = (newCityId: string) => {
     router.push(`/${newCityId}`)
     onClose()
   }
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Xerite onClick={handleCityChange} selectedCity={city ?? 1} />
+      <Xerite onClick={handleCityChange} selectedCity={city ?? 'baki'} />
     </Modal>
   )
 }

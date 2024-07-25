@@ -11,7 +11,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: '/api/v2/1',
+        source: '/api/v3/baki',
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           { key: 'Access-Control-Allow-Origin', value: '*' },
@@ -21,7 +21,14 @@ const nextConfig = {
         ]
       }
     ]
-  }
+  },
+  redirects: async () => [
+    {
+      source: '/1',
+      destination: '/baki',
+      permanent: true,
+    }
+  ]
 }
 
 module.exports = nextConfig

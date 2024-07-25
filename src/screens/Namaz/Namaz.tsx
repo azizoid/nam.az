@@ -6,9 +6,6 @@ import Head from 'next/head'
 import { getDayOfYear } from 'date-fns'
 import { useDispatch } from 'react-redux'
 
-// import { ResponseDataProps, selectCity, usePrayersData } from 'utility';
-
-import { coordinates } from '@/assets/coordinates'
 import { Loader } from '@/components/Loader/Loader'
 import { setNamazData } from '@/store/namazSlice'
 import { selectCity } from '@/utilities'
@@ -49,7 +46,7 @@ export const Namaz = ({ data }: AppViewProps) => {
   return (
     <>
       <Head>
-        <title>{coordinates[convertedData.city - 1].city} | Nam.az - Namazını qıl</title>
+        <title>{convertedData.city} | Nam.az - Namazını qıl</title>
       </Head>
       <div className="container mx-auto my-10 pb-2 align-middle">
         <Suspense fallback={<Loader />}>
