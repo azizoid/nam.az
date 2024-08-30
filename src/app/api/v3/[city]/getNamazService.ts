@@ -4,6 +4,8 @@ import { dayOfYearToDate } from '@/utilities/dayOfYearToDate'
 import { getUtcOffset } from '@/utilities/getUtcOffset'
 import { generateDates } from '@/utilities/server'
 
+const year = new Date().getFullYear()
+
 export type PrayerReturnProps = {
   prayers: string[],
   city: number,
@@ -19,16 +21,13 @@ export type GetNamazServiceProps = {
 }
 
 export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps) => {
-
-  const year = new Date().getFullYear()
-
   const calculatedDate = dayOfYearToDate(dayOfYear, year)
   const month = calculatedDate.getMonth() + 1
   const day = calculatedDate.getDate()
 
   const cityData = coordinates.find(c => c.slug === city)
   if (!cityData) {
-    throw new Error('city not found')
+    throw new Error(`City not found: ${city}`)
   }
 
   const tzDate = getUtcOffset(cityData.lat, cityData.lng) / 60
@@ -37,7 +36,7 @@ export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps)
   const prayerTimes = calculatedPrayerTimes.getTimes(calculatedDate, [cityData.lat, cityData.lng], tzDate, 0)
 
   if (!prayerTimes) {
-    throw new Error('Prayer times not found')
+    throw new Error(`Prayer times not found: ${city}, ${dayOfYear}`)
   }
 
   const result = {
