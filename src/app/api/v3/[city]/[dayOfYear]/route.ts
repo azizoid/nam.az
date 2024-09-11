@@ -6,7 +6,7 @@ import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
 
 import { getNamazService } from '../getNamazService'
 
-const schema = Joi.object({
+const schema = Joi.object<{ city: string, dayOfYear: number }>({
   city: cityRule,
   dayOfYear: dayOfYearRule
 })
@@ -19,12 +19,10 @@ export const GET = async (_: Request, { params }: ParamsType) => {
 
     const { value: validationValue, error: validationError } = schema.validate({ city, dayOfYear })
     if (validationError) {
-      return NextResponse.json({ error: 'City not found' }, { status: 404 })
+      return NextResponse.json({ error: 'Invalid City or Day of the year' }, { status: 404 })
     }
 
-    const dayOfYearWithLeapYearAdjustment = Number(validationValue.dayOfYear)
-
-    const prayerTimes = await getNamazService({ city: validationValue.city, dayOfYear: dayOfYearWithLeapYearAdjustment })
+    const prayerTimes = await getNamazService({ city: validationValue.city, dayOfYear: validationValue.dayOfYear })
 
     return NextResponse.json(prayerTimes)
 
