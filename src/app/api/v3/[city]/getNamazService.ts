@@ -1,6 +1,5 @@
 import { coordinates } from '@/assets/coordinates'
 import { PrayTimes } from '@/utilities'
-import { dayOfYearToDate } from '@/utilities/dayOfYearToDate'
 import { getUtcOffset } from '@/utilities/getUtcOffset'
 import { generateDates } from '@/utilities/server'
 
@@ -21,7 +20,7 @@ export type GetNamazServiceProps = {
 }
 
 export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps) => {
-  const calculatedDate = dayOfYearToDate(dayOfYear, year)
+  const calculatedDate = new Date(year, 0, dayOfYear, 12)
   const month = calculatedDate.getMonth() + 1
   const day = calculatedDate.getDate()
 
