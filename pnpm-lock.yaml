@@ -11,6 +11,9 @@ importers:
       '@date-fns/tz':
         specifier: ^1.1.2
         version: 1.1.2
+      '@photostructure/tz-lookup':
+        specifier: ^11.0.0
+        version: 11.0.0
       '@react-google-maps/api':
         specifier: ^2.20.3
         version: 2.20.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -47,9 +50,6 @@ importers:
       swr:
         specifier: ^2.2.5
         version: 2.2.5(react@18.3.1)
-      tz-lookup:
-        specifier: ^6.1.25
-        version: 6.1.25
     devDependencies:
       '@tailwindcss/forms':
         specifier: ^0.5.9
@@ -75,9 +75,6 @@ importers:
       '@types/react-dom':
         specifier: 18.3.1
         version: 18.3.1
-      '@types/tz-lookup':
-        specifier: ^6.1.2
-        version: 6.1.2
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -636,6 +633,9 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
+  '@photostructure/tz-lookup@11.0.0':
+    resolution: {integrity: sha512-QMV5/dWtY/MdVPXZs/EApqzyhnqDq1keYEqpS+Xj2uidyaqw2Nk/fWcsszdruIXjdqp1VoWNzsgrO6bUHU1mFw==}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -793,9 +793,6 @@ packages:
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
-
-  '@types/tz-lookup@6.1.2':
-    resolution: {integrity: sha512-9y31Xf/8FHXrCHjvVjGZLcsayAa6ABNc8bZlk6MPOQLLlr41tICSqW3TRPRIx2nodbzdKs5N7ipHWBrUsWUiAA==}
 
   '@types/use-sync-external-store@0.0.3':
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
@@ -3092,9 +3089,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  tz-lookup@6.1.25:
-    resolution: {integrity: sha512-fFewT9o1uDzsW1QnUU1ValqaihFnwiUiiHr1S79/fxOzKXYYvX+EHeRnpvQJ9B3Qg67wPXT6QF2Esc4pFOrvLg==}
-
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
 
@@ -3833,6 +3827,8 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
+  '@photostructure/tz-lookup@11.0.0': {}
+
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
@@ -4006,8 +4002,6 @@ snapshots:
   '@types/stack-utils@2.0.3': {}
 
   '@types/tough-cookie@4.0.5': {}
-
-  '@types/tz-lookup@6.1.2': {}
 
   '@types/use-sync-external-store@0.0.3': {}
 
@@ -6770,8 +6764,6 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   typescript@5.6.3: {}
-
-  tz-lookup@6.1.25: {}
 
   unbox-primitive@1.0.2:
     dependencies:
