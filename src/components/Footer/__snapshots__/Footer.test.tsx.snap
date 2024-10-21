@@ -3,7 +3,7 @@
 exports[`renders Footer component 1`] = `
 <div>
   <nav
-    class="sticky top-[100vh] w-full bg-gray-700 py-3 text-slate-300"
+    class="w-full bg-gray-700 py-3 text-slate-300"
   >
     <ol
       class="container mx-4 flex px-0 md:mx-auto"
@@ -32,6 +32,16 @@ exports[`renders Footer component 1`] = `
           target="_blank"
         >
           Quran.az
+        </a>
+      </li>
+      <li
+        class="mr-6"
+      >
+        <a
+          href="/credits"
+          target="_blank"
+        >
+          Təşəkkürlər
         </a>
       </li>
     </ol>

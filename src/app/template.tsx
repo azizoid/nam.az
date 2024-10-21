@@ -11,30 +11,31 @@ import { store } from '@/store'
 import { GA_TRACKING_ID } from '@/utilities/gtag'
 
 const RootTemplate = ({ children }: PropsWithChildren) => (
-    <Provider store={store}>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+  <Provider store={store}>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      strategy="afterInteractive"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', '${GA_TRACKING_ID}');
         `}
-      </Script>
-      <div className="flex min-h-screen flex-col justify-between">
+    </Script>
 
-        <Header />
+    <div className="flex min-h-screen flex-col justify-between">
 
-        {children}
+      <Header />
 
-        <Footer />
+      {children}
 
-      </div>
-    </Provider>
-  )
+      <Footer />
+
+    </div>
+  </Provider>
+)
 
 export default RootTemplate
