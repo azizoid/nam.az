@@ -2,7 +2,7 @@
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiJest, SiGithub, SiMongodb, SiGooglemaps } from 'react-icons/si'
 
 const Credits = () => (
-  <div className="flex flex-col justify-center p-6 container mx-auto">
+  <div className="container mx-auto flex flex-col justify-center p-6">
     <div className="mb-8">
       <h2 className="mb-4 text-xl font-semibold">İstifadə Edilən Texnologiyalar</h2>
       <div className="grid grid-cols-3 gap-6 md:grid-cols-4">
