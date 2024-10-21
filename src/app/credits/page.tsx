@@ -27,7 +27,7 @@ const Credits = () => (
           <SiGithub size={50} />
           <p className="mt-2 text-center">GitHub</p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center opacity-50">
           <SiMongodb size={50} color="#47A248" />
           <p className="mt-2 text-center">MongoDB</p>
         </div>
@@ -48,7 +48,7 @@ const Credits = () => (
           rel="noopener noreferrer"
           className="ml-1 text-blue-500 underline">
           freepik
-        </a> tərəfindən hazırlanıb.
+        </a>
       </p>
       <p className="mb-4">
         Namaz vaxtı skripti
