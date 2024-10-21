@@ -1,5 +1,5 @@
 export const Footer = () => (
-  <nav className="sticky top-[100vh] w-full bg-gray-700 py-3 text-slate-300">
+  <nav className="w-full bg-gray-700 py-3 text-slate-300">
     <ol className="container mx-4 flex px-0 md:mx-auto">
       <li className="mr-6" aria-current="page">
         &copy; {new Date().getFullYear()}
@@ -10,6 +10,11 @@ export const Footer = () => (
       <li className="mr-6">
         <a href="https://www.quran.az" target="_blank">
           Quran.az
+        </a>
+      </li>
+      <li className="mr-6">
+        <a href="/credits" target="_blank">
+          Təşəkkürlər
         </a>
       </li>
     </ol>
