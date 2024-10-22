@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 
-import Joi from 'joi'
+import { z } from 'zod'
 
-import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
+import { cityRule, dayOfYearRule } from '@/assets/zodValidationRules' // Assuming you've converted these to Zod schemas
 
 import { getNamazService } from '../getNamazService'
 
-const schema = Joi.object<{ city: string, dayOfYear: number }>({
+// Define the schema using Zod
+const schema = z.object({
   city: cityRule,
   dayOfYear: dayOfYearRule
 })
@@ -17,12 +18,15 @@ export const GET = async (_: Request, { params }: ParamsType) => {
   try {
     const { city, dayOfYear } = params
 
-    const { value: validationValue, error: validationError } = schema.validate({ city, dayOfYear })
-    if (validationError) {
+    // Zod validation using safeParse
+    const validationResult = schema.safeParse({ city, dayOfYear: Number(dayOfYear) })
+    if (!validationResult.success) {
       return NextResponse.json({ error: 'Invalid City or Day of the year' }, { status: 404 })
     }
 
-    const prayerTimes = await getNamazService({ city: validationValue.city, dayOfYear: validationValue.dayOfYear })
+    const { city: validatedCity, dayOfYear: validatedDayOfYear } = validationResult.data
+
+    const prayerTimes = await getNamazService({ city: validatedCity, dayOfYear: validatedDayOfYear })
 
     return NextResponse.json(prayerTimes)
 
