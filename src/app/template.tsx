@@ -3,15 +3,12 @@ import { PropsWithChildren } from 'react'
 
 import Script from 'next/script'
 
-import { Provider } from 'react-redux'
-
 import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
-import { store } from '@/store'
 import { GA_TRACKING_ID } from '@/utilities/gtag'
 
 const RootTemplate = ({ children }: PropsWithChildren) => (
-  <Provider store={store}>
+  <>
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       strategy="afterInteractive"
@@ -35,7 +32,7 @@ const RootTemplate = ({ children }: PropsWithChildren) => (
       <Footer />
 
     </div>
-  </Provider>
+  </>
 )
 
 export default RootTemplate
