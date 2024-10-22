@@ -4,10 +4,9 @@ import { Suspense, useEffect } from 'react'
 import Head from 'next/head'
 
 import { getDayOfYear } from 'date-fns'
-import { useDispatch } from 'react-redux'
 
 import { Loader } from '@/components/Loader/Loader'
-import { setNamazData } from '@/store/namazSlice'
+import { useNamazStore } from '@/store/namazStore'
 import { selectCity } from '@/utilities'
 
 import { Location } from './Location/Location'
@@ -35,39 +34,39 @@ type AppViewProps = {
 const today = getDayOfYear(new Date())
 
 export const Namaz = ({ data }: AppViewProps) => {
-  const dispatch = useDispatch()
+  const { setNamazData } = useNamazStore()
 
-  const convertedData = new PrayerData(data)
+  const { city, dayOfYear, tarix, hijri, progress, currentPrayer, prayers } = new PrayerData(data)
 
   useEffect(() => {
-    dispatch(setNamazData({ city: convertedData.city, dayOfYear: convertedData.dayOfYear }))
-  }, [convertedData.city, convertedData.dayOfYear, dispatch])
+    setNamazData({ city: city, dayOfYear: dayOfYear })
+  }, [city, dayOfYear, setNamazData])
 
   return (
     <>
       <Head>
-        <title>{convertedData.city} | Nam.az - Namazını qıl</title>
+        <title>{city} | Nam.az - Namazını qıl</title>
       </Head>
       <div className="container mx-auto my-10 pb-2 align-middle">
         <Suspense fallback={<Loader />}>
           <Location
-            city={convertedData.city}
-            location={selectCity(convertedData.city)}
-            tarix={convertedData.tarix}
-            hijri={convertedData.hijri}
-            dayOfYear={convertedData.dayOfYear}
+            city={city}
+            location={selectCity(city)}
+            tarix={tarix}
+            hijri={hijri}
+            dayOfYear={dayOfYear}
           />
 
-          <Progress bar={convertedData.progress} />
+          <Progress bar={progress} />
         </Suspense>
 
-        {convertedData.dayOfYear === today ? (
+        {dayOfYear === today ? (
           <PrayerList
-            prayers={convertedData.prayers}
-            currentPrayer={convertedData.currentPrayer}
+            prayers={prayers}
+            currentPrayer={currentPrayer}
           />
         ) : (
-          <PrayerListStill prayers={convertedData.prayers} />
+          <PrayerListStill prayers={prayers} />
         )}
       </div>
     </>

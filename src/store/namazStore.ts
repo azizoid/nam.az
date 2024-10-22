@@ -10,7 +10,7 @@ interface NamazActions {
 }
 
 export const useNamazStore = create<NamazState & NamazActions>((set) => ({
-  city: localStorage.getItem('namaz:city') || null, // Load from localStorage on init
+  city: null,
   dayOfYear: null,
   setNamazData: (data: NamazState) => {
     set({ city: data.city, dayOfYear: data.dayOfYear })
