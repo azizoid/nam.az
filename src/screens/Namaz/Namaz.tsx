@@ -1,11 +1,10 @@
 'use client'
-import { Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import Head from 'next/head'
 
 import { getDayOfYear } from 'date-fns'
 
-import { Loader } from '@/components/Loader/Loader'
 import { useNamazStore } from '@/store/namazStore'
 import { selectCity } from '@/utilities'
 
@@ -43,32 +42,28 @@ export const Namaz = ({ data }: AppViewProps) => {
   }, [city, dayOfYear, setNamazData])
 
   return (
-    <>
+    <div className="container mx-auto my-10 pb-2 align-middle">
       <Head>
         <title>{city} | Nam.az - Namazını qıl</title>
       </Head>
-      <div className="container mx-auto my-10 pb-2 align-middle">
-        <Suspense fallback={<Loader />}>
-          <Location
-            city={city}
-            location={selectCity(city)}
-            tarix={tarix}
-            hijri={hijri}
-            dayOfYear={dayOfYear}
-          />
+      <Location
+        city={city}
+        location={selectCity(city)}
+        tarix={tarix}
+        hijri={hijri}
+        dayOfYear={dayOfYear}
+      />
 
-          <Progress bar={progress} />
-        </Suspense>
+      <Progress bar={progress} />
 
-        {dayOfYear === today ? (
-          <PrayerList
-            prayers={prayers}
-            currentPrayer={currentPrayer}
-          />
-        ) : (
-          <PrayerListStill prayers={prayers} />
-        )}
-      </div>
-    </>
+      {dayOfYear === today ? (
+        <PrayerList
+          prayers={prayers}
+          currentPrayer={currentPrayer}
+        />
+      ) : (
+        <PrayerListStill prayers={prayers} />
+      )}
+    </div>
   )
 }

@@ -3,8 +3,6 @@ import { useEffect } from 'react'
 
 import { useRouter } from 'next/navigation'
 
-import { Loader } from '@/components/Loader/Loader'
-
 const HomePage = () => {
   const router = useRouter()
 
@@ -13,8 +11,6 @@ const HomePage = () => {
 
     router.push(`/${city || 'baki'}`)
   }, [router])
-
-  return <Loader />
 }
 
 export default HomePage

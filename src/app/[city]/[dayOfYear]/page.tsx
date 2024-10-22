@@ -26,17 +26,21 @@ const DayOfYearPage = ({ params: { city: cityParam = null, dayOfYear: dayOfyearP
 
   const { city, dayOfYear } = validationResult.data
 
-  const { data, error: fetchError } = useSWR(city ? `/api/v3/${city}/${dayOfYear}` : null, fetcher, {
+  const { data, error: fetchError, isLoading } = useSWR(city ? `/api/v3/${city}/${dayOfYear}` : null, fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   if (fetchError) {
-    return <Error statusCode={400} /> // Render the built-in 400 (Bad Request) page
+    return <Error statusCode={400} />
   }
 
   if (!data) {
-    return <Loader />
+    return <Error statusCode={404} />
   }
 
   return <Namaz data={data} />
