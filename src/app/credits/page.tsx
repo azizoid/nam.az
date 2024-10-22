@@ -1,5 +1,5 @@
 // pages/credits.tsx
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiJest, SiGithub, SiMongodb, SiGooglemaps } from 'react-icons/si'
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiJest, SiGithub, SiMongodb, SiGooglemaps, SiZod } from 'react-icons/si'
 
 const Credits = () => (
   <div className="container mx-auto flex flex-col justify-center p-6">
@@ -33,6 +33,10 @@ const Credits = () => (
         <div className="flex flex-col items-center">
           <SiGooglemaps size={50} color="#4285F4" />
           <p className="mt-2 text-center">Google Maps API</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <SiZod size={50} color="#4285F4" />
+          <p className="mt-2 text-center">Zod</p>
         </div>
       </div>
     </div>
