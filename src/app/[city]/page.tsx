@@ -2,29 +2,28 @@
 import Error from 'next/error'
 import { notFound } from 'next/navigation'
 
-import Joi from 'joi'
 import useSWR from 'swr'
+import { z } from 'zod'
 
-import { cityRule } from '@/assets/joiValidationRules'
+import { cityRule } from '@/assets/zodValidationRules' // Assuming you have converted to Zod
 import { Loader } from '@/components/Loader/Loader'
 import { Namaz, ResponseDataProps } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
 export type CityPageProps = { params: { city: string | null } }
 
-const schema = Joi.object({
+const schema = z.object({
   city: cityRule,
 })
 
 const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
+  const validationResult = schema.safeParse({ city: cityParam })
 
-  const { value: { city }, error } = schema.validate({ city: cityParam })
-
-  if (error) {
+  if (!validationResult.success) {
     notFound()
   }
 
-  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v3/${city}`, fetcher, {
+  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v3/${validationResult.data.city}`, fetcher, {
     // revalidateOnMount: true,
     // dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
@@ -38,6 +37,7 @@ const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
   }
 
   return <Namaz data={data} />
+
 }
 
 export default CityPage

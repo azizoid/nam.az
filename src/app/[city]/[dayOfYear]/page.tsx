@@ -2,15 +2,15 @@
 import Error from 'next/error'
 import { notFound } from 'next/navigation'
 
-import Joi from 'joi'
 import useSWR from 'swr'
+import { z } from 'zod'
 
-import { cityRule, dayOfYearRule } from '@/assets/joiValidationRules'
+import { cityRule, dayOfYearRule } from '@/assets/zodValidationRules'
 import { Loader } from '@/components/Loader/Loader'
 import { Namaz } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
-const schema = Joi.object({
+const schema = z.object({
   city: cityRule,
   dayOfYear: dayOfYearRule
 })
@@ -18,13 +18,13 @@ const schema = Joi.object({
 type DayOfYearPageProps = { params: { city: string | null, dayOfYear: string | null } }
 
 const DayOfYearPage = ({ params: { city: cityParam = null, dayOfYear: dayOfyearParam = null } }: DayOfYearPageProps) => {
+  const validationResult = schema.safeParse({ city: cityParam, dayOfYear: Number(dayOfyearParam) })
 
-  // Validate city query using Joi
-  const { value: { city, dayOfYear }, error } = schema.validate({ city: cityParam, dayOfYear: Number(dayOfyearParam) })
-
-  if (error) {
+  if (!validationResult.success) {
     notFound()
   }
+
+  const { city, dayOfYear } = validationResult.data
 
   const { data, error: fetchError } = useSWR(city ? `/api/v3/${city}/${dayOfYear}` : null, fetcher, {
     revalidateOnMount: true,
