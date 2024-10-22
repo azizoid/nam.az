@@ -5,8 +5,6 @@ import { coordinates } from './coordinates'
 
 const slugs = coordinates.map(city => city.slug)
 
-console.log({ slugs })
-
 export const cityRule = z.string().refine(value => slugs.includes(value), {
   message: 'Invalid city slug',
 })
