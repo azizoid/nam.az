@@ -44,6 +44,13 @@ exports[`renders Footer component 1`] = `
           Təşəkkürlər
         </a>
       </li>
+      <li
+        class="ml-auto"
+      >
+        v
+        1.0.1
+      </li>
+       
     </ol>
   </nav>
 </div>
