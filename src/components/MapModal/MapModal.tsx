@@ -1,15 +1,13 @@
 import { useRouter } from 'next/navigation'
 
-import { useSelector } from 'react-redux'
-
-import { selectNamazData } from '@/store/namazSlice'
+import { useNamazStore } from '@/store/namazStore'
 
 import { Modal, ModalProps } from './Modal/Modal'
 import { Xerite } from './Xerite/Xerite'
 
 export const MapModal = ({ open, onClose }: ModalProps) => {
   const router = useRouter()
-  const { city } = useSelector(selectNamazData)
+  const { city } = useNamazStore()
 
   const handleCityChange = (newCityId: string) => {
     router.push(`/${newCityId}`)

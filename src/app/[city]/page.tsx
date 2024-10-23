@@ -23,17 +23,21 @@ const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
     notFound()
   }
 
-  const { data, error: fetchError } = useSWR<ResponseDataProps>(`/api/v3/${validationResult.data.city}`, fetcher, {
+  const { data, error: fetchError, isLoading } = useSWR<ResponseDataProps>(`/api/v3/${validationResult.data.city}`, fetcher, {
     // revalidateOnMount: true,
     // dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   if (fetchError) {
-    return <Error statusCode={400} /> // Render the built-in 400 (Bad Request) page
+    return <Error statusCode={400} />
   }
 
   if (!data) {
-    return <Loader />
+    return <Error statusCode={404} />
   }
 
   return <Namaz data={data} />
