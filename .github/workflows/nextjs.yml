@@ -21,15 +21,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [21]
+        node-version: [20]
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9.1.2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
 
@@ -63,7 +63,7 @@ jobs:
           path: ./.next
 
       - name: Upload to Ubuntu server
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ env.HOST }}
           username: ${{ env.USERNAME }}
@@ -72,7 +72,7 @@ jobs:
           target: ${{ env.TARGET_DIRECTORY }}
 
       - name: Execute deployment commands on the server
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ env.HOST }}
           username: ${{ env.USERNAME }}
@@ -80,6 +80,7 @@ jobs:
           script: |
             cd ${{ env.TARGET_DIRECTORY }}
             git fetch
+            git checkout main
             git pull
             pnpm install
             pm2 restart nam.az
