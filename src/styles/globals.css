@@ -28,7 +28,16 @@
   }
 
   .alert-danger {
-    @apply bg-red-300 border-red-900 text-black;
+    @apply bg-red-200 border-red-900 text-red-800 md:w-3/5 sm:w-full mx-auto;
+
+    & > div {
+      @apply container my-10 pb-2 align-middle;
+
+      & a {
+        text-decoration: underline;
+
+      }
+    }
   }
 
   code {
