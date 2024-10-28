@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 export const NotFoundPage = () => <div className="alert alert-danger">
   <div>

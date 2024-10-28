@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import useSWR from 'swr'
 import { z } from 'zod'
 
-import { cityRule } from '@/assets/zodValidationRules' // Assuming you have converted to Zod
+import { cityRule } from '@/assets/zodValidationRules'
 import { Loader } from '@/components/Loader/Loader'
 import { Namaz, ResponseDataProps } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
