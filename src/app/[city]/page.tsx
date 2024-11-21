@@ -1,4 +1,6 @@
 'use client'
+import { use } from 'react'
+
 import Error from 'next/error'
 import { notFound } from 'next/navigation'
 
@@ -10,13 +12,19 @@ import { Loader } from '@/components/Loader/Loader'
 import { Namaz, ResponseDataProps } from '@/screens/Namaz/Namaz'
 import { fetcher } from '@/utilities/fetcher'
 
-export type CityPageProps = { params: { city: string | null } }
+export type CityPageProps = { params: Promise<{ city: string | null }> }
 
 const schema = z.object({
   city: cityRule,
 })
 
-const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
+const CityPage = (props: CityPageProps) => {
+  const params = use(props.params)
+
+  const {
+    city: cityParam = null
+  } = params
+
   const validationResult = schema.safeParse({ city: cityParam })
 
   if (!validationResult.success) {
@@ -41,7 +49,6 @@ const CityPage = ({ params: { city: cityParam = null } }: CityPageProps) => {
   }
 
   return <Namaz data={data} />
-
 }
 
 export default CityPage

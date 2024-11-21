@@ -7,18 +7,17 @@ import { cityRule } from '@/assets/zodValidationRules'
 
 import { getNamazService } from './getNamazService'
 
-// Define the schema using Zod
 const schema = z.object({
   city: cityRule,
 })
 
-type ParamsType = { params: { city: string } }
+type ParamsType = { params: Promise<{ city: string }> }
 
-export const GET = async (_: Request, { params }: ParamsType) => {
+export const GET = async (_: Request, props: ParamsType) => {
+  const params = await props.params
   try {
     const { city } = params
 
-    // Zod validation
     const validationResult = schema.safeParse({ city })
     if (!validationResult.success) {
       return NextResponse.json({ error: 'City not found' }, { status: 404 })

@@ -5,7 +5,6 @@ const nextConfig = {
   devIndicators: {
     buildActivity: false,
   },
-  swcMinify: true,
   compress: true,
   async headers() {
     return [
