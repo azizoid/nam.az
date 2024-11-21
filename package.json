@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --config ./config/jest.config.js",
-    "test:coverage": "jest --config ./config/jest.config.js --coverage"
+    "test:coverage": "jest --config ./config/jest.config.js --coverage",
+    "ci": "pnpm install --frozen-lockfile"
   },
   "dependencies": {
     "@date-fns/tz": "^1.2.0",
