@@ -34,7 +34,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
       - name: Install dependencies 
-        run: pnpm ci
+        run: pnpm run ci
 
       - name: Build with Next.js
         run: pnpm next build
@@ -82,6 +82,6 @@ jobs:
             git fetch
             git checkout main
             git pull
-            pnpm ci
+            pnpm run ci
             pm2 restart nam.az
             echo "Files uploaded successfully!"
