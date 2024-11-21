@@ -1,4 +1,6 @@
 'use client'
+import { use } from 'react'
+
 import Error from 'next/error'
 import { notFound } from 'next/navigation'
 
@@ -15,9 +17,18 @@ const schema = z.object({
   dayOfYear: dayOfYearRule
 })
 
-type DayOfYearPageProps = { params: { city: string | null, dayOfYear: string | null } }
+type DayOfYearPageProps = {
+  params: Promise<{ city: string | null, dayOfYear: string | null }>
+}
 
-const DayOfYearPage = ({ params: { city: cityParam = null, dayOfYear: dayOfyearParam = null } }: DayOfYearPageProps) => {
+const DayOfYearPage = (props: DayOfYearPageProps) => {
+  const params = use(props.params)
+
+  const {
+    city: cityParam = null,
+    dayOfYear: dayOfyearParam = null
+  } = params
+
   const validationResult = schema.safeParse({ city: cityParam, dayOfYear: Number(dayOfyearParam) })
 
   if (!validationResult.success) {

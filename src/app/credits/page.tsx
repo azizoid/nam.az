@@ -1,4 +1,3 @@
-// pages/credits.tsx
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiJest, SiGithub, SiMongodb, SiGooglemaps, SiZod } from 'react-icons/si'
 
 const Credits = () => (

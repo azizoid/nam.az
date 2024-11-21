@@ -2,23 +2,22 @@ import { NextResponse } from 'next/server'
 
 import { z } from 'zod'
 
-import { cityRule, dayOfYearRule } from '@/assets/zodValidationRules' // Assuming you've converted these to Zod schemas
+import { cityRule, dayOfYearRule } from '@/assets/zodValidationRules'
 
 import { getNamazService } from '../getNamazService'
 
-// Define the schema using Zod
 const schema = z.object({
   city: cityRule,
   dayOfYear: dayOfYearRule
 })
 
-type ParamsType = { params: { city: string, dayOfYear: string } }
+type ParamsType = { params: Promise<{ city: string, dayOfYear: string }> }
 
-export const GET = async (_: Request, { params }: ParamsType) => {
+export const GET = async (_: Request, props: ParamsType) => {
+  const params = await props.params
   try {
     const { city, dayOfYear } = params
 
-    // Zod validation using safeParse
     const validationResult = schema.safeParse({ city, dayOfYear: Number(dayOfYear) })
     if (!validationResult.success) {
       return NextResponse.json({ error: 'Invalid City or Day of the year' }, { status: 404 })
