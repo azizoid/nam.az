@@ -38,7 +38,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
       fillColor: 'white',
       fillOpacity: 1,
       strokeWeight: 2,
-      strokeColor: "red",
+      strokeColor: 'red',
       scale: 6,
     }
 
