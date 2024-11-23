@@ -1,9 +1,9 @@
 'use client'
 
-import { Xerite } from "@/components/Xerite/Xerite"
-import { useNamazStore } from "@/store/namazStore"
+import { useRouter } from 'next/navigation'
 
-import { useRouter } from "next/navigation"
+import { Xerite } from '@/components/Xerite/Xerite'
+import { useNamazStore } from '@/store/namazStore'
 
 const XeritePage = () => {
   const { city } = useNamazStore()
