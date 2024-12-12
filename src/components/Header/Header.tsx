@@ -2,11 +2,14 @@
 
 import { useState } from 'react'
 
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearchLocation } from 'react-icons/fa'
 
-import { XeritePage } from '../Xerite/XeritePage'
+const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
+
+})
 
 export const Header = () => {
 
