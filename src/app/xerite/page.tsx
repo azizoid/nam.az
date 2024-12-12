@@ -5,12 +5,17 @@ import { useRouter } from 'next/navigation'
 import { Xerite } from '@/components/Xerite/Xerite'
 import { useNamazStore } from '@/store/namazStore'
 
-const XeritePage = () => {
+type XeritePageProps = {
+  onCloseCallback: () => void
+}
+
+const XeritePage = ({ onCloseCallback }: XeritePageProps) => {
   const { city } = useNamazStore()
   const router = useRouter()
 
   const handleCityChange = (newCityId: string) => {
     router.push(`/${newCityId}`)
+    onCloseCallback()
   }
 
   return <div className="h-screen">
