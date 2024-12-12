@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearchLocation } from 'react-icons/fa'
 
-import XeritePage from '@/app/xerite/page'
+import { XeritePage } from '../Xerite/XeritePage'
 
 export const Header = () => {
 
@@ -44,7 +44,7 @@ export const Header = () => {
         </div>
       </nav >
 
-      {isMapOpen && <XeritePage onCloseCallback={() => setIsMapOpen(false)} />}
+      {isMapOpen && <XeritePage onCloseAction={() => setIsMapOpen(false)} />}
 
     </div >
   )
