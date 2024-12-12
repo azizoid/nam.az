@@ -34,22 +34,23 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
 
   if (isLoaded) {
     const icon: MarkerProps['icon'] = {
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      fillColor: 'red',
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: 'white',
       fillOpacity: 1,
-      strokeWeight: 0,
-      scale: 4.5,
+      strokeWeight: 2,
+      strokeColor: 'red',
+      scale: 6,
     }
 
     return (
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7} options={{ streetViewControl: false }}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={8} options={{ streetViewControl: false }}>
         {coordinates.map(({ city, lat, lng, slug }) => (
           <Marker
             key={slug}
             position={{ lat, lng }}
             title={city}
             onClick={() => onClick(slug)}
-            icon={icon}
+            {...(selectedCity !== slug && { icon: icon })}
           />
         ))}
       </GoogleMap>
