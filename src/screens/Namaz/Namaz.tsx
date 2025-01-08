@@ -7,7 +7,7 @@ import { getDayOfYear } from 'date-fns'
 import { useAtom } from 'jotai'
 
 import { setNamazDataAtom } from '@/store/jotaiStore'
-import { selectCity } from '@/utilities'
+import { selectCity } from '@/utilities/selectCity/selectCity'
 
 import { Location } from './Location/Location'
 import { PrayerData } from './Namaz.entity'

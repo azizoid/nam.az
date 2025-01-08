@@ -1,7 +1,7 @@
 import { coordinates } from '@/assets/coordinates'
-import { PrayTimes } from '@/utilities'
+import { generateDates } from '@/utilities/generateToDates/generateDates'
 import { getUtcOffset } from '@/utilities/getUtcOffset'
-import { generateDates } from '@/utilities/server'
+import { PrayTimes } from '@/utilities/prayertime/prayertime'
 
 const year = new Date().getFullYear()
 

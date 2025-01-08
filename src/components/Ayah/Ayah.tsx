@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { fetcher } from '@/utilities'
+import { fetcher } from '@/utilities/fetcher'
 
 import { AyahView } from './AyahView'
 
