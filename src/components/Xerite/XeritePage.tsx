@@ -2,15 +2,17 @@
 
 import { useRouter } from 'next/navigation'
 
+import { useAtom } from 'jotai'
+
 import { Xerite } from '@/components/Xerite/Xerite'
-import { useNamazStore } from '@/store/namazStore'
+import { cityAtom } from '@/store/jotaiStore'
 
 type XeritePageProps = {
   onCloseAction: () => void
 }
 
 export const XeritePage = ({ onCloseAction }: XeritePageProps) => {
-  const { city } = useNamazStore()
+  const [city] = useAtom(cityAtom)
   const router = useRouter()
 
   const handleCityChange = (newCityId: string) => {

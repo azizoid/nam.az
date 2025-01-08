@@ -4,8 +4,9 @@ import { useEffect } from 'react'
 import Head from 'next/head'
 
 import { getDayOfYear } from 'date-fns'
+import { useAtom } from 'jotai'
 
-import { useNamazStore } from '@/store/namazStore'
+import { setNamazDataAtom } from '@/store/jotaiStore'
 import { selectCity } from '@/utilities'
 
 import { Location } from './Location/Location'
@@ -33,7 +34,7 @@ type AppViewProps = {
 const today = getDayOfYear(new Date())
 
 export const Namaz = ({ data }: AppViewProps) => {
-  const { setNamazData } = useNamazStore()
+  const [, setNamazData] = useAtom(setNamazDataAtom)
 
   const { city, dayOfYear, tarix, hijri, progress, currentPrayer, prayers } = new PrayerData(data)
 
