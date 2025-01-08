@@ -2,7 +2,7 @@ import { az } from 'date-fns/locale'
 
 import { format, formatDistanceStrict, getDayOfYear, parse } from 'date-fns'
 
-import { percentageCounter } from '@/utilities'
+import { percentageCounter } from '@/utilities/percentageCounter/percentageCounter'
 
 interface Prayer {
   id: number;
