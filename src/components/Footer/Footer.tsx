@@ -12,11 +12,6 @@ export const Footer = () => (
           Quran.az
         </a>
       </li>
-      <li className="mr-6">
-        <a href="/credits" target="_blank">
-          Təşəkkürlər
-        </a>
-      </li>
     </ol>
   </nav>
 )
