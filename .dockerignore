@@ -1,0 +1,5 @@
+node_modules
+.next
+pnpm-store
+.env
+.env.local

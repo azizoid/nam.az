@@ -1,0 +1,17 @@
+services:
+  namaz-app:
+    container_name: namaz-app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    external: true
