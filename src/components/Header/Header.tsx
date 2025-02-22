@@ -34,7 +34,7 @@ export const Header = () => {
 
         <div className="flex flex-col">
           <button onClick={() => setIsMapOpen(prev => !prev)}
-            className="mr-1 rounded-md bg-green-500 py-2 text-sm text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-green-600">
+            className="mr-1 rounded-md bg-green-500 py-2 text-sm text-white shadow-sm outline-hidden transition-all duration-150 ease-linear hover:shadow-lg focus:outline-hidden active:bg-green-600">
             <div className="flex items-center justify-center">
               {`Xəritəni ${!isMapOpen ? 'aç' : 'bağla'}`}&nbsp;
               <FaSearchLocation size="1em" />

@@ -1,55 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer components {
-  .prayer {
-    @apply col-span-12 md:col-span-4 flex md:flex-col justify-around items-center mx-2;
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --font-Nunito: Nunito;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
+}
 
-  .btn {
-    @apply py-2 px-0 md:px-3 text-6xl font-thin;
-  }
+@utility prayer {
+  @apply col-span-12 md:col-span-4 flex md:flex-col justify-around items-center mx-2;
+}
 
-  .btn-green {
-    @apply bg-green-200 text-green-900 hover:bg-green-300;
-  }
+@utility btn {
+  @apply py-2 px-0 md:px-3 text-6xl font-thin;
+}
 
-  .alert {
-    @apply px-4 py-3 space-y-0 md:space-y-4 md:my-3 rounded-lg;
-  }
+@utility btn-green {
+  @apply bg-green-200 text-green-900 hover:bg-green-300;
+}
 
-  .alert-success {
-    @apply bg-green-100 text-teal-900;
-  }
+@utility alert {
+  @apply px-4 py-3 space-y-0 md:space-y-4 md:my-3 rounded-lg;
+}
 
-  .alert-gray {
-    @apply bg-gray-100 border-gray-500 text-gray-900;
-  }
+@utility alert-success {
+  @apply bg-green-100 text-teal-900;
+}
 
-  .alert-danger {
-    @apply bg-red-200 border-red-900 text-red-800 md:w-3/5 sm:w-full mx-auto;
+@utility alert-gray {
+  @apply bg-gray-100 border-gray-500 text-gray-900;
+}
 
-    & > div {
-      @apply container my-10 pb-2 align-middle;
+@utility alert-danger {
+  @apply bg-red-200 border-red-900 text-red-800 md:w-3/5 sm:w-full mx-auto;
 
-      & a {
-        text-decoration: underline;
+  & > div {
+    @apply container my-10 pb-2 align-middle;
 
-      }
+    & a {
+      text-decoration: underline;
     }
   }
+}
+
+@utility badge {
+  @apply mr-1 px-2 py-1 text-sm rounded-lg;
+}
+
+@utility badge-yellow {
+  @apply bg-yellow-300 text-black;
+}
+
+@layer components {
 
   code {
     @apply text-red-400;
-  }
-
-  .badge {
-    @apply mr-1 px-2 py-1 text-sm rounded-lg;
-  }
-
-  .badge-yellow {
-    @apply bg-yellow-300 text-black;
   }
 }
 
