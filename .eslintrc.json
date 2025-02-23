@@ -2,13 +2,10 @@
   "$schema": "https://json.schemastore.org/eslintrc",
   "extends": [
     "next/core-web-vitals",
-    "plugin:tailwindcss/recommended",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended"
   ],
-  "plugins": [
-    "tailwindcss"
-  ],
+  "plugins": [],
   "rules": {
     "import/order": [
       "error",
