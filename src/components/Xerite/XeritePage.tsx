@@ -21,6 +21,6 @@ export const XeritePage = ({ onCloseAction }: XeritePageProps) => {
   }
 
   return <div className="h-screen">
-    <Xerite selectedCity={city || 'baki'} onClick={handleCityChange} />
+    <Xerite selectedCity={city || 'baki'} onClickAction={handleCityChange} />
   </div>
 }

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 
 import {
@@ -21,10 +22,10 @@ const center = {
 
 export type XeriteProps = {
   selectedCity?: string;
-  onClick: (city: string) => void;
+  onClickAction: (city: string) => void;
 };
 
-export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
+export const Xerite = ({ selectedCity, onClickAction }: XeriteProps) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
@@ -49,7 +50,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
             key={slug}
             position={{ lat, lng }}
             title={city}
-            onClick={() => onClick(slug)}
+            onClick={() => onClickAction(slug)}
             {...(selectedCity !== slug && { icon: icon })}
           />
         ))}
@@ -61,7 +62,7 @@ export const Xerite = ({ selectedCity, onClick }: XeriteProps) => {
     <select
       className="rounded-md border-green-400 bg-green-50 text-sm"
       aria-label="Haradasınız?"
-      onChange={e => onClick(e.target.value)}
+      onChange={e => onClickAction(e.target.value)}
       value={selectedCity}
     >
       {coordinates.map(({ id, city }) => (
