@@ -39,6 +39,7 @@
     "eslint": "8.56.0",
     "eslint-config-next": "^15.1.7",
     "eslint-plugin-jest-dom": "^5.5.0",
+    "eslint-plugin-propper-nextjs": "^2.4.2",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "eslint-plugin-testing-library": "^6.5.0",
     "jest": "^29.7.0",
