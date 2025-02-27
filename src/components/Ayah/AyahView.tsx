@@ -1,6 +1,6 @@
 import { MdFormatQuote } from 'react-icons/md'
 
-import { AyahApiProps } from './Ayah'
+import { type AyahApiProps } from './Ayah'
 
 type AyahViewProps = { randomAyah: AyahApiProps }
 

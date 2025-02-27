@@ -3,7 +3,7 @@ import React from 'react'
 import {
   GoogleMap,
   MarkerF as Marker,
-  MarkerProps,
+  type MarkerProps,
   useJsApiLoader,
 } from '@react-google-maps/api'
 
