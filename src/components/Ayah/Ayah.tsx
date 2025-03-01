@@ -1,3 +1,4 @@
+'use client'
 import useSWR from 'swr'
 
 import { fetcher } from '@/utilities/fetcher'
@@ -14,7 +15,7 @@ export type AyahApiProps = {
 };
 
 export const Ayah = () => {
-  const apiUrl = 'https://quran.az/api/random'
+  const apiUrl = 'https://quran.az/api/v2/random'
   const { data } = useSWR(apiUrl, fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
@@ -30,5 +31,5 @@ export const Ayah = () => {
     translator: 4,
   }
 
-  return <AyahView randomAyah={data ? data.out : displayAyahByDefault} />
+  return <AyahView randomAyah={data || displayAyahByDefault} />
 }

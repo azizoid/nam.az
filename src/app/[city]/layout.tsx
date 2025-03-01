@@ -1,6 +1,7 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, Suspense } from 'react'
 
 import { coordinates } from '@/assets/coordinates'
+import { Ayah } from '@/components/Ayah/Ayah'
 
 export type CityLayoutProps = PropsWithChildren<{
   params: Promise<{ city: string }>
@@ -22,7 +23,12 @@ export const generateMetadata = async (props: CityLayoutProps) => {
 }
 
 const CityLayout = ({ children }: CityLayoutProps) => {
-  return <>{children}</>
+  return <>
+    {children}
+
+    <Ayah />
+
+  </>
 }
 
 export default CityLayout
