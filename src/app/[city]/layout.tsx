@@ -1,4 +1,4 @@
-import { PropsWithChildren, Suspense } from 'react'
+import { PropsWithChildren } from 'react'
 
 import { coordinates } from '@/assets/coordinates'
 import { Ayah } from '@/components/Ayah/Ayah'
@@ -10,7 +10,6 @@ export type CityLayoutProps = PropsWithChildren<{
 export const generateMetadata = async (props: CityLayoutProps) => {
   const params = await props.params
   const { city = null } = params
-  console.log(city)
   const title = coordinates.find((cityItem) => cityItem.slug === city)?.city
 
   if (!title) return
