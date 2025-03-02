@@ -1,8 +1,6 @@
 'use client'
 import { useEffect } from 'react'
 
-import Head from 'next/head'
-
 import { getDayOfYear } from 'date-fns'
 import { useAtom } from 'jotai'
 
@@ -44,9 +42,6 @@ export const Namaz = ({ data }: AppViewProps) => {
 
   return (
     <div className="container mx-auto my-10 pb-2 align-middle">
-      <Head>
-        <title>{city} | Nam.az - Namazını qıl</title>
-      </Head>
       <Location
         city={city}
         location={selectCity(city)}
