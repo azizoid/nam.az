@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/components/Link'
 
 export const CityDayNotFound = () => <div className="alert alert-danger">
   <div>

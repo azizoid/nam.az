@@ -1,5 +1,6 @@
-import Link from 'next/link'
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md'
+
+import { Link } from '@/components/Link'
 
 import { Clock } from './Clock/Clock'
 
