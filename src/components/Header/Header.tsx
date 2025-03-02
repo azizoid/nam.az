@@ -18,7 +18,7 @@ const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((
 export const Header = () => {
 
   const [isMapOpen, setIsMapOpen] = useState<boolean>(false)
-  const [city] = useAtom(cityAtom)
+  const [city = 'baki'] = useAtom(cityAtom)
 
   return (
     <div className="bg-gray-100 p-2">

@@ -13,14 +13,14 @@ export const getSpecialDay = (date: Date, day: number) => {
 
   if (isQadrNight && isFriday) {
     return (
-      <div className="flex items-center gap-2" >
-        <FaMosque className="text-yellow-500 text-lg" />
-        <span>Cümə </span>
+      <div className="flex flex-col gap-0" >
+        <FaMosque className="text-yellow-500 text-lg m-auto" />
+        <span>Cümə</span>
       </div>
     )
   }
 
-  if (isQadrNight) return <FaMosque className="text-yellow-500 text-lg" />
+  if (isQadrNight) return <FaMosque className="text-yellow-500 text-lg m-auto" />
   if (isFriday) return 'Cümə'
 
   return ''

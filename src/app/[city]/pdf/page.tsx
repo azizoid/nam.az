@@ -17,13 +17,12 @@ const CityPdfPage = async (props: CityProps) => {
   const prayerTimes = await generateRamadanPrayerTimes(city)
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-2">
       <div className="w-full max-w-4xl bg-white rounded-lg border shadow-lg overflow-hidden">
         <Table className="w-full">
           <TableHeader>
-            <TableRow className="bg-gray-100">
-              <TableHead className="w-12 text-center">#</TableHead>
-              <TableHead className="w-24 text-center hidden md:table-cell">Gün</TableHead>
+            <TableRow className="bg-gray-100 text-center">
+              <TableHead className="w-12 text-center">Gün</TableHead>
               <TableHead className="text-center">Fəcr</TableHead>
               <TableHead className="text-center">Günəş</TableHead>
               <TableHead className="text-center">Zöhr</TableHead>
@@ -39,8 +38,10 @@ const CityPdfPage = async (props: CityProps) => {
                 className={`text-sm text-center transition-colors ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
                   } hover:bg-blue-100`}
               >
-                <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell className=" text-gray-900 font-semibold hidden md:block">{getSpecialDay(date, d)}</TableCell>
+                <TableCell className="font-medium flex flex-col">
+                  <span>{index + 1}</span>
+                  <span className="text-xs">{getSpecialDay(date, d)}</span>
+                </TableCell>
                 <TableCell>{prayers[0]}</TableCell>
                 <TableCell>{prayers[1]}</TableCell>
                 <TableCell>{prayers[2]}</TableCell>
