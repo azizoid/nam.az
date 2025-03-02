@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearchLocation } from 'react-icons/fa'
+import { useAtom } from 'jotai'
+import { cityAtom } from '@/store/jotaiStore'
 
 const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
 
@@ -14,10 +16,11 @@ const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((
 export const Header = () => {
 
   const [isMapOpen, setIsMapOpen] = useState<boolean>(false)
+  const [city] = useAtom(cityAtom)
 
   return (
     <div className="bg-gray-100 p-2">
-      <nav className="container mx-auto flex justify-between">
+      <nav className="container mx-auto flex items-center justify-between">
         <Link
           className="flex content-start items-center py-2 text-gray-500 hover:opacity-75"
           href="/"
@@ -32,6 +35,8 @@ export const Header = () => {
           Nam.az
         </Link>
 
+        <Link href={`/${city}/pdf`}>Ramazan Təqvimi</Link>
+
         <div className="flex flex-col">
           <button onClick={() => setIsMapOpen(prev => !prev)}
             className="mr-1 rounded-md bg-green-500 py-2 text-sm text-white shadow-sm outline-hidden transition-all duration-150 ease-linear hover:shadow-lg focus:outline-hidden active:bg-green-600">
@@ -44,8 +49,9 @@ export const Header = () => {
           <small>
             Bakı, Gəncə, <u>Şuşa</u> və digər
           </small>
+
         </div>
-      </nav >
+      </nav>
 
       {isMapOpen && <XeritePage onCloseAction={() => setIsMapOpen(false)} />}
 
