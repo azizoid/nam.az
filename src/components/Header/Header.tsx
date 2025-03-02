@@ -6,7 +6,9 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearchLocation } from 'react-icons/fa'
+
 import { useAtom } from 'jotai'
+
 import { cityAtom } from '@/store/jotaiStore'
 
 const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
