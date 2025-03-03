@@ -10,6 +10,7 @@ import { useAtom } from 'jotai'
 
 import { Link } from '@/components/Link'
 import { cityAtom } from '@/store/jotaiStore'
+import { coordinates } from '@/assets/coordinates'
 
 const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
 
@@ -18,7 +19,9 @@ const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((
 export const Header = () => {
 
   const [isMapOpen, setIsMapOpen] = useState<boolean>(false)
-  const [city = 'baki'] = useAtom(cityAtom)
+  const [city] = useAtom(cityAtom)
+
+  const cityData = coordinates.find(item => item.slug === city) || coordinates[0]
 
   return (
     <div className="bg-gray-100 p-2">
@@ -37,7 +40,7 @@ export const Header = () => {
           Nam.az
         </Link>
 
-        <Link href={`/${city}/pdf`}>Ramazan Təqvimi</Link>
+        <Link href={`/${cityData.slug}/ayliq-teqvim`}>{cityData.city} Ramazan Təqvimi</Link>
 
         <div className="flex flex-col">
           <button onClick={() => setIsMapOpen(prev => !prev)}

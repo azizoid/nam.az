@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   return coordinates.map((city) => ({ city: city.slug }))
 }
 
-const CityPdfPage = async (props: CityProps) => {
+const CityAyliqTeqvimPage = async (props: CityProps) => {
   const { city } = await props.params
   const prayerTimes = await generateRamadanPrayerTimes(city)
 
@@ -57,4 +57,4 @@ const CityPdfPage = async (props: CityProps) => {
   )
 }
 
-export default CityPdfPage
+export default CityAyliqTeqvimPage
