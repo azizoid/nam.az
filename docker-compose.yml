@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        - NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
     env_file:
       - .env
     ports:
