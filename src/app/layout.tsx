@@ -2,11 +2,9 @@ import '@/styles/globals.css'
 
 import { PropsWithChildren } from 'react'
 
-import { GoogleAnalytics } from '@next/third-parties/google'
-
+import { Analytics } from '@/components/Analytics'
 import { Footer } from '@/components/Footer/Footer'
 import { Header } from '@/components/Header/Header'
-import { GA_TRACKING_ID } from '@/utilities/gtag'
 
 import { MainMetadata, MainViewport } from './metadata'
 
@@ -26,8 +24,8 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 
           <Footer />
         </div>
+        <Analytics />
       </body>
-      <GoogleAnalytics gaId={GA_TRACKING_ID} />
     </html>
   )
 }
