@@ -10,7 +10,7 @@ import { useAtom } from 'jotai'
 
 import { Link } from '@/components/Link'
 import { cityAtom } from '@/store/jotaiStore'
-import { coordinates } from '@/assets/coordinates'
+import { selectCity } from '@/utilities/selectCity/selectCity'
 
 const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
 
@@ -21,7 +21,7 @@ export const Header = () => {
   const [isMapOpen, setIsMapOpen] = useState<boolean>(false)
   const [city] = useAtom(cityAtom)
 
-  const cityData = coordinates.find(item => item.slug === city) || coordinates[0]
+  const cityData = selectCity(city)
 
   return (
     <div className="bg-gray-100 p-2">

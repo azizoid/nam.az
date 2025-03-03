@@ -44,7 +44,7 @@ export const Namaz = ({ data }: AppViewProps) => {
     <div className="container mx-auto my-10 pb-2 align-middle">
       <Location
         city={city}
-        location={selectCity(city)}
+        location={selectCity(city).city}
         tarix={tarix}
         hijri={hijri}
         dayOfYear={dayOfYear}

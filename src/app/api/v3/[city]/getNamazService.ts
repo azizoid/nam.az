@@ -1,7 +1,7 @@
-import { coordinates } from '@/assets/coordinates'
 import { prayTimesCalc } from '@/lib/prayTimesCalc'
 import { generateDates } from '@/utilities/generateToDates/generateDates'
 import { getUtcOffset } from '@/utilities/getUtcOffset'
+import { selectCity } from '@/utilities/selectCity/selectCity'
 
 const year = new Date().getFullYear()
 
@@ -24,7 +24,7 @@ export const getNamazService = async ({ city, dayOfYear }: GetNamazServiceProps)
   const month = calculatedDate.getMonth() + 1
   const day = calculatedDate.getDate()
 
-  const cityData = coordinates.find(c => c.slug === city)
+  const cityData = selectCity(city)
   if (!cityData) {
     throw new Error(`City not found: ${city}`)
   }

@@ -1,4 +1,4 @@
-import { coordinates } from '@/assets/coordinates'
+import { coordinates, CoordinatesProps } from '@/assets/coordinates'
 
-export const selectCity = (city: string): string =>
-  coordinates.find(item => item.slug === city)?.city || coordinates[0].city
+export const selectCity = (citySlug: string | null): CoordinatesProps =>
+  coordinates.find(item => item.slug === citySlug) || coordinates[0]
