@@ -40,7 +40,7 @@ export const Xerite = ({ selectedCity, onClickAction }: XeriteProps) => {
       fillOpacity: 1,
       strokeWeight: 2,
       strokeColor: 'red',
-      scale: 6,
+      scale: 3,
     }
 
     return (
@@ -51,7 +51,7 @@ export const Xerite = ({ selectedCity, onClickAction }: XeriteProps) => {
             position={{ lat, lng }}
             title={city}
             onClick={() => onClickAction(slug)}
-            {...(selectedCity !== slug && { icon: icon })}
+            {...(selectedCity !== slug && { icon })}
           />
         ))}
       </GoogleMap>

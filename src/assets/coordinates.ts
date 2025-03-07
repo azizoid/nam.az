@@ -45,4 +45,11 @@ export const coordinates: CoordinatesProps[] = [
   { id: 36, city: 'Sədərək', lat: 39.7105, lng: 44.8864, slug: 'sadarak' },
   { id: 37, city: 'Culfa', lat: 38.9605, lng: 45.6293, slug: 'culfa' },
   { id: 38, city: 'Shahbuz', lat: 39.4056, lng: 45.5691, slug: 'shahbuz' },
+  { id: 39, city: 'Salyan', lat: 39.5779, lng: 48.9719, slug: 'salyan' },
+  { id: 40, city: 'Barda', lat: 40.3707, lng: 47.1379, slug: 'barda' },
+  { id: 41, city: 'Barda', lat: 40.5700, lng: 45.8107, slug: 'gadabay' },
+  { id: 42, city: 'İsmayıllı', lat: 40.7871, lng: 48.1523, slug: 'ismayilli' },
+  { id: 43, city: 'Siyəzən', lat: 41.0784, lng: 49.1118, slug: 'siyazan' },
+  { id: 44, city: 'Ağcəbədi', lat: 40.0488, lng: 47.4585, slug: 'agcabadi' },
+  { id: 45, city: 'Kürdəmir', lat: 40.3465, lng: 48.1583, slug: 'kurdamir' },
 ]
