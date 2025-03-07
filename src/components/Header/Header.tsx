@@ -27,7 +27,7 @@ export const Header = () => {
     <div className="bg-gray-100 p-2">
       <nav className="container mx-auto flex items-center justify-between">
         <Link
-          className="flex content-start items-center py-2 text-gray-500 hover:opacity-75"
+          className="flex flex-col content-start items-center py-2 text-gray-500 hover:opacity-75"
           href="/"
         >
           <Image
@@ -40,13 +40,13 @@ export const Header = () => {
           Nam.az
         </Link>
 
-        <Link href={`/${cityData.slug}/ayliq-teqvim`}>{cityData.city} Ramazan Təqvimi</Link>
+        <Link href={`/${cityData.slug}/ayliq-teqvim`} className="text-wrap text-center">{cityData.city} üçün <br className="md:hidden" /> Ramazan Təqvimi</Link>
 
         <div className="flex flex-col">
           <button onClick={() => setIsMapOpen(prev => !prev)}
             className="mr-1 rounded-md bg-green-500 py-2 text-sm text-white shadow-sm outline-hidden transition-all duration-150 ease-linear hover:shadow-lg focus:outline-hidden active:bg-green-600">
             <div className="flex items-center justify-center">
-              {`Xəritəni ${!isMapOpen ? 'aç' : 'bağla'}`}&nbsp;
+              Şəhərini seç&nbsp;
               <FaSearchLocation size="1em" />
             </div>
           </button>

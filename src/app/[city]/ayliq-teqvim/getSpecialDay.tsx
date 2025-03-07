@@ -5,7 +5,7 @@ import { getDay } from 'date-fns'
 export const getSpecialDay = (date: Date, day: number) => {
   const weekday = getDay(date) // 5 means Friday
 
-  const lastOddNights = [19, 21, 23, 25, 27, 29]
+  const lastOddNights = [18, 20, 22, 24, 26, 28]
   const isQadrNight = lastOddNights.includes(day)
   const isFriday = weekday === 5
 

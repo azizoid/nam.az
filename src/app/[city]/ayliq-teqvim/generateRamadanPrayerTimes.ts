@@ -5,7 +5,7 @@ import { getNamazService } from '@/app/api/v3/[city]/getNamazService'
 export const generateRamadanPrayerTimes = async (city: string) => {
   const today = new Date()
   const start = new Date(today.getFullYear(), today.getMonth(), 1)
-  const end = addDays(start, 29)
+  const end = addDays(start, 28)
 
   const datesArray = eachDayOfInterval({ start, end })
 

@@ -50,6 +50,20 @@ const CityAyliqTeqvimPage = async (props: CityProps) => {
                 <TableCell>{prayers[5]}</TableCell>
               </TableRow>
             ))}
+            <TableRow
+              className={'text-sm text-center transition-colors bg-white hover:bg-blue-100'}
+            >
+              <TableCell className="font-medium flex flex-col">
+                <span>{1}</span>
+                <span className="text-xs">Bayram</span>
+              </TableCell>
+              <TableCell>04:55</TableCell>
+              <TableCell>06:28</TableCell>
+              <TableCell>12:45</TableCell>
+              <TableCell>16:18</TableCell>
+              <TableCell>19:03</TableCell>
+              <TableCell>20:31</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>
