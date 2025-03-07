@@ -1,5 +1,31 @@
+# Ignore node_modules (handled by standalone output)
 node_modules
+
+# Ignore Next.js build artifacts
 .next
+.next/cache
+
+# Ignore package manager caches
 pnpm-store
+yarn.lock
+npm-debug.log
+pnpm-debug.log
+
+# Ignore local env files
 .env
 .env.local
+.env.development
+.env.production
+.env.test
+
+# Ignore logs and OS files
+*.log
+.DS_Store
+.vscode
+.idea
+*.swp
+Thumbs.db
+
+# Ignore Git files
+.git
+.gitignore

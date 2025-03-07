@@ -13,16 +13,17 @@ RUN npm install -g pnpm
 
 # Dependencies Layer (Optimize Caching)
 FROM base AS dependencies
+WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prefer-offline
 
 # Build Stage (Uses Env Variables)
 FROM dependencies AS builder
+WORKDIR /app
 COPY . .
 
 ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 ARG NEXT_PUBLIC_GA4_ID
-
 ENV NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
 ENV NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
 
@@ -36,7 +37,6 @@ WORKDIR /app
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=namaz-user:namaz-user /app/.next/standalone ./
 COPY --from=builder --chown=namaz-user:namaz-user /app/.next/static ./.next/static
-COPY --from=dependencies /app/node_modules ./node_modules
 
 # Set permissions
 RUN chown -R namaz-user:namaz-user /app
