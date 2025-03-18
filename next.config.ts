@@ -3,9 +3,6 @@ const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
-  devIndicators: {
-    buildActivity: false,
-  },
   compress: true,
   async headers() {
     return [
