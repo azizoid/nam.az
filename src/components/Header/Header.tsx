@@ -6,11 +6,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { FaSearchLocation } from 'react-icons/fa'
 
-import { useAtom } from 'jotai'
-
 import { Link } from '@/components/Link'
-import { cityAtom } from '@/store/jotaiStore'
-import { selectCity } from '@/utilities/selectCity/selectCity'
 
 const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((mod) => mod.XeritePage), {
 
@@ -19,9 +15,6 @@ const XeritePage = dynamic(() => import('@/components/Xerite/XeritePage').then((
 export const Header = () => {
 
   const [isMapOpen, setIsMapOpen] = useState<boolean>(false)
-  const [city] = useAtom(cityAtom)
-
-  const cityData = selectCity(city)
 
   return (
     <div className="bg-gray-100 p-2">
@@ -39,8 +32,6 @@ export const Header = () => {
           />
           Nam.az
         </Link>
-
-        <Link href={`/${cityData.slug}/ayliq-teqvim`} className="text-wrap text-center">{cityData.city} üçün <br className="md:hidden" /> Ramazan Təqvimi</Link>
 
         <div className="flex flex-col">
           <button onClick={() => setIsMapOpen(prev => !prev)}
