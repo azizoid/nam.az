@@ -8,7 +8,7 @@ export const Footer = () => (
         <a href="https://www.nam.az">Nam.az</a>
       </li>
       <li className="mr-6">
-        <a href="https://www.quran.az" target="_blank">
+        <a href="https://www.quran.az" target="_blank" rel="noreferrer">
           Quran.az
         </a>
       </li>
